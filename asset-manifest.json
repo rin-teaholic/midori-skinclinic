@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/midori-hifuka/static/css/main.bd903184.css",
+    "main.js": "/midori-hifuka/static/js/main.2fa46f41.js",
+    "static/js/488.1f38958e.chunk.js": "/midori-hifuka/static/js/488.1f38958e.chunk.js",
+    "static/media/hero-clinic.jpg": "/midori-hifuka/static/media/hero-clinic.bebed4381a91e94cde69.jpg",
+    "index.html": "/midori-hifuka/index.html",
+    "main.bd903184.css.map": "/midori-hifuka/static/css/main.bd903184.css.map",
+    "main.2fa46f41.js.map": "/midori-hifuka/static/js/main.2fa46f41.js.map",
+    "488.1f38958e.chunk.js.map": "/midori-hifuka/static/js/488.1f38958e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bd903184.css",
+    "static/js/main.2fa46f41.js"
+  ]
+}
