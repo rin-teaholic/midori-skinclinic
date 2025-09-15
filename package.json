@@ -2,7 +2,6 @@
   "name": "midori-hifuka",
   "version": "1.0.0",
   "description": "Midori Hifuka - React TypeScript Website",
-  "homepage": "https://yourusername.github.io/midori-hifuka",
   "private": true,
   "dependencies": {
     "react": "^18.3.1",

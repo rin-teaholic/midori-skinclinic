@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import heroClinicImage from '../assets/images/hero-clinic.jpg';
 import './Home.scss';
 
 const Home: React.FC = () => {
@@ -28,7 +29,7 @@ const Home: React.FC = () => {
           </div>
           <div className="hero-image">
             <img 
-              src="/src/assets/images/hero-clinic.jpg" 
+              src={heroClinicImage} 
               alt="みどり皮ふ科外観" 
               className="hero-clinic-image"
             />
