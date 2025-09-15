@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/midori-hifuka/static/css/main.bd903184.css",
-    "main.js": "/midori-hifuka/static/js/main.2fa46f41.js",
-    "static/js/488.1f38958e.chunk.js": "/midori-hifuka/static/js/488.1f38958e.chunk.js",
-    "static/media/hero-clinic.jpg": "/midori-hifuka/static/media/hero-clinic.bebed4381a91e94cde69.jpg",
-    "index.html": "/midori-hifuka/index.html",
-    "main.bd903184.css.map": "/midori-hifuka/static/css/main.bd903184.css.map",
-    "main.2fa46f41.js.map": "/midori-hifuka/static/js/main.2fa46f41.js.map",
-    "488.1f38958e.chunk.js.map": "/midori-hifuka/static/js/488.1f38958e.chunk.js.map"
+    "main.css": "/midori-skinclinic/static/css/main.bd903184.css",
+    "main.js": "/midori-skinclinic/static/js/main.14c17b01.js",
+    "static/js/488.1f38958e.chunk.js": "/midori-skinclinic/static/js/488.1f38958e.chunk.js",
+    "static/media/hero-clinic.jpg": "/midori-skinclinic/static/media/hero-clinic.bebed4381a91e94cde69.jpg",
+    "index.html": "/midori-skinclinic/index.html",
+    "main.bd903184.css.map": "/midori-skinclinic/static/css/main.bd903184.css.map",
+    "main.14c17b01.js.map": "/midori-skinclinic/static/js/main.14c17b01.js.map",
+    "488.1f38958e.chunk.js.map": "/midori-skinclinic/static/js/488.1f38958e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.bd903184.css",
-    "static/js/main.2fa46f41.js"
+    "static/js/main.14c17b01.js"
   ]
 }
