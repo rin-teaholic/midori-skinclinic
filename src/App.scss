@@ -1,0 +1,79 @@
+// アニメーションのインポート
+@import './styles/animations.scss';
+
+// グローバルスタイルとリセットCSS
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+}
+
+// 共通のボタンスタイル
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #4a90e2;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  
+  &:hover {
+    background-color: #357abd;
+    transform: translateY(-2px);
+  }
+  
+  &.btn-secondary {
+    background-color: #6c757d;
+    
+    &:hover {
+      background-color: #545b62;
+    }
+  }
+}
+
+// 共通のセクションスタイル
+.section {
+  padding: 60px 0;
+  
+  &.section-gray {
+    background-color: #f8f9fa;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+// レスポンシブデザイン
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+  
+  .section {
+    padding: 40px 0;
+  }
+}

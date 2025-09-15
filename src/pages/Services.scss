@@ -1,0 +1,138 @@
+.services {
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    
+    .service-card {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      }
+      
+      .service-icon {
+        font-size: 48px;
+        margin-bottom: 20px;
+        display: block;
+        text-align: center;
+      }
+      
+      h3 {
+        font-size: 20px;
+        color: #2c5530;
+        margin-bottom: 20px;
+        font-weight: bold;
+        text-align: center;
+      }
+      
+      ul {
+        list-style: none;
+        margin-bottom: 20px;
+        
+        li {
+          padding: 8px 0;
+          border-bottom: 1px solid #eee;
+          color: #666;
+          font-size: 14px;
+          
+          &:last-child {
+            border-bottom: none;
+          }
+          
+          &::before {
+            content: '✓';
+            color: #2c5530;
+            font-weight: bold;
+            margin-right: 10px;
+          }
+        }
+      }
+      
+      p {
+        color: #666;
+        line-height: 1.6;
+        font-size: 14px;
+        text-align: center;
+      }
+    }
+  }
+  
+  .equipment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    
+    .equipment-item {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      }
+      
+      .equipment-image {
+        margin-bottom: 20px;
+        
+        .placeholder-image {
+          width: 100%;
+          height: 200px;
+          background-color: #f8f9fa;
+          border: 2px dashed #ddd;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          border-radius: 10px;
+          
+          span {
+            font-size: 60px;
+            margin-bottom: 10px;
+          }
+          
+          p {
+            color: #666;
+            font-size: 14px;
+            margin: 0;
+          }
+        }
+      }
+      
+      h3 {
+        font-size: 18px;
+        color: #2c5530;
+        margin-bottom: 15px;
+        font-weight: bold;
+      }
+      
+      p {
+        color: #666;
+        line-height: 1.6;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+// モバイル対応
+@media (max-width: 768px) {
+  .services {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .equipment-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}
