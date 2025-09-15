@@ -8,32 +8,25 @@ const Home: React.FC = () => {
     <div className="home">
       {/* ヒーローセクション */}
       <section className="hero">
+        <div className="hero-image-background">
+          <img 
+            src={heroClinicImage} 
+            alt="みどり皮ふ科外観" 
+            className="hero-bg-image"
+          />
+          <div className="hero-overlay"></div>
+        </div>
         <div className="hero-content">
           <div className="hero-text">
             <h1 className="hero-title">
               健康な肌で<br />
-              毎日を輝かせよう
+              <span className="hero-title-highlight">毎日を輝かせよう</span>
             </h1>
-            <p className="hero-subtitle">
-              患者様一人ひとりに寄り添う<br />
-              皮膚科専門クリニック
-            </p>
-            <div className="hero-buttons">
-              <Link to="/contact" className="btn btn-primary">
-                ご予約・お問い合わせ
-              </Link>
-              <Link to="/services" className="btn btn-secondary">
-                診療内容を見る
-              </Link>
-            </div>
           </div>
-          <div className="hero-image">
-            <img 
-              src={heroClinicImage} 
-              alt="みどり皮ふ科外観" 
-              className="hero-clinic-image"
-            />
-          </div>
+        </div>
+        <div className="hero-scroll-indicator">
+          <div className="scroll-line"></div>
+          <span>Scroll</span>
         </div>
       </section>
 

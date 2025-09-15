@@ -1,6 +1,4 @@
-# みどり皮ふ科 公式ウェブサイト
-
-ハルメクホールディングスのサイトデザインを参考にした皮膚科クリニックの公式ウェブサイトです。
+# みどり皮ふ科 HP
 
 ## 特徴
 
@@ -100,10 +98,25 @@ $secondary-color: #4a90e2; // 青色
 
 ## デプロイ
 
-### GitHub Pages
+### GitHub Pages（推奨）
+
+#### 自動デプロイ（GitHub Actions）
 1. GitHubリポジトリを作成
-2. `package.json`の`homepage`を更新
-3. `npm run deploy`でデプロイ
+2. `package.json`の`homepage`フィールドを実際のリポジトリURLに更新：
+   ```json
+   "homepage": "https://your-username.github.io/midori-hifuka"
+   ```
+3. リポジトリのSettings > Pagesで、Sourceを「GitHub Actions」に設定
+4. mainブランチにプッシュすると自動的にデプロイされます
+
+#### 手動デプロイ
+```bash
+# 本番用ビルド
+npm run build
+
+# GitHub Pagesにデプロイ
+npm run deploy
+```
 
 ### その他のホスティング
 - Netlify
