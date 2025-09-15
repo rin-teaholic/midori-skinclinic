@@ -27,10 +27,11 @@ const Home: React.FC = () => {
             </div>
           </div>
           <div className="hero-image">
-            <div className="placeholder-image">
-              <span>🏥</span>
-              <p>クリニック外観画像</p>
-            </div>
+            <img 
+              src="/src/assets/images/hero-clinic.jpg" 
+              alt="みどり皮ふ科外観" 
+              className="hero-clinic-image"
+            />
           </div>
         </div>
       </section>

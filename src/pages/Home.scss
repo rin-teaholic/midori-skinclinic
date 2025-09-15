@@ -44,25 +44,17 @@
       justify-content: center;
       align-items: center;
       
-      .placeholder-image {
+      .hero-clinic-image {
         width: 100%;
         height: 400px;
-        background-color: #f8f9fa;
-        border: 2px dashed #ddd;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        object-fit: cover;
         border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
         
-        span {
-          font-size: 80px;
-          margin-bottom: 20px;
-        }
-        
-        p {
-          color: #666;
-          font-size: 16px;
+        &:hover {
+          transform: scale(1.02);
+          box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
       }
     }
@@ -311,7 +303,7 @@
       }
       
       .hero-image {
-        .placeholder-image {
+        .hero-clinic-image {
           height: 300px;
         }
       }
