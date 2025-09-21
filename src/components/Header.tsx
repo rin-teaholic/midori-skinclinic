@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom'
 import { FaBars, FaTimes } from 'react-icons/fa'
 import './Header.scss'
 
-interface HeaderProps {}
-
-function Header({}: HeaderProps) {
+function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const handleToggleMenu = useCallback(() => {

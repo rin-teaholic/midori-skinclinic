@@ -4,9 +4,7 @@ import { FaUserPlus, FaRedo, FaQuestionCircle, FaMapMarkerAlt } from 'react-icon
 import heroClinicImage from '../assets/images/hero-clinic.jpg'
 import './Home.scss'
 
-interface HomeProps {}
-
-function Home({}: HomeProps) {
+function Home() {
   return (
     <div className="home">
       {/* ヒーローセクション */}
