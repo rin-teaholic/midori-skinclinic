@@ -2,7 +2,7 @@
   "name": "midori-hifuka",
   "version": "1.0.0",
   "description": "Midori Hifuka - React TypeScript Website",
-  "homepage": ".",
+  "homepage": "https://rin-teaholic.github.io/midori-skinclinic",
   "private": true,
   "dependencies": {
     "react": "^18.3.1",

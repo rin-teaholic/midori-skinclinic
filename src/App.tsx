@@ -11,7 +11,7 @@ import './App.scss'
 
 function App() {
   return (
-    <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+    <Router basename="/midori-skinclinic" future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <div className="App">
         <Header />
         <main className="main-content">
