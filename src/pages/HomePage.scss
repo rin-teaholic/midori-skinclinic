@@ -380,128 +380,145 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: $spacing-xxxl;
-      align-items: center;
+      align-items: flex-start;
     }
     
     .about-text {
       .about-description {
         @extend .text-regular;
         line-height: 1.8;
-        margin-bottom: $spacing-xl;
+        margin-bottom: $spacing-xxl;
+      }
+      
+      .about-hours-table {
+        margin-bottom: $spacing-xxl;
+        
+        .hours-header {
+          margin-bottom: $spacing-md;
+          text-align: center;
+          
+          h3 {
+            margin: 0;
+            
+            .title-japanese {
+              @extend .text-regular;
+              font-size: 14px;
+              font-weight: 700;
+              margin: 0;
+            }
+          }
+        }
+        
+        .hours-content {
+          background: $text-color-white;
+          border-radius: $border-radius-sm;
+          overflow: hidden;
+          @include card-shadow;
+          width: fit-content;
+          margin: 0 auto;
+          
+          .hours-row {
+            display: grid;
+            grid-template-columns: 100px 60px 60px 60px 60px 60px 60px 60px;
+            gap: 1px;
+            background-color: #ddd;
+            
+            &:first-child {
+              background-color: $button-color;
+              
+              .day-label {
+                background-color: $button-color;
+                @include text-on-dark;
+                font-weight: bold;
+              }
+            }
+            
+            .time-label,
+            .day-label,
+            .availability {
+              background-color: $text-color-white;
+              padding: $spacing-sm $spacing-sm;
+              text-align: center;
+              font-weight: bold;
+              @extend .text-regular;
+              font-size: 12px;
+              
+              &.day-label {
+                white-space: nowrap;
+                font-size: 11px;
+              }
+              
+              &.time-label {
+                font-weight: normal;
+                font-size: 10px;
+                line-height: 1.2;
+                white-space: nowrap;
+                
+                .period-label {
+                  font-weight: bold;
+                  font-size: 12px;
+                }
+              }
+            }
+            
+            .availability {
+              font-size: 16px;
+              @include flex-center;
+              
+              svg {
+                font-size: 16px;
+                color: $accent-color;
+                
+                // 丸アイコンの色
+                &.fa-circle {
+                  color: $accent-color;
+                }
+                
+                // バツアイコンの色
+                &.fa-times {
+                  color: #e74c3c;
+                }
+              }
+            }
+          }
+        }
       }
       
       .btn-about {
         @extend .button;
+        @extend .button--with-icon;
       }
     }
     
     .about-image {
-      .placeholder-image {
+      .about-image-content {
         width: 100%;
-        height: 400px;
-        background-color: #f5f5f5;
+        aspect-ratio: 1.414 / 1; // 横向き白銀比（√2:1）
+        object-fit: cover; // 画像をトリミングして当て嵌める
+        object-position: center center;
         border-radius: $border-radius-sm;
-        @include flex-column-center;
+        @include card-shadow;
         
-        span {
-          font-size: 80px;
-          margin-bottom: $spacing-lg;
-        }
+        // 画像品質の最適化
+        image-rendering: -webkit-optimize-contrast; // WebKit最適化
+        image-rendering: crisp-edges; // エッジの鮮明化
+        image-rendering: optimize-quality; // 品質優先
+        -ms-interpolation-mode: bicubic; // IE用高品質補間
         
-        p {
-          @extend .text-regular;
-          color: #666;
-        }
+        // 高解像度ディスプレイ対応
+        image-rendering: high-quality;
+        
+        // スムーズなスケーリング
+        transform: translateZ(0); // GPU アクセラレーション
+        backface-visibility: hidden; // レンダリング最適化
+        
+        // アンチエイリアシング
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
       }
     }
   }
   
-  .operating-hours-section {
-    @include dark-background;
-    @include section-padding;
-    
-    .container {
-      @include container;
-      @include container-padding;
-    }
-    
-    .hours-table {
-      max-width: 800px;
-      margin: 0 auto;
-      
-      .hours-header {
-        @include section-title-spacing;
-        text-align: left;
-        
-        h3 {
-          @include flex-column;
-          align-items: flex-start;
-          gap: $spacing-xs;
-          margin: 0;
-          
-          .title-english {
-            @extend .text-on-dark;
-            @extend .text-bold;
-            font-size: 24px;
-            margin: 0;
-            
-            @media (max-width: $breakpoint-mobile) {
-              font-size: 20px;
-            }
-            
-            @media (max-width: 480px) {
-              font-size: 18px;
-            }
-          }
-          
-          .title-japanese {
-            @extend .text-on-dark;
-            @extend .text-bold;
-            margin: 0;
-          }
-        }
-      }
-      
-      .hours-content {
-        background: $text-color-white;
-        border-radius: $border-radius-sm;
-        overflow: hidden;
-        @include card-shadow;
-        
-        .hours-row {
-          display: grid;
-          grid-template-columns: 80px 120px repeat(7, 1fr);
-          gap: 1px;
-          background-color: #ddd;
-          
-          &:first-child {
-            background-color: $button-color;
-            
-            .day-label {
-              background-color: $button-color;
-              @include text-on-dark;
-              font-weight: bold;
-            }
-          }
-          
-          .time-label,
-          .day-label,
-          .availability {
-            background-color: $text-color-white;
-            padding: $spacing-md $spacing-sm;
-            text-align: center;
-            font-weight: bold;
-            @extend .text-regular;
-            font-size: 14px;
-          }
-          
-          .availability {
-            font-size: 16px;
-          }
-        }
-      }
-    }
-  }
   
   .services-section {
     background-color: $text-color-white;
@@ -763,31 +780,47 @@
         text-align: center;
       }
       
-      .about-image {
-        .placeholder-image {
-          height: 300px;
-        }
-      }
-    }
-    
-    .operating-hours-section {
-      padding: $spacing-xl 0;
-      
-      .hours-table {
-        .hours-content {
-          .hours-row {
-            grid-template-columns: 60px 100px repeat(7, 1fr);
-            
-            .time-label,
-            .day-label,
-            .availability {
-              padding: $spacing-sm 5px;
-              font-size: 12px;
+      .about-text {
+        .about-hours-table {
+          .hours-content {
+            .hours-row {
+              grid-template-columns: 80px 50px 50px 50px 50px 50px 50px 50px;
+              
+              .time-label,
+              .day-label,
+              .availability {
+                padding: $spacing-sm 5px;
+                font-size: 12px;
+                
+                &.availability {
+                  @include flex-center;
+                  
+                  svg {
+                    font-size: 12px;
+                    color: $accent-color;
+                    
+                    &.fa-circle {
+                      color: $accent-color;
+                    }
+                    
+                    &.fa-times {
+                      color: #e74c3c;
+                    }
+                  }
+                }
+              }
             }
           }
         }
       }
+      
+      .about-image {
+        .placeholder-image {
+          aspect-ratio: 1.414 / 1; // 横向き白銀比を維持
+        }
+      }
     }
+    
     
     .services-section {
       @include section-padding;
@@ -926,17 +959,36 @@
       }
     }
     
-    .operating-hours-section {
-      .hours-table {
-        .hours-content {
-          .hours-row {
-            grid-template-columns: 50px 80px repeat(7, 1fr);
-            
-            .time-label,
-            .day-label,
-            .availability {
-              padding: $spacing-xs 3px;
-              font-size: 11px;
+    .about-section {
+      .about-text {
+        .about-hours-table {
+          .hours-content {
+            .hours-row {
+              grid-template-columns: 70px 45px 45px 45px 45px 45px 45px 45px;
+              
+              .time-label,
+              .day-label,
+              .availability {
+                padding: $spacing-xs 3px;
+                font-size: 11px;
+                
+                &.availability {
+                  @include flex-center;
+                  
+                  svg {
+                    font-size: 11px;
+                    color: $accent-color;
+                    
+                    &.fa-circle {
+                      color: $accent-color;
+                    }
+                    
+                    &.fa-times {
+                      color: #e74c3c;
+                    }
+                  }
+                }
+              }
             }
           }
         }

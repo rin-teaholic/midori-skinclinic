@@ -1,7 +1,8 @@
 import React, { memo } from 'react'
 import { Link } from 'react-router-dom'
-import { FaUserPlus, FaRedo, FaQuestionCircle, FaMapMarkerAlt, FaChevronRight, FaInfoCircle } from 'react-icons/fa'
+import { FaUserPlus, FaRedo, FaQuestionCircle, FaMapMarkerAlt, FaChevronRight, FaInfoCircle, FaCircle, FaTimes, FaHospital } from 'react-icons/fa'
 import heroClinicImage from '../assets/images/hero-clinic.jpg'
+import aboutTopImage from '../assets/images/about-top.jpeg'
 import type { HomeProps, IconItem } from '../types'
 import './HomePage.scss'
 
@@ -151,66 +152,67 @@ function Home(props: HomeProps) {
               <p className="about-description">
                 みどり皮ふ科は、患者様一人ひとりに寄り添い、最適な治療を提供することを使命としています。経験豊富な医師と最新の医療設備で、安心してご来院いただけます。
               </p>
+              
+              {/* 営業時間表 */}
+              <div className="about-hours-table">
+                <div className="hours-header">
+                  <h3>
+                    <span className="title-japanese">営業時間</span>
+                  </h3>
+                </div>
+                <div className="hours-content">
+                  <div className="hours-row">
+                    <div className="day-label"></div>
+                    <div className="day-label">月</div>
+                    <div className="day-label">火</div>
+                    <div className="day-label">水</div>
+                    <div className="day-label">木</div>
+                    <div className="day-label">金</div>
+                    <div className="day-label">土</div>
+                    <div className="day-label">日・祝</div>
+                  </div>
+                  <div className="hours-row">
+                    <div className="time-label"><span className="period-label">午前</span><br />9:00-12:00</div>
+                    <div className="availability"><FaCircle /></div>
+                    <div className="availability"><FaCircle /></div>
+                    <div className="availability"><FaTimes /></div>
+                    <div className="availability"><FaCircle /></div>
+                    <div className="availability"><FaCircle /></div>
+                    <div className="availability"><FaCircle /></div>
+                    <div className="availability"><FaTimes /></div>
+                  </div>
+                  <div className="hours-row">
+                    <div className="time-label"><span className="period-label">午後</span><br />14:00-18:00</div>
+                    <div className="availability"><FaCircle /></div>
+                    <div className="availability"><FaCircle /></div>
+                    <div className="availability"><FaTimes /></div>
+                    <div className="availability"><FaCircle /></div>
+                    <div className="availability"><FaCircle /></div>
+                    <div className="availability"><FaTimes /></div>
+                    <div className="availability"><FaTimes /></div>
+                  </div>
+                </div>
+              </div>
+              
               <Link to="/about" className="btn-about">
+                <FaHospital className="btn-icon" />
                 当院について
               </Link>
             </div>
             <div className="about-image">
-              <div className="placeholder-image">
-                <span>👨‍⚕️</span>
-                <p>院長・医師の写真</p>
-              </div>
+              <img 
+                src={aboutTopImage} 
+                alt="みどり皮ふ科について" 
+                className="about-image-content"
+                loading="lazy"
+                decoding="async"
+                fetchPriority="low"
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* 営業時間セクション */}
-      <section className="operating-hours-section" aria-labelledby="hours-title">
-        <div className="container">
-          <div className="hours-table">
-            <div className="hours-header">
-              <h3 id="hours-title">
-                <span className="title-english">Hours</span>
-                <span className="title-japanese">営業時間</span>
-              </h3>
-            </div>
-            <div className="hours-content">
-              <div className="hours-row">
-                <div className="day-label">月</div>
-                <div className="day-label">火</div>
-                <div className="day-label">水</div>
-                <div className="day-label">木</div>
-                <div className="day-label">金</div>
-                <div className="day-label">土</div>
-                <div className="day-label">日・祝</div>
-              </div>
-              <div className="hours-row">
-                <div className="time-label">午前</div>
-                <div className="time-label">9:00-12:00</div>
-                <div className="availability">O</div>
-                <div className="availability">X</div>
-                <div className="availability">O</div>
-                <div className="availability">X</div>
-                <div className="availability">O</div>
-                <div className="availability">X</div>
-                <div className="availability">O</div>
-              </div>
-              <div className="hours-row">
-                <div className="time-label">午後</div>
-                <div className="time-label">14:00-18:00</div>
-                <div className="availability">O</div>
-                <div className="availability">O</div>
-                <div className="availability">O</div>
-                <div className="availability">O</div>
-                <div className="availability">O</div>
-                <div className="availability">O</div>
-                <div className="availability">O</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Aboutセクション（診療内容） */}
       <section className="services-section" aria-labelledby="services-title">
