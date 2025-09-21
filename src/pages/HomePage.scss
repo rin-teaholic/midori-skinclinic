@@ -2,6 +2,7 @@
 @import '../styles/mixins';
 @import '../styles/typography';
 @import '../styles/animations';
+@import '../styles/buttons';
 
 .home {
   .hero {
@@ -62,7 +63,7 @@
       animation: heroTextSlideIn 1.5s ease-out;
       
       .hero-title {
-        @include text-bold;
+        @extend .text-bold;
         font-size: 48px;
         font-weight: 900;
         line-height: 1.3;
@@ -146,7 +147,7 @@
           }
           
           .icon-text {
-            @include text-regular;
+            @extend .text-regular;
             font-size: 12px;
             text-align: left;
             padding-left: 1px;
@@ -190,12 +191,12 @@
         margin: 0;
         
         .title-english {
-          @include heading-english;
+          @extend .heading-english;
           margin: 0;
         }
         
         .title-japanese {
-          @include text-bold;
+          @extend .text-bold;
           margin: 0;
         }
       }
@@ -268,7 +269,7 @@
         }
         
         .info-date {
-          @include text-regular;
+          @extend .text-regular;
           font-weight: 600;
           font-size: 14px;
           color: $accent-color;
@@ -281,7 +282,7 @@
           flex: 1;
           
           .info-title {
-            @include text-bold;
+            @extend .text-bold;
             font-size: 16px;
             margin-bottom: 6px;
             color: $text-color-primary;
@@ -290,7 +291,7 @@
           }
           
           .info-description {
-            @include text-regular;
+            @extend .text-regular;
             font-size: 14px;
             color: #666;
             line-height: 1.5;
@@ -313,7 +314,7 @@
       text-align: center;
       
       .btn-info {
-        @include button-primary;
+        @extend .button;
       }
     }
   }
@@ -337,12 +338,12 @@
         margin: 0;
         
         .title-english {
-          @include heading-english;
+          @extend .heading-english;
           margin: 0;
         }
         
         .title-japanese {
-          @include text-bold;
+          @extend .text-bold;
           margin: 0;
         }
       }
@@ -357,13 +358,13 @@
     
     .about-text {
       .about-description {
-        @include text-regular;
+        @extend .text-regular;
         line-height: 1.8;
         margin-bottom: $spacing-xl;
       }
       
       .btn-about {
-        @include button-primary;
+        @extend .button;
       }
     }
     
@@ -381,7 +382,7 @@
         }
         
         p {
-          @include text-regular;
+          @extend .text-regular;
           color: #666;
         }
       }
@@ -412,8 +413,8 @@
           margin: 0;
           
           .title-english {
-            @include text-on-dark;
-            @include text-bold;
+            @extend .text-on-dark;
+            @extend .text-bold;
             font-size: 24px;
             margin: 0;
             
@@ -427,8 +428,8 @@
           }
           
           .title-japanese {
-            @include text-on-dark;
-            @include text-bold;
+            @extend .text-on-dark;
+            @extend .text-bold;
             margin: 0;
           }
         }
@@ -463,7 +464,7 @@
             padding: $spacing-md $spacing-sm;
             text-align: center;
             font-weight: bold;
-            @include text-regular;
+            @extend .text-regular;
             font-size: 14px;
           }
           
@@ -494,12 +495,12 @@
         margin: 0;
         
         .title-english {
-          @include heading-english;
+          @extend .heading-english;
           margin: 0;
         }
         
         .title-japanese {
-          @include text-bold;
+          @extend .text-bold;
           margin: 0;
         }
       }
@@ -532,7 +533,7 @@
       }
       
       .service-label {
-        @include text-regular;
+        @extend .text-regular;
         font-weight: 500;
       }
     }
@@ -542,7 +543,7 @@
       text-align: center;
       
       .btn-services {
-        @include button-primary;
+        @extend .button;
       }
     }
   }
