@@ -88,7 +88,7 @@ function Home(props: HomeProps) {
       </section>
 
       {/* Infoセクション */}
-      <section className="info-section" role="region" aria-labelledby="info-title">
+      <section className="info-section" aria-labelledby="info-title">
         <div className="container">
           <div className="info-header">
             <h2 id="info-title" className="info-title">
@@ -137,7 +137,7 @@ function Home(props: HomeProps) {
       </section>
 
       {/* Aboutセクション（医院について） */}
-      <section className="about-section" role="region" aria-labelledby="about-title">
+      <section className="about-section" aria-labelledby="about-title">
         <div className="container">
           <div className="about-header">
             <h2 id="about-title" className="about-title">
@@ -165,7 +165,7 @@ function Home(props: HomeProps) {
       </section>
 
       {/* 営業時間セクション */}
-      <section className="operating-hours-section" role="region" aria-labelledby="hours-title">
+      <section className="operating-hours-section" aria-labelledby="hours-title">
         <div className="container">
           <div className="hours-table">
             <div className="hours-header">
@@ -212,7 +212,7 @@ function Home(props: HomeProps) {
       </section>
 
       {/* Aboutセクション（診療内容） */}
-      <section className="services-section" role="region" aria-labelledby="services-title">
+      <section className="services-section" aria-labelledby="services-title">
         <div className="container">
           <div className="services-header">
             <h2 id="services-title" className="services-title">
