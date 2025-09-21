@@ -1,0 +1,289 @@
+// ボタンスタイル定義（横長デザイン対応）
+@import 'variables';
+@import 'mixins';
+
+// ボタンの基本クラス
+.button {
+  @include button-primary;
+  @include button-spacing;
+  
+  // テキストに対してやや横長の印象を与えるための追加スタイル
+  white-space: nowrap; // テキストの改行を防ぐ
+  text-align: center;
+  
+  // ボタンの配置を中央揃えに設定
+  margin: 0 auto;
+  display: block;
+  
+  // PC表示での横伸びを抑制
+  max-width: $button-max-width;
+  width: auto;
+  
+  // ボタンの幅をテキストに応じて調整
+  &.button--auto {
+    width: auto;
+    min-width: $button-min-width-mobile;
+    
+    @media (min-width: $breakpoint-mobile) {
+      min-width: $button-min-width;
+    }
+  }
+  
+  // ボタンの幅を固定
+  &.button--fixed {
+    @include button-max-width;
+  }
+  
+  // ボタンの幅を全幅に
+  &.button--full {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+// セカンダリボタン
+.button--secondary {
+  @include button-secondary;
+  @include button-spacing;
+  
+  white-space: nowrap;
+  text-align: center;
+  
+  // ボタンの配置を中央揃えに設定
+  margin: 0 auto;
+  display: block;
+  
+  // PC表示での横伸びを抑制
+  max-width: $button-max-width;
+  width: auto;
+  
+  &.button--auto {
+    width: auto;
+    min-width: $button-min-width-mobile;
+    
+    @media (min-width: $breakpoint-mobile) {
+      min-width: $button-min-width;
+    }
+  }
+  
+  &.button--fixed {
+    @include button-max-width;
+  }
+  
+  &.button--full {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+// ボタングループ
+.button-group {
+  @include button-group-horizontal;
+  
+  // デフォルトで中央揃えに設定
+  justify-content: center;
+  
+  &.button-group--vertical {
+    @include button-group-vertical;
+  }
+  
+  &.button-group--center {
+    justify-content: center;
+  }
+  
+  &.button-group--start {
+    justify-content: flex-start;
+  }
+  
+  &.button-group--end {
+    justify-content: flex-end;
+  }
+  
+  &.button-group--between {
+    justify-content: space-between;
+  }
+  
+  &.button-group--around {
+    justify-content: space-around;
+  }
+}
+
+// ボタンサイズバリエーション
+.button--small {
+  padding: 8px 24px; // 水平パディングを増加
+  min-width: 100px; // 最小幅を増加
+  max-width: 180px; // 最大幅を増加
+  height: 36px;
+  font-size: 13px; // 文字サイズを少し大きく
+  font-weight: 700; // フォントウェイトを太く
+  letter-spacing: 0.1em; // 文字間隔を元の値に戻す
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); // テキストシャドウ追加
+  
+  @media (min-width: $breakpoint-mobile) {
+    padding: 10px 28px; // 水平パディングを増加
+    min-width: 120px; // 最小幅を増加
+    max-width: 200px; // 最大幅を増加
+    height: 40px;
+    font-size: 14px; // 文字サイズを少し大きく
+  }
+}
+
+.button--large {
+  padding: 16px 48px; // 水平パディングを大幅に増加
+  min-width: 200px; // 最小幅を大幅に増加
+  max-width: 350px; // 最大幅を大幅に増加
+  height: 56px;
+  font-size: 17px; // 文字サイズを少し大きく
+  font-weight: 700; // フォントウェイトを太く
+  letter-spacing: 0.1em; // 文字間隔を元の値に戻す
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); // テキストシャドウ追加
+  
+  @media (min-width: $breakpoint-mobile) {
+    padding: 18px 56px; // 水平パディングを大幅に増加
+    min-width: 240px; // 最小幅を大幅に増加
+    max-width: 400px; // 最大幅を大幅に増加
+    height: 60px;
+    font-size: 19px; // 文字サイズを少し大きく
+  }
+}
+
+// ボタンの状態
+.button:disabled,
+.button--disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+  
+  &:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+.button--loading {
+  position: relative;
+  color: transparent;
+  text-shadow: none; // ローディング時はテキストシャドウを無効化
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid transparent;
+    border-top: 2px solid $text-color-white; // ローディングスピナーの色を白に設定
+    border-radius: 50%;
+    animation: button-loading 1s linear infinite;
+  }
+}
+
+@keyframes button-loading {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+// ボタンのアイコン対応
+.button--with-icon {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  
+  .button__icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+  
+  .button__text {
+    flex: 1;
+  }
+}
+
+// ボタン内アイコンスタイル（統一デザイン）
+// 使用方法:
+// 1. 基本的なアイコン付きボタン: <button className="button"><Icon className="btn-icon" />テキスト</button>
+// 2. アイコン付きボタン（推奨）: <button className="button button--with-icon"><Icon className="btn-icon" />テキスト</button>
+.button {
+  .btn-icon {
+    font-size: 22px;
+    color: inherit;
+    transition: color 0.3s ease;
+    flex-shrink: 0;
+    
+    &:hover {
+      color: $text-color-white !important;
+    }
+  }
+  
+  // アイコン付きボタンのレイアウト（推奨クラス）
+  &.button--with-icon {
+    @include flex-center;
+    gap: $spacing-sm;
+    
+    .btn-icon {
+      font-size: 22px;
+      color: inherit;
+      transition: color 0.3s ease;
+      flex-shrink: 0;
+    }
+    
+    &:hover .btn-icon {
+      color: $text-color-white !important;
+    }
+  }
+}
+
+// レスポンシブ対応
+@media (max-width: $breakpoint-mobile) {
+  .button-group {
+    flex-direction: column;
+    align-items: center;
+    
+    &.button-group--horizontal-mobile {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+  
+  .button--full-mobile {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+// アクセシビリティ対応
+.button:focus {
+  outline: 2px solid $accent-color;
+  outline-offset: 2px;
+}
+
+.button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+// ダークモード対応（将来の拡張用）
+@media (prefers-color-scheme: dark) {
+  .button--dark-mode {
+    background-color: darken($button-color, 20%);
+    
+    &:hover {
+      background-color: darken($primary-color, 20%);
+    }
+  }
+  
+  .button--secondary.button--dark-mode {
+    border-color: darken($button-color, 20%);
+    color: $text-color-white;
+    
+    &:hover {
+      background-color: darken($button-color, 20%);
+    }
+  }
+}

@@ -100,6 +100,22 @@
   .btn-web-reservation {
     @include button-primary;
     font-size: 16px;
+    @include flex-center;
+    gap: $spacing-sm;
+    
+    // Web予約ボタンをより横長にするための追加パディング
+    padding-left: 32px;
+    padding-right: 32px;
+    
+    @media (min-width: $breakpoint-mobile) {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+    
+    .reservation-icon {
+      font-size: 16px;
+      color: inherit;
+    }
   }
   
   .menu-toggle {
@@ -168,6 +184,10 @@
     .btn-web-reservation {
       padding: 10px 20px;
       font-size: 15px;
+      
+      .reservation-icon {
+        font-size: 15px;
+      }
     }
   }
 }
@@ -228,6 +248,10 @@
       .btn-web-reservation {
         padding: 10px 20px;
         font-size: 14px;
+        
+        .reservation-icon {
+          font-size: 14px;
+        }
       }
     }
     

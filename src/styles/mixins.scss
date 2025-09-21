@@ -52,43 +52,66 @@
 @mixin button-primary {
   background-color: $button-color;
   color: $text-color-white;
-  padding: 12px 24px;
+  padding: $button-padding-vertical-mobile $button-padding-horizontal-mobile;
+  min-width: $button-min-width-mobile;
+  height: $button-height-mobile;
   @include border-radius-button; // ボタンは半円になるように指定
   text-decoration: none;
   font-family: $font-noto-sans-jp; // 日本語テキスト用フォント
-  font-weight: 600;
-  font-size: 14px;
-  letter-spacing: 0.1em; // 日本語テキスト用の文字間隔
+  font-weight: 700; // フォントウェイトを太くして読みやすく
+  font-size: 15px; // 文字サイズを少し大きく
+  letter-spacing: 0.1em; // 日本語テキスト用の文字間隔（元の値に戻す）
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); // テキストシャドウでコントラスト向上
   transition: all $transition-normal;
   border: none;
   cursor: pointer;
+  @include flex-center; // テキストを中央揃え
+  
+  @media (min-width: $breakpoint-mobile) {
+    padding: $button-padding-vertical $button-padding-horizontal;
+    min-width: $button-min-width;
+    height: $button-height;
+    font-size: 16px; // デスクトップで文字サイズを大きく
+  }
   
   &:hover {
     background-color: $primary-color;
     transform: translateY(-2px);
     box-shadow: $shadow-accent;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4); // ホバー時により強いシャドウ
   }
 }
 
 @mixin button-secondary {
   background-color: transparent;
   color: $text-color-primary;
-  padding: 12px 24px;
+  padding: $button-padding-vertical-mobile $button-padding-horizontal-mobile;
+  min-width: $button-min-width-mobile;
+  height: $button-height-mobile;
   border: 2px solid $button-color;
   @include border-radius-button; // ボタンは半円になるように指定
   text-decoration: none;
   font-family: $font-noto-sans-jp; // 日本語テキスト用フォント
-  font-weight: 600;
-  font-size: 14px;
-  letter-spacing: 0.1em; // 日本語テキスト用の文字間隔
+  font-weight: 700; // フォントウェイトを太くして読みやすく
+  font-size: 15px; // 文字サイズを少し大きく
+  letter-spacing: 0.1em; // 日本語テキスト用の文字間隔（元の値に戻す）
   transition: all $transition-normal;
   cursor: pointer;
+  @include flex-center; // テキストを中央揃え
+  
+  @media (min-width: $breakpoint-mobile) {
+    padding: $button-padding-vertical $button-padding-horizontal;
+    min-width: $button-min-width;
+    height: $button-height;
+    font-size: 16px; // デスクトップで文字サイズを大きく
+  }
   
   &:hover {
     background-color: $button-color;
     color: $text-color-white;
     transform: translateY(-2px);
     box-shadow: $shadow-accent;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); // ホバー時にテキストシャドウを追加
   }
 }
 
@@ -105,6 +128,7 @@
 @mixin gradient-background {
   background: linear-gradient(135deg, $background-gradient-start 0%, $background-gradient-end 100%);
 }
+
 
 @mixin dark-background {
   background-color: $background-dark;
@@ -211,4 +235,54 @@
     margin-top: $section-button-top-margin;
     margin-bottom: $section-button-bottom-margin;
   }
+}
+
+// ボタン余白ミックスイン（横長デザイン対応）
+@mixin button-spacing {
+  margin: $button-margin-mobile;
+  
+  @media (min-width: $breakpoint-mobile) {
+    margin: $button-margin;
+  }
+}
+
+// ボタングループレイアウトミックスイン
+@mixin button-group {
+  display: flex;
+  gap: $button-group-gap-mobile;
+  flex-wrap: wrap;
+  justify-content: center;
+  
+  @media (min-width: $breakpoint-mobile) {
+    gap: $button-group-gap;
+  }
+}
+
+// ボタングループ（水平配置）
+@mixin button-group-horizontal {
+  @include button-group;
+  flex-direction: row;
+}
+
+// ボタングループ（垂直配置）
+@mixin button-group-vertical {
+  @include button-group;
+  flex-direction: column;
+  align-items: center;
+}
+
+// ボタンサイズ調整ミックスイン
+@mixin button-size($width: auto, $height: auto) {
+  @if $width != auto {
+    width: $width;
+  }
+  @if $height != auto {
+    height: $height;
+  }
+}
+
+// ボタン最大幅制限ミックスイン
+@mixin button-max-width {
+  max-width: $button-max-width;
+  width: 100%;
 }

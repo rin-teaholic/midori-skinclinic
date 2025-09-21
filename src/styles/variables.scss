@@ -65,13 +65,32 @@ $container-padding: 20px;                   // コンテナの内部パディン
 $container-padding-mobile: 15px;             // モバイル：コンテナの内部パディング
 
 // セクション余白変数（柔らかく親しみやすい高さ）
-$section-title-top-margin: 48px;      // セクションタイトルの上部余白
-$section-title-bottom-margin: 32px;   // セクションタイトルの下部余白
-$section-button-top-margin: 40px;     // セクションボタンの上部余白
+$section-title-top-margin: 0px;       // セクションタイトルの上部余白（削除）
+$section-title-bottom-margin: 64px;  // セクションタイトルの下部余白
+$section-button-top-margin: 72px;     // セクションボタンの上部余白
 $section-button-bottom-margin: 48px;  // セクションボタンの下部余白
 
 // レスポンシブ余白変数（モバイル対応）
-$section-title-top-margin-mobile: 32px;      // モバイル：セクションタイトルの上部余白
-$section-title-bottom-margin-mobile: 24px;   // モバイル：セクションタイトルの下部余白
-$section-button-top-margin-mobile: 24px;     // モバイル：セクションボタンの上部余白
+$section-title-top-margin-mobile: 0px;       // モバイル：セクションタイトルの上部余白（削除）
+$section-title-bottom-margin-mobile: 48px;   // モバイル：セクションタイトルの下部余白
+$section-button-top-margin-mobile: 56px;     // モバイル：セクションボタンの上部余白
 $section-button-bottom-margin-mobile: 32px;  // モバイル：セクションボタンの下部余白
+
+// ボタン専用余白変数（横長の印象を強調）
+$button-padding-horizontal: 40px;            // ボタンの水平パディング（左右）- 横長の印象を強調
+$button-padding-vertical: 12px;              // ボタンの垂直パディング（上下）
+$button-padding-horizontal-mobile: 32px;     // モバイル：ボタンの水平パディング
+$button-padding-vertical-mobile: 10px;        // モバイル：ボタンの垂直パディング
+
+// ボタン間隔変数
+$button-margin: 16px;                        // ボタン間のマージン
+$button-margin-mobile: 12px;                 // モバイル：ボタン間のマージン
+$button-group-gap: 16px;                     // ボタングループ内のギャップ
+$button-group-gap-mobile: 12px;              // モバイル：ボタングループ内のギャップ
+
+// ボタンサイズ変数（横長デザイン対応）
+$button-min-width: 160px;                   // ボタンの最小幅（横長の印象を強調）
+$button-min-width-mobile: 140px;            // モバイル：ボタンの最小幅
+$button-max-width: 300px;                   // ボタンの最大幅（横長の印象を強調）
+$button-height: 48px;                       // ボタンの高さ
+$button-height-mobile: 44px;                // モバイル：ボタンの高さ

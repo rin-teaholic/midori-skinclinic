@@ -675,3 +675,78 @@ $nav-item-margin-mobile: 12px;              // モバイル：ナビゲーショ
   }
 }
 ```
+
+### ボタンレイアウトシステム
+
+#### ボタンの配置ルール
+- **デフォルト配置**: 全てのボタンは中央揃えで配置される
+- **単一ボタン**: `margin: 0 auto` と `display: block` で中央揃え
+- **ボタングループ**: `justify-content: center` でデフォルト中央揃え
+- **配置オプション**: 必要に応じて以下のクラスで配置を変更可能
+
+#### ボタン配置クラス
+```scss
+// 単一ボタンの配置
+.button {
+  margin: 0 auto;        // 中央揃え（デフォルト）
+  display: block;
+}
+
+// ボタングループの配置
+.button-group {
+  justify-content: center;  // 中央揃え（デフォルト）
+  
+  &.button-group--start {
+    justify-content: flex-start;  // 左揃え
+  }
+  
+  &.button-group--end {
+    justify-content: flex-end;    // 右揃え
+  }
+  
+  &.button-group--between {
+    justify-content: space-between;  // 両端揃え
+  }
+  
+  &.button-group--around {
+    justify-content: space-around;   // 均等配置
+  }
+}
+```
+
+#### ボタン配置使用例
+```scss
+// 中央揃えボタン（デフォルト）
+.section {
+  .button {
+    // 自動的に中央揃えされる
+  }
+}
+
+// 左揃えボタン
+.section {
+  .button-group--start {
+    justify-content: flex-start;
+  }
+}
+
+// 右揃えボタン
+.section {
+  .button-group--end {
+    justify-content: flex-end;
+  }
+}
+
+// 両端揃えボタン
+.section {
+  .button-group--between {
+    justify-content: space-between;
+  }
+}
+```
+
+#### ボタン配置適用ルール
+- **必須適用**: 全てのボタンは中央揃えをデフォルトとする
+- **配置変更**: 特別な理由がある場合のみ配置クラスを使用
+- **一貫性維持**: 同じセクション内では統一された配置を使用
+- **レスポンシブ対応**: モバイルでも適切な配置を維持

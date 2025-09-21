@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import { Link } from 'react-router-dom'
-import { FaUserPlus, FaRedo, FaQuestionCircle, FaMapMarkerAlt, FaChevronRight } from 'react-icons/fa'
+import { FaUserPlus, FaRedo, FaQuestionCircle, FaMapMarkerAlt, FaChevronRight, FaInfoCircle } from 'react-icons/fa'
 import heroClinicImage from '../assets/images/hero-clinic.jpg'
 import type { HomeProps, IconItem } from '../types'
 import './HomePage.scss'
@@ -130,6 +130,7 @@ function Home(props: HomeProps) {
           </div>
           <div className="info-button">
             <Link to="/news" className="btn-info">
+              <FaInfoCircle className="btn-icon" />
               お知らせ一覧
             </Link>
           </div>

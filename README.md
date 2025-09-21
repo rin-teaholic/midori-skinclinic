@@ -73,6 +73,10 @@ src/
 │   ├── Contact.tsx     # アクセスポージ
 │   └── Contact.scss    # アクセスのスタイル
 ├── styles/             # 共通スタイル
+│   ├── variables.scss  # 変数定義（カラー、スペーシング等）
+│   ├── mixins.scss     # ミックスイン定義
+│   ├── buttons.scss    # ボタンスタイル（横長デザイン対応）
+│   ├── typography.scss # タイポグラフィ設定
 │   └── animations.scss # アニメーション定義
 ├── App.tsx             # メインアプリケーション
 ├── App.scss            # グローバルスタイル
@@ -85,11 +89,44 @@ src/
 各ページのコンポーネント内で医院名、住所、電話番号などを変更できます。
 
 ### 色の変更
-`src/App.scss`でカラーパレットを変更できます：
+`src/styles/variables.scss`でカラーパレットを変更できます：
 ```scss
 // メインカラー
-$primary-color: #2c5530;  // 緑色
-$secondary-color: #4a90e2; // 青色
+$primary-color: #B1D91C;  // アクセントカラー
+$button-color: #9EC317;   // ボタンカラー
+$text-color-primary: #333; // テキストカラー
+```
+
+### ボタンデザインの設定
+`src/styles/buttons.scss`でボタンのスタイルを管理しています。テキストに対してやや横長の印象を与えるように設計されています：
+
+```scss
+// ボタン専用余白変数（横長デザイン対応）
+$button-padding-horizontal: 24px;    // 水平パディング（PC表示での横伸びを抑制）
+$button-padding-vertical: 12px;      // 垂直パディング
+$button-min-width: 120px;           // 最小幅
+$button-max-width: 200px;           // 最大幅（PC表示での横伸びを抑制）
+$button-height: 48px;               // 高さ
+```
+
+#### ボタンの使用例
+```scss
+// プライマリボタン
+.button {
+  @include button-primary;
+  @include button-spacing;
+}
+
+// セカンダリボタン
+.button--secondary {
+  @include button-secondary;
+  @include button-spacing;
+}
+
+// ボタングループ
+.button-group {
+  @include button-group-horizontal;
+}
 ```
 
 ### 画像の追加

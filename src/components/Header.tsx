@@ -1,6 +1,6 @@
 import React, { useState, useCallback, memo } from 'react'
 import { Link } from 'react-router-dom'
-import { FaBars, FaTimes } from 'react-icons/fa'
+import { FaBars, FaTimes, FaCalendarAlt } from 'react-icons/fa'
 import type { HeaderProps } from '../types'
 import './HeaderComponent.scss'
 
@@ -30,6 +30,7 @@ function Header(props: HeaderProps) {
           
           <div className="header-actions">
             <Link to="/contact" className="btn-web-reservation">
+              <FaCalendarAlt className="reservation-icon" aria-hidden="true" />
               Web予約
             </Link>
             <button 
