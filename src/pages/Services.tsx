@@ -1,8 +1,9 @@
-import React from 'react';
-import { FaVirus, FaSun, FaSearch, FaHeartbeat, FaEye, FaMicroscope } from 'react-icons/fa';
-import './Services.scss';
+import React from 'react'
+import { FaVirus, FaSun, FaSearch, FaHeartbeat, FaEye, FaMicroscope } from 'react-icons/fa'
+import type { ServicesProps } from '../types'
+import './ServicesPage.scss'
 
-const Services: React.FC = () => {
+function Services(props: ServicesProps) {
   return (
     <div className="services">
       <section className="page-hero">
@@ -145,4 +146,4 @@ const Services: React.FC = () => {
   );
 };
 
-export default Services;
+export default Services

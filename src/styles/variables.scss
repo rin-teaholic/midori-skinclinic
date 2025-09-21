@@ -43,10 +43,14 @@ $shadow-lg: 0 4px 20px rgba(0, 0, 0, 0.1);
 $shadow-accent: 0 4px 12px rgba(158, 195, 23, 0.3);
 
 // ボーダー半径変数
+$border-radius-default: 10px; // 統一されたボーダーラディアス
 $border-radius-sm: 8px;
 $border-radius-md: 12px;
 $border-radius-lg: 25px;
 $border-radius-xl: 50px;
+
+// ボタン専用ボーダー半径（半円）
+$border-radius-button: 50px; // ボタンは半円になるように指定
 
 // トランジション変数
 $transition-fast: 0.2s ease;

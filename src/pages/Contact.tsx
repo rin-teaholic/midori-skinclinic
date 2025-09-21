@@ -1,7 +1,8 @@
-import React from 'react';
-import './Contact.scss';
+import React from 'react'
+import type { ContactProps } from '../types'
+import './ContactPage.scss'
 
-const Contact: React.FC = () => {
+function Contact(props: ContactProps) {
   return (
     <div className="contact">
       <section className="page-hero">
@@ -170,4 +171,4 @@ const Contact: React.FC = () => {
   );
 };
 
-export default Contact;
+export default Contact

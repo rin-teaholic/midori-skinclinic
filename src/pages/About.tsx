@@ -1,7 +1,8 @@
-import React from 'react';
-import './About.scss';
+import React from 'react'
+import type { AboutProps } from '../types'
+import './AboutPage.scss'
 
-const About: React.FC = () => {
+function About(props: AboutProps) {
   return (
     <div className="about">
       <section className="page-hero">
@@ -93,4 +94,4 @@ const About: React.FC = () => {
   );
 };
 
-export default About;
+export default About

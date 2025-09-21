@@ -1,7 +1,8 @@
-import React from 'react';
-import './News.scss';
+import React from 'react'
+import type { NewsProps } from '../types'
+import './NewsPage.scss'
 
-const News: React.FC = () => {
+function News(props: NewsProps) {
   return (
     <div className="news">
       <section className="page-hero">
@@ -74,4 +75,4 @@ const News: React.FC = () => {
   );
 };
 
-export default News;
+export default News

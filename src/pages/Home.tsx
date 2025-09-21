@@ -2,20 +2,56 @@ import React, { memo } from 'react'
 import { Link } from 'react-router-dom'
 import { FaUserPlus, FaRedo, FaQuestionCircle, FaMapMarkerAlt } from 'react-icons/fa'
 import heroClinicImage from '../assets/images/hero-clinic.jpg'
-import './Home.scss'
+import type { HomeProps, IconItem } from '../types'
+import './HomePage.scss'
 
-function Home() {
-  return (
+function Home(props: HomeProps) {
+	// アイコンデータの定義
+	const iconItems: IconItem[] = [
+		{
+			id: 'new-patient',
+			icon: FaUserPlus,
+			text: '初診の方',
+			href: '/contact'
+		},
+		{
+			id: 'return-patient',
+			icon: FaRedo,
+			text: '再診の方',
+			href: '/contact'
+		},
+		{
+			id: 'service-1',
+			icon: FaQuestionCircle,
+			text: '（未定）',
+			href: '/services'
+		},
+		{
+			id: 'service-2',
+			icon: FaQuestionCircle,
+			text: '（未定）',
+			href: '/services'
+		},
+		{
+			id: 'access',
+			icon: FaMapMarkerAlt,
+			text: 'アクセス',
+			href: '/contact'
+		}
+	]
+
+	return (
     <div className="home">
       {/* ヒーローセクション */}
-      <section className="hero">
+      <section className="hero" role="banner">
         <div className="hero-image-background">
           <img 
             src={heroClinicImage} 
             alt="みどり皮ふ科外観" 
             className="hero-bg-image"
+            loading="eager"
           />
-          <div className="hero-overlay"></div>
+          <div className="hero-overlay" aria-hidden="true"></div>
         </div>
         <div className="hero-content">
           <div className="hero-text">
@@ -28,47 +64,34 @@ function Home() {
             </div>
           </div>
         </div>
-        <div className="floating-icons">
+        <nav className="floating-icons" role="navigation" aria-label="クイックアクセス">
           <div className="icon-bar">
-            <div className="icon-item">
-              <div className="icon">
-                <FaUserPlus size={48} />
-              </div>
-              <div className="icon-text">初診の方</div>
-            </div>
-            <div className="icon-item">
-              <div className="icon">
-                <FaRedo size={48} />
-              </div>
-              <div className="icon-text">再診の方</div>
-            </div>
-            <div className="icon-item">
-              <div className="icon">
-                <FaQuestionCircle size={48} />
-              </div>
-              <div className="icon-text">（未定）</div>
-            </div>
-            <div className="icon-item">
-              <div className="icon">
-                <FaQuestionCircle size={48} />
-              </div>
-              <div className="icon-text">（未定）</div>
-            </div>
-            <div className="icon-item">
-              <div className="icon">
-                <FaMapMarkerAlt size={48} />
-              </div>
-              <div className="icon-text">アクセス</div>
-            </div>
+            {iconItems.map((item) => {
+              const IconComponent = item.icon
+              return (
+                <a 
+                  key={item.id} 
+                  href={item.href}
+                  className="icon-item"
+                  role="button"
+                  aria-label={item.text}
+                >
+                  <div className="icon" aria-hidden="true">
+                    <IconComponent size={48} />
+                  </div>
+                  <div className="icon-text">{item.text}</div>
+                </a>
+              )
+            })}
           </div>
-        </div>
+        </nav>
       </section>
 
       {/* Infoセクション */}
-      <section className="info-section">
+      <section className="info-section" role="region" aria-labelledby="info-title">
         <div className="container">
           <div className="info-header">
-            <h2 className="info-title">Info</h2>
+            <h2 id="info-title" className="info-title">Info</h2>
             <span className="info-subtitle">おしらせ</span>
           </div>
           <div className="info-list">
@@ -97,10 +120,10 @@ function Home() {
       </section>
 
       {/* Aboutセクション（医院について） */}
-      <section className="about-section">
+      <section className="about-section" role="region" aria-labelledby="about-title">
         <div className="container">
           <div className="about-header">
-            <h2 className="about-title">About</h2>
+            <h2 id="about-title" className="about-title">About</h2>
             <span className="about-subtitle">当院について</span>
           </div>
           <div className="about-content">
@@ -123,11 +146,11 @@ function Home() {
       </section>
 
       {/* 営業時間セクション */}
-      <section className="operating-hours-section">
+      <section className="operating-hours-section" role="region" aria-labelledby="hours-title">
         <div className="container">
           <div className="hours-table">
             <div className="hours-header">
-              <h3>営業時間</h3>
+              <h3 id="hours-title">営業時間</h3>
             </div>
             <div className="hours-content">
               <div className="hours-row">
@@ -167,10 +190,10 @@ function Home() {
       </section>
 
       {/* Aboutセクション（診療内容） */}
-      <section className="services-section">
+      <section className="services-section" role="region" aria-labelledby="services-title">
         <div className="container">
           <div className="services-header">
-            <h2 className="services-title">About</h2>
+            <h2 id="services-title" className="services-title">About</h2>
           </div>
           <div className="services-grid">
             <div className="service-card">

@@ -29,6 +29,15 @@
   white-space: nowrap;
 }
 
+// ボーダーラディアス関連ミックスイン
+@mixin border-radius-default {
+  border-radius: $border-radius-default; // 統一された10px
+}
+
+@mixin border-radius-button {
+  border-radius: $border-radius-button; // ボタンは半円（50px）
+}
+
 @mixin responsive-font($mobile-size, $desktop-size) {
   font-size: $mobile-size;
   
@@ -41,7 +50,7 @@
   background-color: $button-color;
   color: $text-color-white;
   padding: 12px 24px;
-  border-radius: $border-radius-lg;
+  @include border-radius-button; // ボタンは半円になるように指定
   text-decoration: none;
   font-weight: 600;
   font-size: 14px;
@@ -61,7 +70,7 @@
   color: $text-color-primary;
   padding: 12px 24px;
   border: 2px solid $button-color;
-  border-radius: $border-radius-lg;
+  @include border-radius-button; // ボタンは半円になるように指定
   text-decoration: none;
   font-weight: 600;
   font-size: 14px;
@@ -78,7 +87,7 @@
 
 @mixin card-shadow {
   box-shadow: $shadow-lg;
-  border-radius: $border-radius-md;
+  @include border-radius-default; // 統一された10px
 }
 
 @mixin gradient-background {
