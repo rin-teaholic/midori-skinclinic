@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Services from './pages/Services'
 import News from './pages/News'
+import NewsDetail from './pages/NewsDetail'
 import Contact from './pages/Contact'
 import './App.scss'
 
@@ -20,6 +21,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
             <Route path="/news" element={<News />} />
+            <Route path="/news/:id" element={<NewsDetail />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>

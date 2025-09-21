@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import { Link } from 'react-router-dom'
-import { FaUserPlus, FaRedo, FaQuestionCircle, FaMapMarkerAlt } from 'react-icons/fa'
+import { FaUserPlus, FaRedo, FaQuestionCircle, FaMapMarkerAlt, FaChevronRight } from 'react-icons/fa'
 import heroClinicImage from '../assets/images/hero-clinic.jpg'
 import type { HomeProps, IconItem } from '../types'
 import './HomePage.scss'
@@ -91,25 +91,42 @@ function Home(props: HomeProps) {
       <section className="info-section" role="region" aria-labelledby="info-title">
         <div className="container">
           <div className="info-header">
-            <h2 id="info-title" className="info-title">Info</h2>
-            <span className="info-subtitle">おしらせ</span>
+            <h2 id="info-title" className="info-title">
+              <span className="title-english">Info</span>
+              <span className="title-japanese">お知らせ</span>
+            </h2>
           </div>
           <div className="info-list">
-            <div className="info-item">
+            <Link to="/news/1" className="info-item">
               <div className="info-date">2025.09.15</div>
-              <div className="info-category">当院について</div>
-              <div className="info-content">お盆休み期間の営業について</div>
-            </div>
-            <div className="info-item">
+              <div className="info-content">
+                <div className="info-title">お盆休み期間の営業について</div>
+                <div className="info-description">8月13日（火）から8月16日（金）まで休診いたします。</div>
+              </div>
+              <div className="info-arrow">
+                <FaChevronRight />
+              </div>
+            </Link>
+            <Link to="/news/2" className="info-item">
               <div className="info-date">2025.09.15</div>
-              <div className="info-category">当院について</div>
-              <div className="info-content">お盆休み期間の営業について</div>
-            </div>
-            <div className="info-item">
+              <div className="info-content">
+                <div className="info-title">お盆休み期間の営業について</div>
+                <div className="info-description">8月13日（火）から8月16日（金）まで休診いたします。</div>
+              </div>
+              <div className="info-arrow">
+                <FaChevronRight />
+              </div>
+            </Link>
+            <Link to="/news/3" className="info-item">
               <div className="info-date">2025.09.15</div>
-              <div className="info-category">当院について</div>
-              <div className="info-content">お盆休み期間の営業について</div>
-            </div>
+              <div className="info-content">
+                <div className="info-title">お盆休み期間の営業について</div>
+                <div className="info-description">8月13日（火）から8月16日（金）まで休診いたします。</div>
+              </div>
+              <div className="info-arrow">
+                <FaChevronRight />
+              </div>
+            </Link>
           </div>
           <div className="info-button">
             <Link to="/news" className="btn-info">
@@ -123,8 +140,10 @@ function Home(props: HomeProps) {
       <section className="about-section" role="region" aria-labelledby="about-title">
         <div className="container">
           <div className="about-header">
-            <h2 id="about-title" className="about-title">About</h2>
-            <span className="about-subtitle">当院について</span>
+            <h2 id="about-title" className="about-title">
+              <span className="title-english">About</span>
+              <span className="title-japanese">当院について</span>
+            </h2>
           </div>
           <div className="about-content">
             <div className="about-text">
@@ -150,7 +169,10 @@ function Home(props: HomeProps) {
         <div className="container">
           <div className="hours-table">
             <div className="hours-header">
-              <h3 id="hours-title">営業時間</h3>
+              <h3 id="hours-title">
+                <span className="title-english">Hours</span>
+                <span className="title-japanese">営業時間</span>
+              </h3>
             </div>
             <div className="hours-content">
               <div className="hours-row">
@@ -193,7 +215,10 @@ function Home(props: HomeProps) {
       <section className="services-section" role="region" aria-labelledby="services-title">
         <div className="container">
           <div className="services-header">
-            <h2 id="services-title" className="services-title">About</h2>
+            <h2 id="services-title" className="services-title">
+              <span className="title-english">Services</span>
+              <span className="title-japanese">診療内容</span>
+            </h2>
           </div>
           <div className="services-grid">
             <div className="service-card">

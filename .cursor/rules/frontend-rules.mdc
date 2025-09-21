@@ -190,6 +190,51 @@ $spacing-md: 16px;
 $spacing-lg: 24px;
 $spacing-xl: 32px;
 
+// セクション余白変数（柔らかく親しみやすい高さ）
+$section-title-top-margin: 48px;      // セクションタイトルの上部余白
+$section-title-bottom-margin: 32px;   // セクションタイトルの下部余白
+$section-button-top-margin: 40px;     // セクションボタンの上部余白
+$section-button-bottom-margin: 48px;  // セクションボタンの下部余白
+$section-content-padding: 40px;       // セクションコンテンツのパディング
+
+// レスポンシブ余白変数（モバイル対応）
+$section-title-top-margin-mobile: 32px;      // モバイル：セクションタイトルの上部余白
+$section-title-bottom-margin-mobile: 24px;   // モバイル：セクションタイトルの下部余白
+$section-button-top-margin-mobile: 24px;     // モバイル：セクションボタンの上部余白
+$section-button-bottom-margin-mobile: 32px;  // モバイル：セクションボタンの下部余白
+$section-content-padding-mobile: 24px;       // モバイル：セクションコンテンツのパディング
+
+// コンテナとページ全体の余白変数
+$page-padding: 20px;                        // ページ全体のパディング
+$page-padding-mobile: 15px;                 // モバイル：ページ全体のパディング
+$container-padding: 20px;                   // コンテナの内部パディング
+$container-padding-mobile: 15px;             // モバイル：コンテナの内部パディング
+$section-margin: 80px;                       // セクション間のマージン
+$section-margin-mobile: 64px;                // モバイル：セクション間のマージン
+
+// カードとコンテンツブロックの余白変数
+$card-padding: 32px;                        // カードの内部パディング
+$card-padding-mobile: 24px;                 // モバイル：カードの内部パディング
+$card-margin: 24px;                         // カード間のマージン
+$card-margin-mobile: 16px;                  // モバイル：カード間のマージン
+$content-block-padding: 24px;               // コンテンツブロックのパディング
+$content-block-padding-mobile: 16px;        // モバイル：コンテンツブロックのパディング
+
+// フォーム要素の余白変数
+$form-element-margin: 16px;                 // フォーム要素間のマージン
+$form-element-margin-mobile: 12px;          // モバイル：フォーム要素間のマージン
+$form-label-margin: 8px;                    // ラベルと入力フィールドの間隔
+$form-button-margin: 24px;                  // ボタンとフォームの間隔
+$form-button-margin-mobile: 16px;           // モバイル：ボタンとフォームの間隔
+
+// リストとグリッドアイテムの余白変数
+$list-item-margin: 12px;                    // リストアイテム間のマージン
+$list-item-margin-mobile: 8px;              // モバイル：リストアイテム間のマージン
+$grid-gap: 24px;                            // グリッドアイテムのギャップ
+$grid-gap-mobile: 16px;                     // モバイル：グリッドアイテムのギャップ
+$nav-item-margin: 16px;                     // ナビゲーションアイテムの間隔
+$nav-item-margin-mobile: 12px;              // モバイル：ナビゲーションアイテムの間隔
+
 // ミックスイン定義
 @mixin flex-center {
   display: flex;
@@ -211,6 +256,141 @@ $spacing-xl: 32px;
   }
 }
 
+// セクションタイトル余白ミックスイン
+@mixin section-title-spacing {
+  margin-top: $section-title-top-margin-mobile;
+  margin-bottom: $section-title-bottom-margin-mobile;
+  
+  @media (min-width: $breakpoint-mobile) {
+    margin-top: $section-title-top-margin;
+    margin-bottom: $section-title-bottom-margin;
+  }
+}
+
+// セクションボタン余白ミックスイン
+@mixin section-button-spacing {
+  margin-top: $section-button-top-margin-mobile;
+  margin-bottom: $section-button-bottom-margin-mobile;
+  
+  @media (min-width: $breakpoint-mobile) {
+    margin-top: $section-button-top-margin;
+    margin-bottom: $section-button-bottom-margin;
+  }
+}
+
+// セクションコンテンツパディングミックスイン
+@mixin section-content-padding {
+  padding: $section-content-padding-mobile;
+  
+  @media (min-width: $breakpoint-mobile) {
+    padding: $section-content-padding;
+  }
+}
+
+// ページ全体パディングミックスイン
+@mixin page-padding {
+  padding: $page-padding-mobile;
+  
+  @media (min-width: $breakpoint-mobile) {
+    padding: $page-padding;
+  }
+}
+
+// コンテナパディングミックスイン
+@mixin container-padding {
+  padding: $container-padding-mobile;
+  
+  @media (min-width: $breakpoint-mobile) {
+    padding: $container-padding;
+  }
+}
+
+// セクション間マージンミックスイン
+@mixin section-margin {
+  margin: $section-margin-mobile 0;
+  
+  @media (min-width: $breakpoint-mobile) {
+    margin: $section-margin 0;
+  }
+}
+
+// カードパディングミックスイン
+@mixin card-padding {
+  padding: $card-padding-mobile;
+  
+  @media (min-width: $breakpoint-mobile) {
+    padding: $card-padding;
+  }
+}
+
+// カードマージンミックスイン
+@mixin card-margin {
+  margin: $card-margin-mobile;
+  
+  @media (min-width: $breakpoint-mobile) {
+    margin: $card-margin;
+  }
+}
+
+// コンテンツブロックパディングミックスイン
+@mixin content-block-padding {
+  padding: $content-block-padding-mobile;
+  
+  @media (min-width: $breakpoint-mobile) {
+    padding: $content-block-padding;
+  }
+}
+
+// フォーム要素マージンミックスイン
+@mixin form-element-margin {
+  margin-bottom: $form-element-margin-mobile;
+  
+  @media (min-width: $breakpoint-mobile) {
+    margin-bottom: $form-element-margin;
+  }
+}
+
+// フォームラベルマージンミックスイン
+@mixin form-label-margin {
+  margin-bottom: $form-label-margin;
+}
+
+// フォームボタンマージンミックスイン
+@mixin form-button-margin {
+  margin-top: $form-button-margin-mobile;
+  
+  @media (min-width: $breakpoint-mobile) {
+    margin-top: $form-button-margin;
+  }
+}
+
+// リストアイテムマージンミックスイン
+@mixin list-item-margin {
+  margin-bottom: $list-item-margin-mobile;
+  
+  @media (min-width: $breakpoint-mobile) {
+    margin-bottom: $list-item-margin;
+  }
+}
+
+// グリッドギャップミックスイン
+@mixin grid-gap {
+  gap: $grid-gap-mobile;
+  
+  @media (min-width: $breakpoint-mobile) {
+    gap: $grid-gap;
+  }
+}
+
+// ナビゲーションアイテムマージンミックスイン
+@mixin nav-item-margin {
+  margin: $nav-item-margin-mobile;
+  
+  @media (min-width: $breakpoint-mobile) {
+    margin: $nav-item-margin;
+  }
+}
+
 // 使用例
 .component {
   color: $accent-color;
@@ -229,6 +409,85 @@ $spacing-xl: 32px;
     &:hover {
       background-color: $primary-color;
     }
+  }
+}
+
+// セクション余白使用例
+.section {
+  @include section-content-padding;
+  @include section-margin;
+  
+  &__title {
+    @include section-title-spacing;
+    @extend .heading-english;
+  }
+  
+  &__button {
+    @include section-button-spacing;
+    background-color: $button-color;
+    color: $text-color-white;
+    
+    &:hover {
+      background-color: $primary-color;
+    }
+  }
+}
+
+// ページ全体の余白使用例
+.page {
+  @include page-padding;
+  
+  .container {
+    @include container-padding;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+// カードとコンテンツブロックの余白使用例
+.card {
+  @include card-padding;
+  @include card-margin;
+  @include card-shadow;
+  
+  &__content {
+    @include content-block-padding;
+  }
+}
+
+// フォーム要素の余白使用例
+.form {
+  .form-group {
+    @include form-element-margin;
+    
+    .form-label {
+      @include form-label-margin;
+    }
+  }
+  
+  .form-button {
+    @include form-button-margin;
+    @include button-primary;
+  }
+}
+
+// リストとグリッドの余白使用例
+.list {
+  .list-item {
+    @include list-item-margin;
+  }
+}
+
+.grid {
+  @include grid-gap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+// ナビゲーションの余白使用例
+.navigation {
+  .nav-item {
+    @include nav-item-margin;
   }
 }
 ```
@@ -303,11 +562,61 @@ $spacing-xl: 32px;
 - コントラスト比は WCAG AA 基準（4.5:1以上）を満たす
 - カラーのみで情報を伝えない（アイコンやテキストと組み合わせる）
 
+### セクション余白システム
+
+#### 余白設計原則
+- **柔らかく親しみやすい高さ**: ユーザーが快適に感じる適度な余白を設定
+- **視覚的階層**: タイトル、コンテンツ、ボタンの間隔で情報の重要度を表現
+- **統一性**: 全てのセクションで同じ余白ルールを適用し、一貫性を保つ
+- **レスポンシブ対応**: デバイスサイズに応じて適切な余白を調整
+
+#### 余白変数使用ガイドライン
+```scss
+// セクションタイトル
+.section-title {
+  @include section-title-spacing;  // 上部48px、下部32px（デスクトップ）
+  // モバイルでは上部32px、下部24px
+}
+
+// セクションボタン
+.section-button {
+  @include section-button-spacing;  // 上部40px、下部48px（デスクトップ）
+  // モバイルでは上部24px、下部32px
+}
+
+// セクションコンテンツ
+.section-content {
+  @include section-content-padding;  // 40px（デスクトップ）
+  // モバイルでは24px
+}
+```
+
+#### 余白適用ルール
+- **必須適用**: 全てのセクションタイトルに `@include section-title-spacing` を適用
+- **必須適用**: 全てのセクションボタンに `@include section-button-spacing` を適用
+- **必須適用**: 全てのセクションコンテンツに `@include section-content-padding` を適用
+- **必須適用**: 全てのページに `@include page-padding` を適用
+- **必須適用**: 全てのコンテナに `@include container-padding` を適用
+- **必須適用**: 全てのカードに `@include card-padding` を適用
+- **必須適用**: 全てのフォーム要素に `@include form-element-margin` を適用
+- **必須適用**: 全てのリストアイテムに `@include list-item-margin` を適用
+- **必須適用**: 全てのグリッドに `@include grid-gap` を適用
+- **カスタマイズ禁止**: 個別の余白値を直接指定せず、必ず変数またはミックスインを使用
+- **一貫性維持**: 同じ役割の要素は必ず同じ余白設定を使用
+
+#### 余白システムの階層
+1. **ページレベル**: `@include page-padding` - ページ全体の余白
+2. **セクションレベル**: `@include section-margin` - セクション間の余白
+3. **コンテナレベル**: `@include container-padding` - コンテナの内部余白
+4. **コンテンツレベル**: `@include section-content-padding` - セクションコンテンツの余白
+5. **要素レベル**: 各要素固有の余白ミックスインを使用
+
 ### レスポンシブデザイン
 - モバイルファーストで設計
 - ブレークポイントを統一（$breakpoint-mobile: 768px, $breakpoint-tablet: 1024px）
 - フレックスボックスとグリッドを適切に使用
 - タイポグラフィもレスポンシブ対応
+- セクション余白もレスポンシブ対応
 
 #### レスポンシブ実装例
 ```scss
@@ -320,6 +629,49 @@ $spacing-xl: 32px;
   
   @media (min-width: $breakpoint-tablet) {
     padding: $spacing-xl;
+  }
+}
+
+// セクション余白のレスポンシブ実装例
+.responsive-section {
+  @include section-content-padding;
+  @include section-margin;
+  
+  &__title {
+    @include section-title-spacing;
+    @extend .heading-english;
+  }
+  
+  &__button {
+    @include section-button-spacing;
+    background-color: $button-color;
+    color: $text-color-white;
+  }
+}
+
+// カードのレスポンシブ実装例
+.responsive-card {
+  @include card-padding;
+  @include card-margin;
+  
+  &__content {
+    @include content-block-padding;
+  }
+}
+
+// フォームのレスポンシブ実装例
+.responsive-form {
+  .form-group {
+    @include form-element-margin;
+    
+    .form-label {
+      @include form-label-margin;
+    }
+  }
+  
+  .form-button {
+    @include form-button-margin;
+    @include button-primary;
   }
 }
 ```

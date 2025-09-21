@@ -87,7 +87,7 @@
     
     .floating-icons {
       position: absolute;
-      bottom: 0;
+      bottom: 20px;
       left: 0;
       right: 0;
       height: 15vh;
@@ -112,6 +112,7 @@
           cursor: pointer;
           transition: transform $transition-normal;
           position: relative;
+          text-decoration: none;
           
           // 縦線を追加（最後のアイコン以外）
           &:not(:last-child)::after {
@@ -136,7 +137,7 @@
             font-size: 48px;
             color: $accent-color;
             @include flex-center;
-            margin-bottom: 5px;
+            margin-bottom: 12px;
             
             svg {
               font-size: 48px;
@@ -147,9 +148,23 @@
           .icon-text {
             @include text-regular;
             font-size: 12px;
-            text-align: center;
+            text-align: left;
+            padding-left: 1px;
             font-weight: 500;
             line-height: 1.2;
+          }
+          
+          // 「初診の方」テキストの個別調整
+          &[aria-label="初診の方"] .icon-text {
+            text-align: left;
+            margin-left: -4px;
+          }
+          
+          // 「アクセス」テキストの個別調整
+          &[aria-label="アクセス"] .icon-text {
+            text-align: right;
+            padding-right: 0;
+            margin-right: -3px;
           }
         }
       }
@@ -157,68 +172,145 @@
   }
   
   .info-section {
-    @include gradient-background;
+    background-color: $text-color-white;
     @include section-padding;
     
     .container {
       @include container;
+      @include container-padding;
     }
     
     .info-header {
-      @include flex-center;
-      align-items: baseline;
-      gap: $spacing-md;
-      margin-bottom: $spacing-xl;
+      @include section-title-spacing;
       
       .info-title {
-        @include heading-english;
+        @include flex-column;
+        align-items: flex-start;
+        gap: $spacing-xs;
         margin: 0;
-      }
-      
-      .info-subtitle {
-        @include text-regular;
-        font-weight: 500;
+        
+        .title-english {
+          @include heading-english;
+          margin: 0;
+        }
+        
+        .title-japanese {
+          @include text-bold;
+          margin: 0;
+        }
       }
     }
     
     .info-list {
       margin-bottom: $spacing-xl;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      display: grid;
+      gap: $spacing-md;
       
       .info-item {
         @include flex-center;
         align-items: center;
         gap: $spacing-lg;
-        padding: $spacing-md 0;
-        border-bottom: 1px solid rgba(158, 195, 23, 0.2);
+        padding: $spacing-lg $spacing-xl;
+        background-color: $text-color-white;
+        border: 1px solid rgba(158, 195, 23, 0.15);
+        border-radius: $border-radius-sm;
+        text-decoration: none;
+        color: inherit;
+        transition: all 0.3s ease;
+        @include card-shadow;
+        position: relative;
+        overflow: hidden;
         
-        &:last-child {
-          border-bottom: none;
+        // 左側のアクセントライン
+        &::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 0;
+          bottom: 0;
+          width: 4px;
+          background-color: $accent-color;
+          transition: width 0.3s ease;
         }
         
-        .info-date,
-        .info-category,
-        .info-content {
-          @include text-regular;
-          font-weight: 500;
-          font-size: 14px;
+        &:hover {
+          background-color: rgba(158, 195, 23, 0.03);
+          border-color: rgba(158, 195, 23, 0.3);
+          cursor: pointer;
+          transform: translateY(-2px);
+          @include card-shadow-hover;
+          
+          &::before {
+            width: 6px;
+          }
+          
+          .info-arrow {
+            opacity: 1;
+            transform: translateX(6px);
+            color: $button-color;
+          }
+          
+          .info-date {
+            color: $button-color;
+          }
+          
+          .info-content .info-title {
+            color: $button-color;
+          }
+        }
+        
+        &:active {
+          background-color: rgba(158, 195, 23, 0.08);
+          transform: translateY(-1px) scale(0.99);
         }
         
         .info-date {
-          min-width: 100px;
-        }
-        
-        .info-category {
-          min-width: 80px;
+          @include text-regular;
+          font-weight: 600;
+          font-size: 14px;
+          color: $accent-color;
+          min-width: 110px;
+          text-align: left;
+          transition: all 0.3s ease;
         }
         
         .info-content {
           flex: 1;
+          
+          .info-title {
+            @include text-bold;
+            font-size: 16px;
+            margin-bottom: 6px;
+            color: $text-color-primary;
+            transition: color 0.3s ease;
+            line-height: 1.4;
+          }
+          
+          .info-description {
+            @include text-regular;
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+          }
+        }
+        
+        .info-arrow {
+          @include flex-center;
+          color: $accent-color;
+          font-size: 18px;
+          opacity: 0.6;
+          transition: all 0.3s ease;
+          margin-left: $spacing-sm;
         }
       }
     }
     
     .info-button {
-      text-align: right;
+      @include section-button-spacing;
+      text-align: center;
       
       .btn-info {
         @include button-primary;
@@ -232,22 +324,27 @@
     
     .container {
       @include container;
+      @include container-padding;
     }
     
     .about-header {
-      @include flex-center;
-      align-items: baseline;
-      gap: $spacing-md;
-      margin-bottom: $spacing-xxl;
+      @include section-title-spacing;
       
       .about-title {
-        @include heading-english;
+        @include flex-column;
+        align-items: flex-start;
+        gap: $spacing-xs;
         margin: 0;
-      }
-      
-      .about-subtitle {
-        @include text-regular;
-        font-weight: 500;
+        
+        .title-english {
+          @include heading-english;
+          margin: 0;
+        }
+        
+        .title-japanese {
+          @include text-bold;
+          margin: 0;
+        }
       }
     }
     
@@ -293,10 +390,11 @@
   
   .operating-hours-section {
     @include dark-background;
-    padding: $spacing-xxxl 0;
+    @include section-padding;
     
     .container {
       @include container;
+      @include container-padding;
     }
     
     .hours-table {
@@ -304,14 +402,35 @@
       margin: 0 auto;
       
       .hours-header {
-        text-align: center;
-        margin-bottom: $spacing-xl;
+        @include section-title-spacing;
+        text-align: left;
         
         h3 {
-          @include text-on-dark;
-          @include text-bold;
-          font-size: 24px;
+          @include flex-column;
+          align-items: flex-start;
+          gap: $spacing-xs;
           margin: 0;
+          
+          .title-english {
+            @include text-on-dark;
+            @include text-bold;
+            font-size: 24px;
+            margin: 0;
+            
+            @media (max-width: $breakpoint-mobile) {
+              font-size: 20px;
+            }
+            
+            @media (max-width: 480px) {
+              font-size: 18px;
+            }
+          }
+          
+          .title-japanese {
+            @include text-on-dark;
+            @include text-bold;
+            margin: 0;
+          }
         }
       }
       
@@ -362,14 +481,27 @@
     
     .container {
       @include container;
+      @include container-padding;
     }
     
     .services-header {
-      margin-bottom: $spacing-xxl;
+      @include section-title-spacing;
       
       .services-title {
-        @include heading-english;
+        @include flex-column;
+        align-items: flex-start;
+        gap: $spacing-xs;
         margin: 0;
+        
+        .title-english {
+          @include heading-english;
+          margin: 0;
+        }
+        
+        .title-japanese {
+          @include text-bold;
+          margin: 0;
+        }
       }
     }
     
@@ -406,6 +538,7 @@
     }
     
     .services-button {
+      @include section-button-spacing;
       text-align: center;
       
       .btn-services {
@@ -437,13 +570,17 @@
     .about-section {
       .info-title,
       .about-title {
-        font-size: 40px;
+        .title-english {
+          font-size: 40px;
+        }
       }
     }
     
     .services-section {
       .services-title {
-        font-size: 40px;
+        .title-english {
+          font-size: 40px;
+        }
       }
     }
   }
@@ -480,7 +617,7 @@
       }
       
       .floating-icons {
-        bottom: 0;
+        bottom: 20px;
         height: 15vh;
         
         .icon-bar {
@@ -495,6 +632,7 @@
             width: 20%;
             height: 100%;
             position: relative;
+            text-decoration: none;
             
             // 縦線を追加（最後のアイコン以外）
             &:not(:last-child)::after {
@@ -510,7 +648,7 @@
             .icon {
               font-size: 40px;
               @include flex-center;
-              margin-bottom: 3px;
+              margin-bottom: 8px;
               
               svg {
                 font-size: 40px;
@@ -521,6 +659,20 @@
               font-size: 10px;
               text-align: center;
               line-height: 1.1;
+            }
+            
+            // 「初診の方」テキストの個別調整（モバイル）
+            &[aria-label="初診の方"] .icon-text {
+              text-align: left;
+              padding-left: -2px;
+              margin-left: -4px;
+            }
+            
+            // 「アクセス」テキストの個別調整（モバイル）
+            &[aria-label="アクセス"] .icon-text {
+              text-align: right;
+              padding-right: 0;
+              margin-right: -3px;
             }
           }
         }
@@ -533,12 +685,46 @@
       
       .info-title,
       .about-title {
-        font-size: 32px;
+        .title-english {
+          font-size: 32px;
+        }
       }
       
       .info-header,
       .about-header {
         margin-bottom: $spacing-xl;
+      }
+      
+      // モバイルでのクリッカブル表示強化
+      .info-list {
+        .info-item {
+          padding: $spacing-lg $spacing-lg;
+          margin-bottom: $spacing-sm;
+          border-radius: $border-radius-sm;
+          border: 1px solid rgba(158, 195, 23, 0.2);
+          background-color: $text-color-white;
+          @include card-shadow;
+          
+          &:hover {
+            background-color: rgba(158, 195, 23, 0.08);
+            border-color: rgba(158, 195, 23, 0.4);
+          }
+          
+          &:active {
+            background-color: rgba(158, 195, 23, 0.15);
+            transform: scale(0.98);
+          }
+          
+          .info-arrow {
+            font-size: 18px;
+            opacity: 0.8;
+          }
+          
+          &:hover .info-arrow {
+            opacity: 1;
+            transform: translateX(6px);
+          }
+        }
       }
     }
     
@@ -579,7 +765,9 @@
       @include section-padding;
       
       .services-title {
-        font-size: 32px;
+        .title-english {
+          font-size: 32px;
+        }
       }
       
       .services-grid {
@@ -620,7 +808,7 @@
       }
       
       .floating-icons {
-        bottom: 0;
+        bottom: 20px;
         height: 15vh;
         
         .icon-bar {
@@ -635,6 +823,7 @@
             width: 20%;
             height: 100%;
             position: relative;
+            text-decoration: none;
             
             // 縦線を追加（最後のアイコン以外）
             &:not(:last-child)::after {
@@ -650,7 +839,7 @@
             .icon {
               font-size: 36px;
               @include flex-center;
-              margin-bottom: 2px;
+              margin-bottom: 6px;
               
               svg {
                 font-size: 36px;
@@ -661,6 +850,20 @@
               font-size: 9px;
               text-align: center;
               line-height: 1.0;
+            }
+            
+            // 「初診の方」テキストの個別調整（小さなモバイル）
+            &[aria-label="初診の方"] .icon-text {
+              text-align: left;
+              padding-left: -2px;
+              margin-left: -4px;
+            }
+            
+            // 「アクセス」テキストの個別調整（小さなモバイル）
+            &[aria-label="アクセス"] .icon-text {
+              text-align: right;
+              padding-right: 0;
+              margin-right: -3px;
             }
           }
         }
@@ -673,7 +876,25 @@
       .info-title,
       .about-title,
       .services-title {
-        font-size: 28px;
+        .title-english {
+          font-size: 28px;
+        }
+      }
+      
+      // 小さなモバイルでのクリッカブル表示強化
+      .info-list {
+        .info-item {
+          padding: $spacing-lg $spacing-md;
+          margin-bottom: $spacing-xs;
+          
+          .info-arrow {
+            font-size: 16px;
+          }
+          
+          &:hover .info-arrow {
+            transform: translateX(4px);
+          }
+        }
       }
     }
     

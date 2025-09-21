@@ -1,9 +1,8 @@
 import React from 'react'
 import { FaVirus, FaSun, FaSearch, FaHeartbeat, FaEye, FaMicroscope } from 'react-icons/fa'
-import type { ServicesProps } from '../types'
 import './ServicesPage.scss'
 
-function Services(props: ServicesProps) {
+function Services() {
   return (
     <div className="services">
       <section className="page-hero">
@@ -18,7 +17,7 @@ function Services(props: ServicesProps) {
           <div className="services-grid">
             <div className="service-card">
               <div className="service-icon">
-                {React.createElement(FaVirus, { size: 48 })}
+                <FaVirus size={48} />
               </div>
               <h3>アレルギー性皮膚炎</h3>
               <ul>
@@ -32,7 +31,7 @@ function Services(props: ServicesProps) {
             
             <div className="service-card">
               <div className="service-icon">
-                {React.createElement(FaSun, { size: 48 })}
+                <FaSun size={48} />
               </div>
               <h3>日光皮膚炎・光線過敏症</h3>
               <ul>
@@ -46,7 +45,7 @@ function Services(props: ServicesProps) {
             
             <div className="service-card">
               <div className="service-icon">
-                {React.createElement(FaSearch, { size: 48 })}
+                <FaSearch size={48} />
               </div>
               <h3>皮膚がん検診</h3>
               <ul>
@@ -60,7 +59,7 @@ function Services(props: ServicesProps) {
             
             <div className="service-card">
               <div className="service-icon">
-                {React.createElement(FaHeartbeat, { size: 48 })}
+                <FaHeartbeat size={48} />
               </div>
               <h3>美容皮膚科</h3>
               <ul>
@@ -74,7 +73,7 @@ function Services(props: ServicesProps) {
             
             <div className="service-card">
               <div className="service-icon">
-                {React.createElement(FaMicroscope, { size: 48 })}
+                <FaMicroscope size={48} />
               </div>
               <h3>感染性皮膚疾患</h3>
               <ul>
@@ -88,7 +87,7 @@ function Services(props: ServicesProps) {
             
             <div className="service-card">
               <div className="service-icon">
-                {React.createElement(FaEye, { size: 48 })}
+                <FaEye size={48} />
               </div>
               <h3>その他の皮膚疾患</h3>
               <ul>

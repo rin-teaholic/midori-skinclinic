@@ -40,6 +40,7 @@ $spacing-huge: 80px;
 $shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
 $shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
 $shadow-lg: 0 4px 20px rgba(0, 0, 0, 0.1);
+$shadow-xl: 0 8px 30px rgba(0, 0, 0, 0.15);
 $shadow-accent: 0 4px 12px rgba(158, 195, 23, 0.3);
 
 // ボーダー半径変数
@@ -56,3 +57,21 @@ $border-radius-button: 50px; // ボタンは半円になるように指定
 $transition-fast: 0.2s ease;
 $transition-normal: 0.3s ease;
 $transition-slow: 0.5s ease;
+
+// コンテナとページ全体の余白変数
+$page-padding: 20px;                        // ページ全体のパディング
+$page-padding-mobile: 15px;                 // モバイル：ページ全体のパディング
+$container-padding: 20px;                   // コンテナの内部パディング
+$container-padding-mobile: 15px;             // モバイル：コンテナの内部パディング
+
+// セクション余白変数（柔らかく親しみやすい高さ）
+$section-title-top-margin: 48px;      // セクションタイトルの上部余白
+$section-title-bottom-margin: 32px;   // セクションタイトルの下部余白
+$section-button-top-margin: 40px;     // セクションボタンの上部余白
+$section-button-bottom-margin: 48px;  // セクションボタンの下部余白
+
+// レスポンシブ余白変数（モバイル対応）
+$section-title-top-margin-mobile: 32px;      // モバイル：セクションタイトルの上部余白
+$section-title-bottom-margin-mobile: 24px;   // モバイル：セクションタイトルの下部余白
+$section-button-top-margin-mobile: 24px;     // モバイル：セクションボタンの上部余白
+$section-button-bottom-margin-mobile: 32px;  // モバイル：セクションボタンの下部余白

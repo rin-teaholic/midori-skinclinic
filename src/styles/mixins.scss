@@ -1,3 +1,6 @@
+// 変数のインポート
+@import 'variables';
+
 // ミックスイン定義
 @mixin flex-center {
   display: flex;
@@ -52,8 +55,10 @@
   padding: 12px 24px;
   @include border-radius-button; // ボタンは半円になるように指定
   text-decoration: none;
+  font-family: $font-noto-sans-jp; // 日本語テキスト用フォント
   font-weight: 600;
   font-size: 14px;
+  letter-spacing: 0.1em; // 日本語テキスト用の文字間隔
   transition: all $transition-normal;
   border: none;
   cursor: pointer;
@@ -72,8 +77,10 @@
   border: 2px solid $button-color;
   @include border-radius-button; // ボタンは半円になるように指定
   text-decoration: none;
+  font-family: $font-noto-sans-jp; // 日本語テキスト用フォント
   font-weight: 600;
   font-size: 14px;
+  letter-spacing: 0.1em; // 日本語テキスト用の文字間隔
   transition: all $transition-normal;
   cursor: pointer;
   
@@ -87,6 +94,11 @@
 
 @mixin card-shadow {
   box-shadow: $shadow-lg;
+  @include border-radius-default; // 統一された10px
+}
+
+@mixin card-shadow-hover {
+  box-shadow: $shadow-xl;
   @include border-radius-default; // 統一された10px
 }
 
@@ -167,5 +179,36 @@
   
   &.heading-english {
     color: $text-color-white;
+  }
+}
+
+// コンテナパディングミックスイン
+@mixin container-padding {
+  padding: $container-padding-mobile;
+  
+  @media (min-width: $breakpoint-mobile) {
+    padding: $container-padding;
+  }
+}
+
+// セクションタイトル余白ミックスイン
+@mixin section-title-spacing {
+  margin-top: $section-title-top-margin-mobile;
+  margin-bottom: $section-title-bottom-margin-mobile;
+  
+  @media (min-width: $breakpoint-mobile) {
+    margin-top: $section-title-top-margin;
+    margin-bottom: $section-title-bottom-margin;
+  }
+}
+
+// セクションボタン余白ミックスイン
+@mixin section-button-spacing {
+  margin-top: $section-button-top-margin-mobile;
+  margin-bottom: $section-button-bottom-margin-mobile;
+  
+  @media (min-width: $breakpoint-mobile) {
+    margin-top: $section-button-top-margin;
+    margin-bottom: $section-button-bottom-margin;
   }
 }
