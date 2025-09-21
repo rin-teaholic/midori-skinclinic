@@ -1,46 +1,52 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './Header.scss';
+import React, { useState, useCallback, memo } from 'react'
+import { Link } from 'react-router-dom'
+import { FaBars, FaTimes } from 'react-icons/fa'
+import './Header.scss'
 
-const Header: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+interface HeaderProps {}
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+function Header({}: HeaderProps) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  const handleToggleMenu = useCallback(() => {
+    setIsMenuOpen(prev => !prev)
+  }, [])
 
   return (
     <header className="header">
       <div className="container">
         <div className="header-content">
           <Link to="/" className="logo">
-            <h1>みどり皮ふ科</h1>
-            <p>皮膚科専門クリニック</p>
+            <h1>みどり皮膚科</h1>
           </Link>
           
-          <nav className={`nav ${isMenuOpen ? 'nav-open' : ''}`}>
+          <nav className={`nav ${isMenuOpen ? 'nav-open' : ''}`} id="navigation-menu">
             <ul className="nav-list">
               <li><Link to="/" className="nav-link">ホーム</Link></li>
-              <li><Link to="/about" className="nav-link">医院について</Link></li>
+              <li><Link to="/about" className="nav-link">当院について</Link></li>
               <li><Link to="/services" className="nav-link">診療内容</Link></li>
-              <li><Link to="/news" className="nav-link">お知らせ</Link></li>
               <li><Link to="/contact" className="nav-link">アクセス</Link></li>
             </ul>
           </nav>
           
-          <button 
-            className={`menu-toggle ${isMenuOpen ? 'active' : ''}`}
-            onClick={toggleMenu}
-            aria-label="メニューを開く"
-          >
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
+          <div className="header-actions">
+            <Link to="/contact" className="btn-web-reservation">
+              Web予約
+            </Link>
+            <button 
+              className={`menu-toggle ${isMenuOpen ? 'active' : ''}`}
+              onClick={handleToggleMenu}
+              aria-label="メニューを開く"
+              aria-expanded={isMenuOpen}
+              aria-controls="navigation-menu"
+            >
+              {isMenuOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
+            </button>
+          </div>
         </div>
       </div>
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default memo(Header)

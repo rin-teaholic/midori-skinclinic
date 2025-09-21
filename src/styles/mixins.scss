@@ -1,0 +1,162 @@
+// ミックスイン定義
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-column-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin responsive-font($mobile-size, $desktop-size) {
+  font-size: $mobile-size;
+  
+  @media (min-width: $breakpoint-mobile) {
+    font-size: $desktop-size;
+  }
+}
+
+@mixin button-primary {
+  background-color: $button-color;
+  color: $text-color-white;
+  padding: 12px 24px;
+  border-radius: $border-radius-lg;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all $transition-normal;
+  border: none;
+  cursor: pointer;
+  
+  &:hover {
+    background-color: $primary-color;
+    transform: translateY(-2px);
+    box-shadow: $shadow-accent;
+  }
+}
+
+@mixin button-secondary {
+  background-color: transparent;
+  color: $text-color-primary;
+  padding: 12px 24px;
+  border: 2px solid $button-color;
+  border-radius: $border-radius-lg;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all $transition-normal;
+  cursor: pointer;
+  
+  &:hover {
+    background-color: $button-color;
+    color: $text-color-white;
+    transform: translateY(-2px);
+    box-shadow: $shadow-accent;
+  }
+}
+
+@mixin card-shadow {
+  box-shadow: $shadow-lg;
+  border-radius: $border-radius-md;
+}
+
+@mixin gradient-background {
+  background: linear-gradient(135deg, $background-gradient-start 0%, $background-gradient-end 100%);
+}
+
+@mixin dark-background {
+  background-color: $background-dark;
+  color: $text-color-white;
+}
+
+@mixin container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  
+  @media (max-width: $breakpoint-mobile) {
+    padding: 0 15px;
+  }
+}
+
+@mixin section-padding {
+  padding: $spacing-huge 0;
+  
+  @media (max-width: $breakpoint-mobile) {
+    padding: $spacing-xxxl 0;
+  }
+}
+
+@mixin heading-english {
+  font-family: $font-quicksand;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: auto;
+  letter-spacing: 0.2em;
+  color: $accent-color;
+  
+  @media (max-width: $breakpoint-tablet) {
+    font-size: 40px;
+  }
+  
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 32px;
+  }
+}
+
+@mixin text-regular {
+  font-family: $font-noto-sans-jp;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 28px;
+  letter-spacing: 0.1em;
+  color: $text-color-primary;
+  
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 14px;
+    line-height: 24px;
+  }
+}
+
+@mixin text-bold {
+  font-family: $font-noto-sans-jp;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 0.1em;
+  color: $text-color-primary;
+  
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+@mixin text-on-dark {
+  color: $text-color-white;
+  
+  &.heading-english {
+    color: $text-color-white;
+  }
+}

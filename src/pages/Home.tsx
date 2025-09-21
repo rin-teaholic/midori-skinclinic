@@ -1,9 +1,12 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import heroClinicImage from '../assets/images/hero-clinic.jpg';
-import './Home.scss';
+import React, { memo } from 'react'
+import { Link } from 'react-router-dom'
+import { FaUserPlus, FaRedo, FaQuestionCircle, FaMapMarkerAlt } from 'react-icons/fa'
+import heroClinicImage from '../assets/images/hero-clinic.jpg'
+import './Home.scss'
 
-const Home: React.FC = () => {
+interface HomeProps {}
+
+function Home({}: HomeProps) {
   return (
     <div className="home">
       {/* ヒーローセクション */}
@@ -19,88 +22,96 @@ const Home: React.FC = () => {
         <div className="hero-content">
           <div className="hero-text">
             <h1 className="hero-title">
-              健康な肌で<br />
-              <span className="hero-title-highlight">毎日を輝かせよう</span>
+              健康な肌で、毎日を輝かせよう
             </h1>
+            <div className="hero-subtitle">
+              <span className="bright-skin">BRIGHT SKIN FOR</span>
+              <span className="bright-smile">BRIGHT SMILE</span>
+            </div>
           </div>
         </div>
-        <div className="hero-scroll-indicator">
-          <div className="scroll-line"></div>
-          <span>Scroll</span>
+        <div className="floating-icons">
+          <div className="icon-bar">
+            <div className="icon-item">
+              <div className="icon">
+                <FaUserPlus size={48} />
+              </div>
+              <div className="icon-text">初診の方</div>
+            </div>
+            <div className="icon-item">
+              <div className="icon">
+                <FaRedo size={48} />
+              </div>
+              <div className="icon-text">再診の方</div>
+            </div>
+            <div className="icon-item">
+              <div className="icon">
+                <FaQuestionCircle size={48} />
+              </div>
+              <div className="icon-text">（未定）</div>
+            </div>
+            <div className="icon-item">
+              <div className="icon">
+                <FaQuestionCircle size={48} />
+              </div>
+              <div className="icon-text">（未定）</div>
+            </div>
+            <div className="icon-item">
+              <div className="icon">
+                <FaMapMarkerAlt size={48} />
+              </div>
+              <div className="icon-text">アクセス</div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* 診療内容セクション */}
-      <section className="services-preview section">
+      {/* Infoセクション */}
+      <section className="info-section">
         <div className="container">
-          <h2 className="section-title">診療内容</h2>
-          <div className="services-grid">
-            <div className="service-card">
-              <div className="service-icon">🦠</div>
-              <h3>アレルギー性皮膚炎</h3>
-              <p>アトピー性皮膚炎、接触性皮膚炎などの診断と治療を行います。</p>
+          <div className="info-header">
+            <h2 className="info-title">Info</h2>
+            <span className="info-subtitle">おしらせ</span>
+          </div>
+          <div className="info-list">
+            <div className="info-item">
+              <div className="info-date">2025.09.15</div>
+              <div className="info-category">当院について</div>
+              <div className="info-content">お盆休み期間の営業について</div>
             </div>
-            <div className="service-card">
-              <div className="service-icon">🌞</div>
-              <h3>日光皮膚炎</h3>
-              <p>日焼け、光線過敏症などの紫外線による皮膚トラブルを治療します。</p>
+            <div className="info-item">
+              <div className="info-date">2025.09.15</div>
+              <div className="info-category">当院について</div>
+              <div className="info-content">お盆休み期間の営業について</div>
             </div>
-            <div className="service-card">
-              <div className="service-icon">🔍</div>
-              <h3>皮膚がん検診</h3>
-              <p>ダーモスコピー検査による早期発見と適切な治療を提供します。</p>
-            </div>
-            <div className="service-card">
-              <div className="service-icon">💉</div>
-              <h3>美容皮膚科</h3>
-              <p>シミ、シワ、たるみなどの美容的治療も行っています。</p>
+            <div className="info-item">
+              <div className="info-date">2025.09.15</div>
+              <div className="info-category">当院について</div>
+              <div className="info-content">お盆休み期間の営業について</div>
             </div>
           </div>
-          <div className="text-center">
-            <Link to="/services" className="btn btn-primary">
-              詳しい診療内容を見る
+          <div className="info-button">
+            <Link to="/news" className="btn-info">
+              お知らせ一覧
             </Link>
           </div>
         </div>
       </section>
 
-      {/* 医院についてセクション */}
-      <section className="about-preview section section-gray">
+      {/* Aboutセクション（医院について） */}
+      <section className="about-section">
         <div className="container">
+          <div className="about-header">
+            <h2 className="about-title">About</h2>
+            <span className="about-subtitle">当院について</span>
+          </div>
           <div className="about-content">
             <div className="about-text">
-              <h2 className="section-title">医院について</h2>
               <p className="about-description">
-                みどり皮ふ科は、患者様一人ひとりに寄り添い、<br />
-                最適な治療を提供することを使命としています。<br />
-                経験豊富な医師と最新の医療設備で、<br />
-                安心してご来院いただけます。
+                みどり皮ふ科は、患者様一人ひとりに寄り添い、最適な治療を提供することを使命としています。経験豊富な医師と最新の医療設備で、安心してご来院いただけます。
               </p>
-              <div className="about-features">
-                <div className="feature">
-                  <span className="feature-icon">👨‍⚕️</span>
-                  <div>
-                    <h4>経験豊富な医師</h4>
-                    <p>皮膚科専門医による確かな診断と治療</p>
-                  </div>
-                </div>
-                <div className="feature">
-                  <span className="feature-icon">🏥</span>
-                  <div>
-                    <h4>最新設備</h4>
-                    <p>ダーモスコピーなど最新の検査機器を完備</p>
-                  </div>
-                </div>
-                <div className="feature">
-                  <span className="feature-icon">💬</span>
-                  <div>
-                    <h4>丁寧な説明</h4>
-                    <p>患者様に分かりやすい説明と治療方針のご提案</p>
-                  </div>
-                </div>
-              </div>
-              <Link to="/about" className="btn btn-primary">
-                医院について詳しく見る
+              <Link to="/about" className="btn-about">
+                当院について
               </Link>
             </div>
             <div className="about-image">
@@ -113,56 +124,86 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* お知らせセクション */}
-      <section className="news-preview section">
+      {/* 営業時間セクション */}
+      <section className="operating-hours-section">
         <div className="container">
-          <h2 className="section-title">お知らせ</h2>
-          <div className="news-list">
-            <div className="news-item">
-              <div className="news-date">2024.12.15</div>
-              <div className="news-content">
-                <h3>年末年始の診療時間について</h3>
-                <p>12月29日（日）から1月3日（金）まで休診いたします。</p>
+          <div className="hours-table">
+            <div className="hours-header">
+              <h3>営業時間</h3>
+            </div>
+            <div className="hours-content">
+              <div className="hours-row">
+                <div className="day-label">月</div>
+                <div className="day-label">火</div>
+                <div className="day-label">水</div>
+                <div className="day-label">木</div>
+                <div className="day-label">金</div>
+                <div className="day-label">土</div>
+                <div className="day-label">日・祝</div>
+              </div>
+              <div className="hours-row">
+                <div className="time-label">午前</div>
+                <div className="time-label">9:00-12:00</div>
+                <div className="availability">O</div>
+                <div className="availability">X</div>
+                <div className="availability">O</div>
+                <div className="availability">X</div>
+                <div className="availability">O</div>
+                <div className="availability">X</div>
+                <div className="availability">O</div>
+              </div>
+              <div className="hours-row">
+                <div className="time-label">午後</div>
+                <div className="time-label">14:00-18:00</div>
+                <div className="availability">O</div>
+                <div className="availability">O</div>
+                <div className="availability">O</div>
+                <div className="availability">O</div>
+                <div className="availability">O</div>
+                <div className="availability">O</div>
+                <div className="availability">O</div>
               </div>
             </div>
-            <div className="news-item">
-              <div className="news-date">2024.12.01</div>
-              <div className="news-content">
-                <h3>新しい治療機器の導入について</h3>
-                <p>より精度の高い診断のため、最新のダーモスコピー機器を導入しました。</p>
-              </div>
-            </div>
-            <div className="news-item">
-              <div className="news-date">2024.11.20</div>
-              <div className="news-content">
-                <h3>オンライン予約システム開始</h3>
-                <p>より便利な予約のため、オンライン予約システムを開始いたします。</p>
-              </div>
-            </div>
-          </div>
-          <div className="text-center">
-            <Link to="/news" className="btn btn-secondary">
-              すべてのお知らせを見る
-            </Link>
           </div>
         </div>
       </section>
 
-      {/* CTAセクション */}
-      <section className="cta section section-gray">
+      {/* Aboutセクション（診療内容） */}
+      <section className="services-section">
         <div className="container">
-          <div className="cta-content">
-            <h2>お困りの症状はありませんか？</h2>
-            <p>皮膚のトラブルでお悩みの方は、お気軽にご相談ください。</p>
-            <div className="cta-buttons">
-              <a href="tel:03-1234-5678" className="btn btn-primary">
-                <span className="phone-icon">📞</span>
-                03-1234-5678
-              </a>
-              <Link to="/contact" className="btn btn-secondary">
-                アクセス・診療時間
-              </Link>
+          <div className="services-header">
+            <h2 className="services-title">About</h2>
+          </div>
+          <div className="services-grid">
+            <div className="service-card">
+              <div className="service-image">
+                <div className="placeholder-image">
+                  <span>🦠</span>
+                </div>
+              </div>
+              <div className="service-label">アレルギー性皮膚炎</div>
             </div>
+            <div className="service-card">
+              <div className="service-image">
+                <div className="placeholder-image">
+                  <span>🔍</span>
+                </div>
+              </div>
+              <div className="service-label">皮膚がん検診</div>
+            </div>
+            <div className="service-card">
+              <div className="service-image">
+                <div className="placeholder-image">
+                  <span>💉</span>
+                </div>
+              </div>
+              <div className="service-label">美容皮膚科</div>
+            </div>
+          </div>
+          <div className="services-button">
+            <Link to="/services" className="btn-services">
+              診療内容の一覧
+            </Link>
           </div>
         </div>
       </section>
@@ -170,4 +211,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default memo(Home)

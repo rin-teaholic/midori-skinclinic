@@ -1,0 +1,325 @@
+---
+description: SCSS フロントエンド開発ルール（タイポグラフィ・カラー・スタイリング）
+globs: ["src/**/*.{scss,css}"]
+alwaysApply: true
+---
+
+# SCSS フロントエンド開発ルール
+
+このプロジェクト固有のSCSSスタイリングルールです。メインルールに加えて、以下のルールに従ってスタイリングを行ってください。
+
+## プロジェクト構造
+
+### ディレクトリ構成
+- `src/styles/`: グローバルスタイルとアニメーション
+- `src/components/`: コンポーネント固有のスタイル
+- `src/pages/`: ページ固有のスタイル
+
+### ファイル命名規則
+- スタイルファイル: `PascalCase.scss` (例: `Header.scss`)
+- グローバルスタイル: `kebab-case.scss` (例: `variables.scss`, `typography.scss`)
+
+## SCSS/CSS
+
+### クラス命名規則
+- BEM記法を使用: `.block__element--modifier`
+- コンポーネント名をプレフィックスとして使用
+- ケバブケースで命名
+
+### SCSS構造
+```scss
+.component-name {
+  // 基本スタイル
+  
+  &__element {
+    // 要素スタイル
+  }
+  
+  &--modifier {
+    // 修飾子スタイル
+  }
+  
+  &:hover {
+    // ホバー状態
+  }
+  
+  @media (max-width: 768px) {
+    // レスポンシブスタイル
+  }
+}
+```
+
+### タイポグラフィ
+
+#### フォント設定
+```scss
+// Google Fonts のインポート
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Quicksand:wght@700&display=swap');
+
+// フォント変数
+$font-noto-sans-jp: 'Noto Sans JP', sans-serif;
+$font-quicksand: 'Quicksand', sans-serif;
+
+// カラーパレット
+// プライマリー・アクセントカラー
+$primary-color: #B1D91C;
+$accent-color: #B1D91C;
+
+// ボタンカラー
+$button-color: #9EC317;
+
+// テキストカラー
+$text-color-primary: #333;
+$text-color-white: #fff;
+
+// 背景カラー
+$background-dark: #9EC317;
+$background-gradient-start: #F5FDDA;
+$background-gradient-end: #E1F1F0;
+```
+
+#### テキストスタイル定義
+```scss
+// 日本語通常テキスト
+.text-regular {
+  font-family: $font-noto-sans-jp;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 28px;
+  letter-spacing: 0.1em;
+  color: $text-color-primary;
+}
+
+// 日本語太字テキスト
+.text-bold {
+  font-family: $font-noto-sans-jp;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 0.1em;
+  color: $text-color-primary;
+}
+
+// 見出し英語テキスト
+.heading-english {
+  font-family: $font-quicksand;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: auto;
+  letter-spacing: 0.2em;
+  color: $accent-color;
+}
+
+// 背景色が濃い場合のテキスト
+.text-on-dark {
+  color: $text-color-white;
+  
+  &.heading-english {
+    color: $text-color-white;
+  }
+}
+
+// ホバー時の色変更
+.interactive-text {
+  transition: color 0.3s ease;
+  
+  &:hover {
+    color: $accent-color;
+  }
+}
+```
+
+#### レスポンシブタイポグラフィ
+```scss
+// モバイル対応
+@media (max-width: 768px) {
+  .text-regular {
+    font-size: 14px;
+    line-height: 24px;
+  }
+  
+  .text-bold {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  
+  .heading-english {
+    font-size: 32px;
+  }
+}
+
+// タブレット対応
+@media (min-width: 769px) and (max-width: 1024px) {
+  .heading-english {
+    font-size: 40px;
+  }
+}
+```
+
+### 変数とミックスイン
+```scss
+// カラーパレット
+// プライマリー・アクセントカラー
+$primary-color: #B1D91C;
+$accent-color: #B1D91C;
+
+// ボタンカラー
+$button-color: #9EC317;
+
+// テキストカラー
+$text-color-primary: #333;
+$text-color-white: #fff;
+
+// 背景カラー
+$background-dark: #9EC317;
+$background-gradient-start: #F5FDDA;
+$background-gradient-end: #E1F1F0;
+
+// フォント変数
+$font-noto-sans-jp: 'Noto Sans JP', sans-serif;
+$font-quicksand: 'Quicksand', sans-serif;
+
+// ブレークポイント変数
+$breakpoint-mobile: 768px;
+$breakpoint-tablet: 1024px;
+
+// スペーシング変数
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+
+// ミックスイン定義
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin responsive-font($mobile-size, $desktop-size) {
+  font-size: $mobile-size;
+  
+  @media (min-width: $breakpoint-mobile) {
+    font-size: $desktop-size;
+  }
+}
+
+// 使用例
+.component {
+  color: $accent-color;
+  @include flex-center;
+  
+  &__text {
+    @include text-ellipsis;
+    @include responsive-font(14px, 16px);
+    color: $text-color-primary;
+  }
+  
+  &__button {
+    background-color: $button-color;
+    color: $text-color-white;
+    
+    &:hover {
+      background-color: $primary-color;
+    }
+  }
+}
+```
+
+### カラーデザインシステム
+
+#### カラーパレット使用ガイドライン
+```scss
+// プライマリー・アクセントカラー（#B1D91C）
+// - メインのブランドカラー
+// - 見出しや重要な要素に使用
+// - ホバー効果やアクティブ状態に使用
+
+// ボタンカラー（#9EC317）
+// - ボタンの背景色として使用
+// - プライマリーカラーより少し濃い色でコントラストを確保
+
+// テキストカラー（#333）
+// - メインのテキストカラー
+// - 読みやすさを重視したダークグレー
+
+// 濃い背景色（#9EC317）
+// - セクションの背景色として使用
+// - この背景上では必ず白いテキスト（#fff）を使用
+
+// 薄いグラデーション背景（#F5FDDA → #E1F1F0）
+// - ヒーローセクションや装飾的な背景に使用
+// - 左上から右下への斜めグラデーション
+```
+
+#### カラー使用例
+```scss
+// ボタンスタイル
+.button-primary {
+  background-color: $button-color;
+  color: $text-color-white;
+  border: none;
+  
+  &:hover {
+    background-color: $primary-color;
+  }
+}
+
+// 濃い背景のセクション
+.section-dark {
+  background-color: $background-dark;
+  color: $text-color-white;
+  
+  .heading-english {
+    color: $text-color-white;
+  }
+}
+
+// グラデーション背景
+.hero-section {
+  background: linear-gradient(135deg, $background-gradient-start 0%, $background-gradient-end 100%);
+  color: $text-color-primary;
+}
+
+// アクセントテキスト
+.accent-text {
+  color: $accent-color;
+  
+  &:hover {
+    color: $button-color;
+  }
+}
+```
+
+#### カラーアクセシビリティ
+- 濃い背景色（#9EC317）上では必ず白いテキスト（#fff）を使用
+- コントラスト比は WCAG AA 基準（4.5:1以上）を満たす
+- カラーのみで情報を伝えない（アイコンやテキストと組み合わせる）
+
+### レスポンシブデザイン
+- モバイルファーストで設計
+- ブレークポイントを統一（$breakpoint-mobile: 768px, $breakpoint-tablet: 1024px）
+- フレックスボックスとグリッドを適切に使用
+- タイポグラフィもレスポンシブ対応
+
+#### レスポンシブ実装例
+```scss
+.responsive-component {
+  padding: $spacing-md;
+  
+  @media (min-width: $breakpoint-mobile) {
+    padding: $spacing-lg;
+  }
+  
+  @media (min-width: $breakpoint-tablet) {
+    padding: $spacing-xl;
+  }
+}
+```

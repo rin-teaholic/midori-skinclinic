@@ -1,0 +1,54 @@
+// Google Fonts のインポート
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Quicksand:wght@700&display=swap');
+
+// フォント変数
+$font-noto-sans-jp: 'Noto Sans JP', sans-serif;
+$font-quicksand: 'Quicksand', sans-serif;
+
+// カラーパレット
+// プライマリー・アクセントカラー
+$primary-color: #B1D91C;
+$accent-color: #B1D91C;
+
+// ボタンカラー
+$button-color: #9EC317;
+
+// テキストカラー
+$text-color-primary: #333;
+$text-color-white: #fff;
+
+// 背景カラー
+$background-dark: #9EC317;
+$background-gradient-start: #F5FDDA;
+$background-gradient-end: #E1F1F0;
+
+// ブレークポイント変数
+$breakpoint-mobile: 768px;
+$breakpoint-tablet: 1024px;
+
+// スペーシング変数
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+$spacing-xxl: 48px;
+$spacing-xxxl: 64px;
+$spacing-huge: 80px;
+
+// シャドウ変数
+$shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+$shadow-lg: 0 4px 20px rgba(0, 0, 0, 0.1);
+$shadow-accent: 0 4px 12px rgba(158, 195, 23, 0.3);
+
+// ボーダー半径変数
+$border-radius-sm: 8px;
+$border-radius-md: 12px;
+$border-radius-lg: 25px;
+$border-radius-xl: 50px;
+
+// トランジション変数
+$transition-fast: 0.2s ease;
+$transition-normal: 0.3s ease;
+$transition-slow: 0.5s ease;

@@ -1,0 +1,34 @@
+// タイポグラフィクラス定義
+.text-regular {
+  @include text-regular;
+}
+
+.text-bold {
+  @include text-bold;
+}
+
+.heading-english {
+  @include heading-english;
+}
+
+.text-on-dark {
+  @include text-on-dark;
+}
+
+// インタラクティブテキスト
+.interactive-text {
+  transition: color $transition-normal;
+  
+  &:hover {
+    color: $accent-color;
+  }
+}
+
+// アクセントテキスト
+.accent-text {
+  color: $accent-color;
+  
+  &:hover {
+    color: $button-color;
+  }
+}

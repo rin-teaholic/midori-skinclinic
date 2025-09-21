@@ -19,8 +19,15 @@
       .service-icon {
         font-size: 48px;
         margin-bottom: 20px;
-        display: block;
-        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #9ec317;
+        
+        svg {
+          font-size: 48px;
+          color: inherit;
+        }
       }
       
       h3 {

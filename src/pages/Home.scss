@@ -1,26 +1,32 @@
+@import '../styles/variables';
+@import '../styles/mixins';
+@import '../styles/typography';
+@import '../styles/animations';
+
 .home {
   .hero {
     position: relative;
     padding: 0;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
+    height: 90vh;
+    top: 0;
+    @include flex-center;
     overflow: hidden;
     
     .hero-image-background {
       position: absolute;
-      top: 35%;
+      top: 0;
       left: 0;
       right: 0;
       bottom: 0;
+      height: 80vh;
       z-index: 1;
       
       .hero-bg-image {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        object-position: center top;
-        filter: brightness(1.2);
+        object-position: center center;
+        filter: brightness(1.1);
       }
       
       .hero-overlay {
@@ -31,8 +37,8 @@
         bottom: 0;
         background: linear-gradient(
           to bottom,
-          rgba(0, 0, 0, 0.05) 0%,
-          rgba(0, 0, 0, 0.15) 100%
+          rgba(0, 0, 0, 0.1) 0%,
+          rgba(0, 0, 0, 0.2) 100%
         );
         z-index: 2;
       }
@@ -41,14 +47,14 @@
     .hero-content {
       position: relative;
       z-index: 3;
-      display: flex;
+      @include flex-center;
       justify-content: flex-start;
       align-items: flex-start;
       width: 100%;
       max-width: 1200px;
       margin: 0 auto;
-      padding: 80px 20px 0;
-      min-height: 100vh;
+      padding: 120px $spacing-lg 0;
+      height: 90vh;
     }
     
     .hero-text {
@@ -56,128 +62,211 @@
       animation: heroTextSlideIn 1.5s ease-out;
       
       .hero-title {
-        font-size: 120px;
+        @include text-bold;
+        font-size: 48px;
         font-weight: 900;
-        color: #9ec317;
-        line-height: 1.2;
-        margin: 0;
-        letter-spacing: -0.05em;
+        line-height: 1.3;
+        margin: 0 0 $spacing-lg 0;
+        letter-spacing: -0.02em;
+      }
+      
+      .hero-subtitle {
+        @include flex-column;
+        gap: 5px;
         
-        .hero-title-highlight {
-          color: #b8d42a;
+        .bright-skin,
+        .bright-smile {
+          font-family: $font-quicksand;
+          font-weight: 700;
+          font-size: 24px;
+          color: $accent-color;
+          letter-spacing: 0.05em;
         }
       }
     }
     
-    .hero-scroll-indicator {
+    .floating-icons {
       position: absolute;
-      bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%);
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 15vh;
       z-index: 4;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-      color: #9ec317;
-      font-size: 14px;
-      font-weight: 600;
-      animation: heroScrollIndicator 2s ease-in-out infinite;
+      @include flex-center;
       
-      .scroll-line {
-        width: 2px;
-        height: 40px;
-        background: linear-gradient(to bottom, #9ec317, transparent);
-        border-radius: 1px;
+      .icon-bar {
+        background: $text-color-white;
+        border-radius: 7.5vh;
+        padding: $spacing-md $spacing-lg;
+        @include flex-center;
+        gap: $spacing-lg;
+        @include card-shadow;
+        margin-bottom: 0;
+        height: 15vh;
+        width: 80%;
+        
+        .icon-item {
+          @include flex-column-center;
+          width: 20%;
+          height: 100%;
+          cursor: pointer;
+          transition: transform $transition-normal;
+          position: relative;
+          
+          // 縦線を追加（最後のアイコン以外）
+          &:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: -10px;
+            top: 20%;
+            bottom: 20%;
+            width: 1px;
+            background-color: rgba(51, 51, 51, 0.2);
+          }
+          
+          &:hover {
+            transform: scale(1.05);
+            
+            .icon {
+              color: $primary-color;
+            }
+          }
+          
+          .icon {
+            font-size: 48px;
+            color: $accent-color;
+            @include flex-center;
+            margin-bottom: 5px;
+            
+            svg {
+              font-size: 48px;
+              color: inherit;
+            }
+          }
+          
+          .icon-text {
+            @include text-regular;
+            font-size: 12px;
+            text-align: center;
+            font-weight: 500;
+            line-height: 1.2;
+          }
+        }
       }
     }
   }
   
-  .services-preview {
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      margin-bottom: 40px;
+  .info-section {
+    @include gradient-background;
+    @include section-padding;
+    
+    .container {
+      @include container;
     }
     
-    .service-card {
-      background: #fff;
-      padding: 30px 20px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    .info-header {
+      @include flex-center;
+      align-items: baseline;
+      gap: $spacing-md;
+      margin-bottom: $spacing-xl;
       
-      &:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      .info-title {
+        @include heading-english;
+        margin: 0;
       }
       
-      .service-icon {
-        font-size: 48px;
-        margin-bottom: 20px;
-        display: block;
+      .info-subtitle {
+        @include text-regular;
+        font-weight: 500;
       }
+    }
+    
+    .info-list {
+      margin-bottom: $spacing-xl;
       
-      h3 {
-        font-size: 18px;
-        color: #2c5530;
-        margin-bottom: 15px;
-        font-weight: bold;
+      .info-item {
+        @include flex-center;
+        align-items: center;
+        gap: $spacing-lg;
+        padding: $spacing-md 0;
+        border-bottom: 1px solid rgba(158, 195, 23, 0.2);
+        
+        &:last-child {
+          border-bottom: none;
+        }
+        
+        .info-date,
+        .info-category,
+        .info-content {
+          @include text-regular;
+          font-weight: 500;
+          font-size: 14px;
+        }
+        
+        .info-date {
+          min-width: 100px;
+        }
+        
+        .info-category {
+          min-width: 80px;
+        }
+        
+        .info-content {
+          flex: 1;
+        }
       }
+    }
+    
+    .info-button {
+      text-align: right;
       
-      p {
-        color: #666;
-        line-height: 1.6;
-        font-size: 14px;
+      .btn-info {
+        @include button-primary;
       }
     }
   }
   
-  .about-preview {
+  .about-section {
+    @include gradient-background;
+    @include section-padding;
+    
+    .container {
+      @include container;
+    }
+    
+    .about-header {
+      @include flex-center;
+      align-items: baseline;
+      gap: $spacing-md;
+      margin-bottom: $spacing-xxl;
+      
+      .about-title {
+        @include heading-english;
+        margin: 0;
+      }
+      
+      .about-subtitle {
+        @include text-regular;
+        font-weight: 500;
+      }
+    }
+    
     .about-content {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 60px;
+      gap: $spacing-xxxl;
       align-items: center;
     }
     
     .about-text {
       .about-description {
-        font-size: 16px;
-        color: #666;
+        @include text-regular;
         line-height: 1.8;
-        margin-bottom: 30px;
+        margin-bottom: $spacing-xl;
       }
       
-      .about-features {
-        margin-bottom: 30px;
-        
-        .feature {
-          display: flex;
-          align-items: flex-start;
-          gap: 15px;
-          margin-bottom: 20px;
-          
-          .feature-icon {
-            font-size: 24px;
-            flex-shrink: 0;
-          }
-          
-          h4 {
-            font-size: 16px;
-            color: #2c5530;
-            margin-bottom: 5px;
-            font-weight: bold;
-          }
-          
-          p {
-            color: #666;
-            font-size: 14px;
-            line-height: 1.5;
-          }
-        }
+      .btn-about {
+        @include button-primary;
       }
     }
     
@@ -185,221 +274,278 @@
       .placeholder-image {
         width: 100%;
         height: 400px;
-        background-color: #f8f9fa;
-        border: 2px dashed #ddd;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        border-radius: 10px;
+        background-color: #f5f5f5;
+        border-radius: $border-radius-sm;
+        @include flex-column-center;
         
         span {
           font-size: 80px;
-          margin-bottom: 20px;
+          margin-bottom: $spacing-lg;
         }
         
         p {
+          @include text-regular;
           color: #666;
-          font-size: 16px;
         }
       }
     }
   }
   
-  .news-preview {
-    .news-list {
-      margin-bottom: 40px;
+  .operating-hours-section {
+    @include dark-background;
+    padding: $spacing-xxxl 0;
+    
+    .container {
+      @include container;
+    }
+    
+    .hours-table {
+      max-width: 800px;
+      margin: 0 auto;
       
-      .news-item {
-        display: flex;
-        gap: 20px;
-        padding: 20px 0;
-        border-bottom: 1px solid #eee;
+      .hours-header {
+        text-align: center;
+        margin-bottom: $spacing-xl;
         
-        &:last-child {
-          border-bottom: none;
+        h3 {
+          @include text-on-dark;
+          @include text-bold;
+          font-size: 24px;
+          margin: 0;
         }
+      }
+      
+      .hours-content {
+        background: $text-color-white;
+        border-radius: $border-radius-sm;
+        overflow: hidden;
+        @include card-shadow;
         
-        .news-date {
-          color: #2c5530;
-          font-weight: bold;
-          font-size: 14px;
-          min-width: 100px;
-        }
-        
-        .news-content {
-          flex: 1;
+        .hours-row {
+          display: grid;
+          grid-template-columns: 80px 120px repeat(7, 1fr);
+          gap: 1px;
+          background-color: #ddd;
           
-          h3 {
-            font-size: 16px;
-            color: #333;
-            margin-bottom: 8px;
-            font-weight: bold;
+          &:first-child {
+            background-color: $button-color;
+            
+            .day-label {
+              background-color: $button-color;
+              @include text-on-dark;
+              font-weight: bold;
+            }
           }
           
-          p {
-            color: #666;
+          .time-label,
+          .day-label,
+          .availability {
+            background-color: $text-color-white;
+            padding: $spacing-md $spacing-sm;
+            text-align: center;
+            font-weight: bold;
+            @include text-regular;
             font-size: 14px;
-            line-height: 1.5;
+          }
+          
+          .availability {
+            font-size: 16px;
           }
         }
       }
     }
   }
   
-  .cta {
-    .cta-content {
+  .services-section {
+    background-color: $text-color-white;
+    @include section-padding;
+    
+    .container {
+      @include container;
+    }
+    
+    .services-header {
+      margin-bottom: $spacing-xxl;
+      
+      .services-title {
+        @include heading-english;
+        margin: 0;
+      }
+    }
+    
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: $spacing-xl;
+      margin-bottom: $spacing-xxl;
+    }
+    
+    .service-card {
       text-align: center;
       
-      h2 {
-        font-size: 32px;
-        color: #2c5530;
-        margin-bottom: 20px;
-        font-weight: bold;
-      }
-      
-      p {
-        font-size: 18px;
-        color: #666;
-        margin-bottom: 30px;
-      }
-      
-      .cta-buttons {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        flex-wrap: wrap;
+      .service-image {
+        margin-bottom: $spacing-lg;
         
-        .btn {
-          display: flex;
-          align-items: center;
-          gap: 10px;
+        .placeholder-image {
+          width: 100%;
+          height: 200px;
+          background-color: #f5f5f5;
+          border-radius: $border-radius-sm;
+          @include flex-center;
           
-          .phone-icon {
-            font-size: 18px;
+          span {
+            font-size: 60px;
           }
         }
       }
+      
+      .service-label {
+        @include text-regular;
+        font-weight: 500;
+      }
     }
-  }
-}
-
-// 共通のセクションタイトル
-.section-title {
-  font-size: 32px;
-  color: #2c5530;
-  text-align: center;
-  margin-bottom: 50px;
-  font-weight: bold;
-  position: relative;
-  
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 3px;
-    background-color: #2c5530;
-  }
-}
-
-.text-center {
-  text-align: center;
-}
-
-// アニメーション定義
-@keyframes heroTextSlideIn {
-  0% {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes heroBadgeFadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
-
-
-@keyframes heroScrollIndicator {
-  0%, 100% {
-    opacity: 0.6;
-    transform: translateX(-50%) translateY(0);
-  }
-  50% {
-    opacity: 1;
-    transform: translateX(-50%) translateY(10px);
+    
+    .services-button {
+      text-align: center;
+      
+      .btn-services {
+        @include button-primary;
+      }
+    }
   }
 }
 
 // タブレット対応
-@media (max-width: 1024px) {
+@media (max-width: $breakpoint-tablet) {
   .home {
     .hero {
       .hero-text {
         .hero-title {
-          font-size: 100px;
+          font-size: 40px;
         }
+        
+        .hero-subtitle {
+          .bright-skin,
+          .bright-smile {
+            font-size: 20px;
+          }
+        }
+      }
+    }
+    
+    .info-section,
+    .about-section {
+      .info-title,
+      .about-title {
+        font-size: 40px;
+      }
+    }
+    
+    .services-section {
+      .services-title {
+        font-size: 40px;
       }
     }
   }
 }
 
 // モバイル対応
-@media (max-width: 768px) {
+@media (max-width: $breakpoint-mobile) {
   .home {
     .hero {
-      min-height: 100vh;
+      height: calc(100vh - 80px);
       
       .hero-image-background {
-        top: 10%;
-        height: 50vh;
-        
-        .hero-bg-image {
-          object-position: center center;
-        }
+        height: 90vh;
       }
       
       .hero-content {
-        padding: 60px 20px 0;
+        padding: 80px $spacing-lg 0;
         justify-content: flex-start;
+        height: 90vh;
       }
       
       .hero-text {
         .hero-title {
-          font-size: 56px;
+          font-size: 32px;
           line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+          .bright-skin,
+          .bright-smile {
+            font-size: 18px;
+          }
         }
       }
       
-      .hero-scroll-indicator {
-        bottom: 20px;
-        font-size: 12px;
+      .floating-icons {
+        bottom: 0;
+        height: 15vh;
         
-        .scroll-line {
-          height: 30px;
+        .icon-bar {
+          padding: $spacing-sm $spacing-lg;
+          gap: $spacing-md;
+          border-radius: 7.5vh;
+          height: 15vh;
+          @include flex-center;
+          
+          .icon-item {
+            @include flex-column-center;
+            width: 20%;
+            height: 100%;
+            position: relative;
+            
+            // 縦線を追加（最後のアイコン以外）
+            &:not(:last-child)::after {
+              content: '';
+              position: absolute;
+              right: -7.5px;
+              top: 20%;
+              bottom: 20%;
+              width: 1px;
+              background-color: rgba(51, 51, 51, 0.2);
+            }
+            
+            .icon {
+              font-size: 40px;
+              @include flex-center;
+              margin-bottom: 3px;
+              
+              svg {
+                font-size: 40px;
+              }
+            }
+            
+            .icon-text {
+              font-size: 10px;
+              text-align: center;
+              line-height: 1.1;
+            }
+          }
         }
       }
     }
     
-    .about-preview {
+    .info-section,
+    .about-section {
+      @include section-padding;
+      
+      .info-title,
+      .about-title {
+        font-size: 32px;
+      }
+      
+      .info-header,
+      .about-header {
+        margin-bottom: $spacing-xl;
+      }
+    }
+    
+    .about-section {
       .about-content {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: $spacing-xl;
         text-align: center;
       }
       
@@ -410,40 +556,37 @@
       }
     }
     
-    .news-preview {
-      .news-list {
-        .news-item {
-          flex-direction: column;
-          gap: 10px;
-          
-          .news-date {
-            min-width: auto;
+    .operating-hours-section {
+      padding: $spacing-xl 0;
+      
+      .hours-table {
+        .hours-content {
+          .hours-row {
+            grid-template-columns: 60px 100px repeat(7, 1fr);
+            
+            .time-label,
+            .day-label,
+            .availability {
+              padding: $spacing-sm 5px;
+              font-size: 12px;
+            }
           }
         }
       }
     }
     
-    .cta {
-      .cta-content {
-        h2 {
-          font-size: 24px;
-        }
-        
-        p {
-          font-size: 16px;
-        }
-        
-        .cta-buttons {
-          flex-direction: column;
-          align-items: center;
-        }
+    .services-section {
+      @include section-padding;
+      
+      .services-title {
+        font-size: 32px;
+      }
+      
+      .services-grid {
+        grid-template-columns: 1fr;
+        gap: $spacing-xl;
       }
     }
-  }
-  
-  .section-title {
-    font-size: 24px;
-    margin-bottom: 30px;
   }
 }
 
@@ -451,20 +594,103 @@
 @media (max-width: 480px) {
   .home {
     .hero {
+      height: calc(100vh - 80px);
+      
       .hero-image-background {
-        top: 15%;
-        height: 45vh;
+        height: 90vh;
+      }
+      
+      .hero-content {
+        padding: 60px 15px 0;
+        height: 90vh;
       }
       
       .hero-text {
         .hero-title {
-          font-size: 44px;
+          font-size: 28px;
           line-height: 1.1;
+        }
+        
+        .hero-subtitle {
+          .bright-skin,
+          .bright-smile {
+            font-size: 16px;
+          }
         }
       }
       
-      .hero-content {
-        padding: 40px 15px 0;
+      .floating-icons {
+        bottom: 0;
+        height: 15vh;
+        
+        .icon-bar {
+          padding: $spacing-sm 15px;
+          gap: $spacing-sm;
+          border-radius: 7.5vh;
+          height: 15vh;
+          @include flex-center;
+          
+          .icon-item {
+            @include flex-column-center;
+            width: 20%;
+            height: 100%;
+            position: relative;
+            
+            // 縦線を追加（最後のアイコン以外）
+            &:not(:last-child)::after {
+              content: '';
+              position: absolute;
+              right: -6px;
+              top: 20%;
+              bottom: 20%;
+              width: 1px;
+              background-color: rgba(51, 51, 51, 0.2);
+            }
+            
+            .icon {
+              font-size: 36px;
+              @include flex-center;
+              margin-bottom: 2px;
+              
+              svg {
+                font-size: 36px;
+              }
+            }
+            
+            .icon-text {
+              font-size: 9px;
+              text-align: center;
+              line-height: 1.0;
+            }
+          }
+        }
+      }
+    }
+    
+    .info-section,
+    .about-section,
+    .services-section {
+      .info-title,
+      .about-title,
+      .services-title {
+        font-size: 28px;
+      }
+    }
+    
+    .operating-hours-section {
+      .hours-table {
+        .hours-content {
+          .hours-row {
+            grid-template-columns: 50px 80px repeat(7, 1fr);
+            
+            .time-label,
+            .day-label,
+            .availability {
+              padding: $spacing-xs 3px;
+              font-size: 11px;
+            }
+          }
+        }
       }
     }
   }

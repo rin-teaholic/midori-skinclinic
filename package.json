@@ -2,11 +2,12 @@
   "name": "midori-hifuka",
   "version": "1.0.0",
   "description": "Midori Hifuka - React TypeScript Website",
-  "homepage": "https://rin.teaholic.github.io/midori-hifuka",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-icons": "^4.12.0",
     "react-router-dom": "^6.28.0",
     "sass": "^1.83.1",
     "web-vitals": "^4.2.4"
