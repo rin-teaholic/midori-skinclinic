@@ -13,31 +13,31 @@ function Home(props: HomeProps) {
 			id: 'new-patient',
 			icon: FaUserPlus,
 			text: '初診の方',
-			href: '/midori-skinclinic/reservation'
+			href: '/reservation'
 		},
 		{
 			id: 'return-patient',
 			icon: FaRedo,
 			text: '再診の方',
-			href: '/midori-skinclinic/reservation'
+			href: '/reservation'
 		},
 		{
 			id: 'service-1',
 			icon: FaQuestionCircle,
 			text: '（未定）',
-			href: '/midori-skinclinic/services'
+			href: '/services'
 		},
 		{
 			id: 'service-2',
 			icon: FaQuestionCircle,
 			text: '（未定）',
-			href: '/midori-skinclinic/services'
+			href: '/services'
 		},
 		{
 			id: 'access',
 			icon: FaMapMarkerAlt,
 			text: 'アクセス',
-			href: '/midori-skinclinic/access'
+			href: '/access'
 		}
 	]
 
@@ -66,9 +66,9 @@ function Home(props: HomeProps) {
             {iconItems.map((item) => {
               const IconComponent = item.icon
               return (
-                <a 
+                <Link 
                   key={item.id} 
-                  href={item.href}
+                  to={item.href as string}
                   className="icon-item"
                   role="button"
                   aria-label={item.text}
@@ -77,7 +77,7 @@ function Home(props: HomeProps) {
                     <IconComponent size={48} />
                   </div>
                   <div className="icon-text">{item.text}</div>
-                </a>
+                </Link>
               )
             })}
           </div>

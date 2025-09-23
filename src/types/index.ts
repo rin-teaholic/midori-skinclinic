@@ -40,7 +40,7 @@ export interface IconItem {
 	id: string
 	icon: React.ComponentType<{ size?: number }>
 	text: string
-	href?: string
+	href: string
 }
 
 // コンポーネントのプロパティ型定義
