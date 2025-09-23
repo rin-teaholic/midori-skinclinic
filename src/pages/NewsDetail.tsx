@@ -1,6 +1,6 @@
-import React, { memo, useEffect } from 'react'
+import React, { memo } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { FaArrowLeft, FaList } from 'react-icons/fa'
+import { FaArrowLeft } from 'react-icons/fa'
 import type { NewsItem } from '../types'
 import './NewsDetailPage.scss'
 
