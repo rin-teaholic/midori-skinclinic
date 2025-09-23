@@ -76,19 +76,6 @@
         margin: 0 0 $spacing-lg 0;
       }
       
-      .hero-subtitle {
-        @include flex-column;
-        gap: 5px;
-        
-        .bright-skin,
-        .bright-smile {
-          font-family: $font-quicksand;
-          font-weight: 700;
-          font-size: 24px;
-          color: $accent-color;
-          letter-spacing: 0.05em;
-        }
-      }
     }
     
     .floating-icons {
@@ -694,7 +681,7 @@
       .hero-text {
         .hero-title {
           font-size: 32px;
-          line-height: 1.5;
+          line-height: 100px; // スマホ表示で行間を控えめに拡大
         }
         
         .hero-subtitle {
@@ -735,12 +722,12 @@
             }
             
             .icon {
-              font-size: 32px;
+              font-size: 20px;
               @include flex-center;
-              margin-bottom: 8px;
+              margin-bottom: 6px;
               
               svg {
-                font-size: 32px;
+                font-size: 20px;
               }
             }
             
@@ -839,19 +826,19 @@
         .about-hours-table {
           .hours-content {
             .hours-row {
-              grid-template-columns: 80px 50px 50px 50px 50px 50px 50px 50px;
+              grid-template-columns: 70px 40px 40px 40px 40px 40px 40px 40px;
               
               .time-label,
               .day-label,
               .availability {
-                padding: $spacing-sm 5px;
-                font-size: 12px;
+                padding: 4px 3px;
+                font-size: 10px;
                 
                 &.availability {
                   @include flex-center;
                   
                   svg {
-                    font-size: 12px;
+                    font-size: 10px;
                     color: $accent-color;
                     
                     &.fa-circle {
@@ -928,7 +915,7 @@
       .hero-text {
         .hero-title {
           font-size: 28px;
-          line-height: 1.4;
+          line-height: 90px; // 小画面でも行間を控えめに拡大
         }
         
         .hero-subtitle {
@@ -969,12 +956,12 @@
             }
             
             .icon {
-              font-size: 28px;
+              font-size: 16px;
               @include flex-center;
-              margin-bottom: 6px;
+              margin-bottom: 4px;
               
               svg {
-                font-size: 28px;
+                font-size: 16px;
               }
             }
             
@@ -1047,19 +1034,19 @@
         .about-hours-table {
           .hours-content {
             .hours-row {
-              grid-template-columns: 70px 45px 45px 45px 45px 45px 45px 45px;
+              grid-template-columns: 60px 35px 35px 35px 35px 35px 35px 35px;
               
               .time-label,
               .day-label,
               .availability {
-                padding: $spacing-xs 3px;
-                font-size: 11px;
+                padding: 3px 2px;
+                font-size: 9px;
                 
                 &.availability {
                   @include flex-center;
                   
                   svg {
-                    font-size: 11px;
+                    font-size: 9px;
                     color: $accent-color;
                     
                     &.fa-circle {

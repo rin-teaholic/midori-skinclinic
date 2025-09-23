@@ -74,7 +74,7 @@ function Home(props: HomeProps) {
                   aria-label={item.text}
                 >
                   <div className="icon" aria-hidden="true">
-                    <IconComponent size={48} />
+                    <IconComponent />
                   </div>
                   <div className="icon-text">{item.text}</div>
                 </Link>
