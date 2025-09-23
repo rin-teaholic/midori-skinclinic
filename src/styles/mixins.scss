@@ -286,3 +286,12 @@
   max-width: $button-max-width;
   width: 100%;
 }
+
+// カードパディングミックスイン
+@mixin card-padding {
+  padding: $spacing-xl;
+  
+  @media (max-width: $breakpoint-mobile) {
+    padding: $spacing-lg;
+  }
+}

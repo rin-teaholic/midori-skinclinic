@@ -1,11 +1,12 @@
 @import '../styles/variables';
 @import '../styles/mixins';
 @import '../styles/typography';
+@import '../styles/buttons';
 
 .news-detail {
 	background-color: $text-color-white;
 	min-height: 100vh;
-	padding: $spacing-xl 0;
+	@include section-padding;
 	
 	.container {
 		@include container;
@@ -13,17 +14,17 @@
 		max-width: 800px;
 	}
 	
-	.news-header {
+	&__navigation {
 		margin-bottom: $spacing-xl;
 		
-		.back-link {
+		.news-detail__back-link {
 			@include flex-center;
 			align-items: center;
 			gap: $spacing-sm;
 			@include text-regular;
 			color: $accent-color;
 			text-decoration: none;
-			transition: color 0.3s ease;
+			transition: color $transition-normal;
 			
 			&:hover {
 				color: $button-color;
@@ -35,19 +36,19 @@
 		}
 	}
 	
-	.news-article {
+	&__article {
 		background-color: $text-color-white;
-		border-radius: $border-radius-sm;
+		@include border-radius-default;
 		padding: $spacing-xxl;
 		@include card-shadow;
 		margin-bottom: $spacing-xl;
 		
-		.article-header {
+		.news-detail__header {
 			margin-bottom: $spacing-xl;
 			padding-bottom: $spacing-lg;
 			border-bottom: 1px solid rgba(158, 195, 23, 0.2);
 			
-			.article-title {
+			.news-detail__title {
 				@include text-bold;
 				font-size: 24px;
 				line-height: 1.4;
@@ -55,15 +56,15 @@
 				color: $text-color-primary;
 			}
 			
-			.article-date {
+			.news-detail__date {
 				@include text-regular;
 				font-size: 14px;
 				color: #666;
 			}
 		}
 		
-		.article-content {
-			.article-paragraph {
+		.news-detail__content {
+			.news-detail__paragraph {
 				@include text-regular;
 				line-height: 1.8;
 				margin-bottom: $spacing-lg;
@@ -75,11 +76,17 @@
 		}
 	}
 	
-	.news-footer {
+	&__footer {
 		text-align: center;
+		margin-top: $spacing-xxl;
 		
-		.btn-back-to-list {
-			@include button-primary;
+		@media (min-width: $breakpoint-mobile) {
+			margin-top: $spacing-xxxl;
+		}
+		
+		.news-detail__button {
+			@extend .button;
+			@extend .button--with-icon;
 		}
 	}
 }
@@ -87,11 +94,11 @@
 // タブレット対応
 @media (max-width: $breakpoint-tablet) {
 	.news-detail {
-		.news-article {
+		&__article {
 			padding: $spacing-xl;
 			
-			.article-header {
-				.article-title {
+			.news-detail__header {
+				.news-detail__title {
 					font-size: 20px;
 				}
 			}
@@ -102,31 +109,25 @@
 // モバイル対応
 @media (max-width: $breakpoint-mobile) {
 	.news-detail {
-		padding: $spacing-lg 0;
-		
-		.container {
-			padding: 0 $spacing-lg;
-		}
-		
-		.news-header {
+		&__navigation {
 			margin-bottom: $spacing-lg;
 		}
 		
-		.news-article {
+		&__article {
 			padding: $spacing-lg;
 			margin-bottom: $spacing-lg;
 			
-			.article-header {
+			.news-detail__header {
 				margin-bottom: $spacing-lg;
 				padding-bottom: $spacing-md;
 				
-				.article-title {
+				.news-detail__title {
 					font-size: 18px;
 				}
 			}
 			
-			.article-content {
-				.article-paragraph {
+			.news-detail__content {
+				.news-detail__paragraph {
 					font-size: 14px;
 					line-height: 1.6;
 				}

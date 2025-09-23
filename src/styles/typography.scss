@@ -32,3 +32,30 @@
     color: $button-color;
   }
 }
+
+// ヒーローセクション専用タイポグラフィ
+.hero-title-text {
+  font-family: $font-noto-sans-jp;
+  font-weight: 700; // Bold
+  font-size: 48px;
+  line-height: 90px; // 行間をさらに広げる
+  letter-spacing: 0.42em; // 文字間隔42%
+  color: #FFFFFF; // 白いテキスト
+  text-align: left; // 左揃え
+  vertical-align: top; // 上揃え
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); // ドロップシャドウ
+  margin: 0;
+  
+  // レスポンシブ対応
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 36px;
+    line-height: 80px;
+    letter-spacing: 0.35em;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 28px;
+    line-height: 70px;
+    letter-spacing: 0.3em;
+  }
+}

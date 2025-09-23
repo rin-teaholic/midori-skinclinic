@@ -1,145 +1,176 @@
+// 変数とミックスインのインポート
+@import '../styles/variables';
+@import '../styles/mixins';
+@import '../styles/typography';
+
 .services {
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 30px;
+  // ヒーローセクション
+  &__hero {
+    @include gradient-background;
+    @include section-padding;
+    text-align: center;
     
-    .service-card {
-      background: #fff;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    &-title {
+      @extend .heading-english;
+      margin-bottom: $spacing-lg;
+    }
+    
+    &-description {
+      @extend .text-regular;
+      font-size: 18px;
       
-      &:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-      }
-      
-      .service-icon {
-        font-size: 48px;
-        margin-bottom: 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: #9ec317;
-        
-        svg {
-          font-size: 48px;
-          color: inherit;
-        }
-      }
-      
-      h3 {
+      @media (min-width: $breakpoint-mobile) {
         font-size: 20px;
-        color: #2c5530;
-        margin-bottom: 20px;
-        font-weight: bold;
-        text-align: center;
-      }
-      
-      ul {
-        list-style: none;
-        margin-bottom: 20px;
-        
-        li {
-          padding: 8px 0;
-          border-bottom: 1px solid #eee;
-          color: #666;
-          font-size: 14px;
-          
-          &:last-child {
-            border-bottom: none;
-          }
-          
-          &::before {
-            content: '✓';
-            color: #2c5530;
-            font-weight: bold;
-            margin-right: 10px;
-          }
-        }
-      }
-      
-      p {
-        color: #666;
-        line-height: 1.6;
-        font-size: 14px;
-        text-align: center;
       }
     }
   }
   
-  .equipment-grid {
+  // 診療内容セクション
+  &__content {
+    @include section-padding;
+  }
+  
+  &__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+    grid-template-columns: 1fr;
+    gap: $spacing-xl;
     
-    .equipment-item {
-      background: #fff;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    @media (min-width: $breakpoint-mobile) {
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: $spacing-xxl;
+    }
+  }
+  
+  &__card {
+    background: $text-color-white;
+    @include card-padding;
+    @include border-radius-default;
+    @include card-shadow;
+    transition: all $transition-normal;
+    
+    &:hover {
+      transform: translateY(-5px);
+      @include card-shadow-hover;
+    }
+    
+    &-icon {
+      @include flex-center;
+      margin-bottom: $spacing-lg;
+      color: $accent-color;
+      
+      svg {
+        font-size: 48px;
+        color: inherit;
+      }
+    }
+    
+    &-title {
+      @extend .text-bold;
+      color: $accent-color;
+      margin-bottom: $spacing-lg;
       text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    &-list {
+      list-style: none;
+      margin-bottom: $spacing-lg;
+      @include flex-column;
+    }
+    
+    &-list-item {
+      @extend .text-regular;
+      padding: $spacing-sm 0;
+      border-bottom: 1px solid #eee;
+      
+      &:last-child {
+        border-bottom: none;
+      }
+      
+      &::before {
+        content: '✓';
+        color: $accent-color;
+        font-weight: bold;
+        margin-right: $spacing-sm;
+      }
+    }
+    
+    &-description {
+      @extend .text-regular;
+      line-height: 1.6;
+      text-align: center;
+    }
+  }
+  
+  // 検査・治療機器セクション
+  &__equipment {
+    @include section-padding;
+    @include dark-background;
+    
+    &-title {
+      @extend .heading-english;
+      @extend .text-on-dark;
+      @include section-title-spacing;
+      text-align: center;
+    }
+    
+    &-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: $spacing-xl;
+      
+      @media (min-width: $breakpoint-mobile) {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: $spacing-xxl;
+      }
+    }
+    
+    &-item {
+      background: $text-color-white;
+      @include card-padding;
+      @include border-radius-default;
+      @include card-shadow;
+      text-align: center;
+      transition: all $transition-normal;
       
       &:hover {
         transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        @include card-shadow-hover;
       }
       
-      .equipment-image {
-        margin-bottom: 20px;
-        
-        .placeholder-image {
-          width: 100%;
-          height: 200px;
-          background-color: #f8f9fa;
-          border: 2px dashed #ddd;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          border-radius: 10px;
-          
-          span {
-            font-size: 60px;
-            margin-bottom: 10px;
-          }
-          
-          p {
-            color: #666;
-            font-size: 14px;
-            margin: 0;
-          }
-        }
+      &-title {
+        @extend .text-bold;
+        color: $accent-color;
+        margin-bottom: $spacing-md;
       }
       
-      h3 {
-        font-size: 18px;
-        color: #2c5530;
-        margin-bottom: 15px;
-        font-weight: bold;
-      }
-      
-      p {
-        color: #666;
+      &-description {
+        @extend .text-regular;
         line-height: 1.6;
-        font-size: 14px;
       }
-    }
-  }
-}
-
-// モバイル対応
-@media (max-width: 768px) {
-  .services {
-    .services-grid {
-      grid-template-columns: 1fr;
     }
     
-    .equipment-grid {
-      grid-template-columns: 1fr;
+    &-image {
+      margin-bottom: $spacing-lg;
+    }
+    
+    &-placeholder {
+      width: 100%;
+      height: 200px;
+      background-color: #f8f9fa;
+      border: 2px dashed #ddd;
+      @include flex-column-center;
+      @include border-radius-default;
+    }
+    
+    &-icon {
+      font-size: 60px;
+      margin-bottom: $spacing-sm;
+    }
+    
+    &-caption {
+      @extend .text-regular;
+      color: #666;
+      margin: 0;
     }
   }
 }

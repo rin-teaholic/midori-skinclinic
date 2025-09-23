@@ -1,6 +1,267 @@
+@import '../styles/variables.scss';
+@import '../styles/mixins.scss';
+
 .footer {
-  background-color: #9ec317;
-  color: white;
+  background-color: $background-dark;
+  color: $text-color-white;
   padding: 0;
-  min-height: 100px;
+  min-height: auto;
+  
+  .footer-container {
+    @include container-padding;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .footer-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-xl;
+    padding: $spacing-xl 0;
+    text-align: center;
+    
+    @media (min-width: $breakpoint-mobile) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: $spacing-xl * 2;
+    }
+    
+    @media (min-width: $breakpoint-tablet) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: $spacing-xl;
+    }
+  }
+  
+  .footer-section {
+    text-align: left;
+    
+    &--clinic {
+      @media (min-width: $breakpoint-mobile) {
+        grid-column: span 2;
+      }
+      
+      @media (min-width: $breakpoint-tablet) {
+        grid-column: span 1;
+      }
+    }
+    
+    &--hours {
+      @media (min-width: $breakpoint-mobile) {
+        grid-column: span 2;
+      }
+      
+      @media (min-width: $breakpoint-tablet) {
+        grid-column: span 1;
+      }
+    }
+    
+    &--nav {
+      @media (min-width: $breakpoint-mobile) {
+        grid-column: span 1;
+      }
+      
+      @media (min-width: $breakpoint-tablet) {
+        grid-column: span 1;
+      }
+    }
+    
+  }
+  
+  .footer-title {
+    font-family: $font-noto-sans-jp;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: 0.1em;
+    color: $text-color-white;
+    margin-bottom: $spacing-lg;
+    
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 16px;
+      line-height: 24px;
+      margin-bottom: $spacing-md;
+    }
+  }
+  
+  // 医院情報セクション
+  .clinic-info {
+    .clinic-address,
+    .clinic-phone,
+    .clinic-email {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: $spacing-md;
+      
+      .footer-icon {
+        margin-right: $spacing-sm;
+        margin-top: 2px;
+        flex-shrink: 0;
+        color: $accent-color;
+      }
+      
+      span, a {
+        font-family: $font-noto-sans-jp;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 24px;
+        letter-spacing: 0.05em;
+        color: $text-color-white;
+        text-decoration: none;
+        
+        @media (max-width: $breakpoint-mobile) {
+          font-size: 13px;
+          line-height: 20px;
+        }
+      }
+      
+      a:hover {
+        color: $accent-color;
+        transition: color 0.3s ease;
+      }
+    }
+  }
+  
+  // 営業時間セクション
+  .hours-info {
+    .hours-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: $spacing-sm;
+      
+      .footer-icon {
+        margin-right: $spacing-sm;
+        color: $accent-color;
+        flex-shrink: 0;
+      }
+      
+      .hours-details {
+        .hours-period {
+          font-family: $font-noto-sans-jp;
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 16px;
+          color: $text-color-white;
+          opacity: 0.8;
+        }
+        
+        .hours-time {
+          font-family: $font-noto-sans-jp;
+          font-weight: 700;
+          font-size: 14px;
+          line-height: 20px;
+          color: $text-color-white;
+          
+          @media (max-width: $breakpoint-mobile) {
+            font-size: 13px;
+            line-height: 18px;
+          }
+        }
+      }
+    }
+    
+    .hours-note {
+      font-family: $font-noto-sans-jp;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 18px;
+      color: $text-color-white;
+      opacity: 0.8;
+      margin-top: $spacing-md;
+      
+      @media (max-width: $breakpoint-mobile) {
+        font-size: 11px;
+        line-height: 16px;
+      }
+    }
+  }
+  
+  // ナビゲーションセクション
+  .footer-nav {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+    
+    .footer-link {
+      font-family: $font-noto-sans-jp;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 24px;
+      letter-spacing: 0.05em;
+      color: $text-color-white;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      
+      @media (max-width: $breakpoint-mobile) {
+        font-size: 13px;
+        line-height: 20px;
+      }
+      
+      &:hover {
+        color: $accent-color;
+      }
+    }
+  }
+  
+  
+  // フッター下部
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding: $spacing-lg 0;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+    
+    @media (min-width: $breakpoint-mobile) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: $spacing-lg;
+    }
+  }
+  
+  .footer-copyright {
+    p {
+      font-family: $font-noto-sans-jp;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 18px;
+      color: $text-color-white;
+      opacity: 0.8;
+      margin: 0;
+      
+      @media (max-width: $breakpoint-mobile) {
+        font-size: 11px;
+        line-height: 16px;
+      }
+    }
+  }
+  
+  .footer-legal {
+    display: flex;
+    gap: $spacing-md;
+    
+    @media (max-width: $breakpoint-mobile) {
+      gap: $spacing-sm;
+    }
+    
+    .footer-legal-link {
+      font-family: $font-noto-sans-jp;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 18px;
+      color: $text-color-white;
+      text-decoration: none;
+      opacity: 0.8;
+      transition: opacity 0.3s ease;
+      
+      @media (max-width: $breakpoint-mobile) {
+        font-size: 11px;
+        line-height: 16px;
+      }
+      
+      &:hover {
+        opacity: 1;
+        color: $accent-color;
+      }
+    }
+  }
 }

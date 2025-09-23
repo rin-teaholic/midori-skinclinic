@@ -8,6 +8,12 @@ export interface NewsItem {
 	content: string
 }
 
+export interface NewsDetailItem {
+	date: string
+	title: string
+	content: string
+}
+
 export interface ServiceItem {
 	id: string
 	title: string

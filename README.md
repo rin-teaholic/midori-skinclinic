@@ -7,13 +7,16 @@
 - **アニメーション効果**: 滑らかなスクロールアニメーション
 - **アクセシビリティ**: 読みやすいフォントとコントラスト
 - **SEO対応**: 適切なメタタグと構造化データ
+- **BEM記法**: 保守性の高いCSS設計
+- **統一されたデザインシステム**: カラーパレットとタイポグラフィの一貫性
 
 ## 技術スタック
 
-- **React 19** - フロントエンドフレームワーク
+- **React 18** - フロントエンドフレームワーク
 - **TypeScript** - 型安全性
-- **SCSS** - スタイリング
+- **SCSS** - スタイリング（BEM記法採用）
 - **React Router** - ルーティング
+- **React Icons** - アイコンライブラリ
 - **GitHub Pages** - デプロイメント
 
 ## ページ構成
@@ -21,20 +24,20 @@
 - **ホーム**: 医院の紹介と主要な診療内容
 - **医院について**: 院長挨拶と医院の特徴
 - **診療内容**: 詳細な診療内容と検査機器
-- **お知らせ**: 医院からの最新情報
+- **お知らせ**: 医院からの最新情報（詳細ページ対応）
 - **アクセス**: 診療時間とアクセス情報
 
 ## セットアップ
 
 ### 必要な環境
-- Node.js 16以上
-- npm または yarn
+- Node.js 18以上
+- npm 8以上
 
 ### インストール
 ```bash
 # リポジトリをクローン
-git clone https://github.com/yourusername/midori-hifuka.git
-cd midori-hifuka
+git clone https://github.com/rin-teaholic/midori-skinclinic.git
+cd midori-skinclinic
 
 # 依存関係をインストール
 npm install
@@ -58,26 +61,32 @@ npm run deploy
 src/
 ├── components/          # 再利用可能なコンポーネント
 │   ├── Header.tsx      # ヘッダーコンポーネント
-│   ├── Header.scss     # ヘッダーのスタイル
+│   ├── HeaderComponent.scss # ヘッダーのスタイル
 │   ├── Footer.tsx      # フッターコンポーネント
-│   └── Footer.scss     # フッターのスタイル
+│   ├── FooterComponent.scss # フッターのスタイル
+│   └── icons/          # アイコンコンポーネント
 ├── pages/              # ページコンポーネント
 │   ├── Home.tsx        # ホームページ
-│   ├── Home.scss       # ホームページのスタイル
+│   ├── HomePage.scss   # ホームページのスタイル
 │   ├── About.tsx       # 医院についてページ
-│   ├── About.scss      # 医院についてのスタイル
+│   ├── AboutPage.scss  # 医院についてのスタイル
 │   ├── Services.tsx    # 診療内容ページ
-│   ├── Services.scss   # 診療内容のスタイル
+│   ├── ServicesPage.scss # 診療内容のスタイル
 │   ├── News.tsx        # お知らせページ
-│   ├── News.scss       # お知らせのスタイル
+│   ├── NewsPage.scss   # お知らせのスタイル
+│   ├── NewsDetail.tsx  # お知らせ詳細ページ
+│   ├── NewsDetailPage.scss # お知らせ詳細のスタイル
 │   ├── Contact.tsx     # アクセスポージ
-│   └── Contact.scss    # アクセスのスタイル
+│   └── ContactPage.scss # アクセスのスタイル
 ├── styles/             # 共通スタイル
 │   ├── variables.scss  # 変数定義（カラー、スペーシング等）
 │   ├── mixins.scss     # ミックスイン定義
 │   ├── buttons.scss    # ボタンスタイル（横長デザイン対応）
 │   ├── typography.scss # タイポグラフィ設定
 │   └── animations.scss # アニメーション定義
+├── assets/             # 静的リソース
+│   └── images/         # 画像ファイル
+├── types/              # TypeScript型定義
 ├── App.tsx             # メインアプリケーション
 ├── App.scss            # グローバルスタイル
 └── index.tsx           # エントリーポイント
@@ -91,10 +100,21 @@ src/
 ### 色の変更
 `src/styles/variables.scss`でカラーパレットを変更できます：
 ```scss
-// メインカラー
-$primary-color: #B1D91C;  // アクセントカラー
-$button-color: #9EC317;   // ボタンカラー
-$text-color-primary: #333; // テキストカラー
+// プライマリー・アクセントカラー
+$primary-color: #B1D91C;
+$accent-color: #B1D91C;
+
+// ボタンカラー
+$button-color: #9EC317;
+
+// テキストカラー
+$text-color-primary: #333;
+$text-color-white: #fff;
+
+// 背景カラー
+$background-dark: #9EC317;
+$background-gradient-start: #F5FDDA;
+$background-gradient-end: #E1F1F0;
 ```
 
 ### ボタンデザインの設定
@@ -141,7 +161,7 @@ $button-height: 48px;               // 高さ
 1. GitHubリポジトリを作成
 2. `package.json`の`homepage`フィールドを実際のリポジトリURLに更新：
    ```json
-   "homepage": "https://your-username.github.io/midori-hifuka"
+   "homepage": "https://rin-teaholic.github.io/midori-skinclinic"
    ```
 3. リポジトリのSettings > Pagesで、Sourceを「GitHub Actions」に設定
 4. mainブランチにプッシュすると自動的にデプロイされます
@@ -159,6 +179,36 @@ npm run deploy
 - Netlify
 - Vercel
 - Firebase Hosting
+
+## ライセンス
+
+このプロジェクトはMITライセンスの下で公開されています。
+
+## 開発ガイドライン
+
+### コーディング規約
+- **BEM記法**: CSSクラス名は`.block__element--modifier`形式で記述
+- **TypeScript**: 型安全性を重視し、適切な型定義を行う
+- **SCSS**: 変数とミックスインを活用した保守性の高いスタイル
+- **レスポンシブ**: モバイルファーストでデザイン
+
+### コミット規約
+```
+<type>[optional scope]: <説明>
+
+feat: 新機能追加
+fix: バグ修正
+docs: ドキュメント更新
+style: コードスタイル変更
+refactor: リファクタリング
+test: テスト追加・修正
+chore: ビルド・設定変更
+```
+
+### ブランチ運用
+- **main**: 本番環境用ブランチ
+- **feat/**: 新機能開発用ブランチ
+- 1日以内にmainブランチにマージする
 
 ## ライセンス
 

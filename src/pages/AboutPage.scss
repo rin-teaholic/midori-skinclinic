@@ -1,151 +1,191 @@
-// 共通のページヒーロー
-.page-hero {
-  background: linear-gradient(135deg, #e8f5e8 0%, #f0f8f0 100%);
-  padding: 80px 0;
-  text-align: center;
-  
-  h1 {
-    font-size: 48px;
-    color: #2c5530;
-    margin-bottom: 20px;
-    font-weight: bold;
-  }
-  
-  p {
-    font-size: 18px;
-    color: #666;
-  }
-}
+// 変数とミックスインのインポート
+@import '../styles/variables';
+@import '../styles/mixins';
+@import '../styles/typography';
 
 .about {
-  .greeting {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 40px;
-    align-items: flex-start;
-    margin-bottom: 40px;
+  // ヒーローセクション
+  &__hero {
+    @include gradient-background;
+    @include section-padding;
+    text-align: center;
     
-    .greeting-image {
-      .placeholder-image {
-        width: 100%;
-        height: 300px;
-        background-color: #f8f9fa;
-        border: 2px dashed #ddd;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        border-radius: 10px;
-        
-        span {
-          font-size: 80px;
-          margin-bottom: 20px;
-        }
-        
-        p {
-          color: #666;
-          font-size: 16px;
-        }
-      }
+    &-title {
+      @extend .heading-english;
+      margin-bottom: $spacing-lg;
     }
     
-    .greeting-text {
-      p {
-        font-size: 16px;
-        line-height: 1.8;
-        color: #666;
-        margin-bottom: 20px;
+    &-description {
+      @extend .text-regular;
+      font-size: 18px;
+      
+      @media (min-width: $breakpoint-mobile) {
+        font-size: 20px;
       }
     }
   }
   
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
+  // 院長挨拶セクション
+  &__greeting {
+    @include section-padding;
     
-    .feature-card {
-      background: #fff;
-      padding: 30px 20px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    &-content {
+      @include container-padding;
+    }
+    
+    &-title {
+      @extend .heading-english;
+      @include section-title-spacing;
       text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    &-wrapper {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: $spacing-xl;
+      align-items: flex-start;
+      
+      @media (min-width: $breakpoint-mobile) {
+        grid-template-columns: 1fr 2fr;
+        gap: $spacing-xxl;
+      }
+    }
+    
+    &-image {
+      @include flex-center;
+      
+      @media (min-width: $breakpoint-mobile) {
+        justify-content: flex-start;
+      }
+    }
+    
+    &-placeholder {
+      width: 100%;
+      height: 250px;
+      background-color: #f8f9fa;
+      border: 2px dashed #ddd;
+      @include flex-column-center;
+      @include border-radius-default;
+      
+      @media (min-width: $breakpoint-mobile) {
+        height: 300px;
+      }
+    }
+    
+    &-icon {
+      font-size: 60px;
+      margin-bottom: $spacing-lg;
+      
+      @media (min-width: $breakpoint-mobile) {
+        font-size: 80px;
+      }
+    }
+    
+    &-caption {
+      @extend .text-regular;
+      color: #666;
+    }
+    
+    &-text {
+      @include flex-column;
+    }
+    
+    &-paragraph {
+      @extend .text-regular;
+      line-height: 1.8;
+      margin-bottom: $spacing-lg;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  
+  // 医院の特徴セクション
+  &__features {
+    @include section-padding;
+    @include dark-background;
+    
+    &-title {
+      @extend .heading-english;
+      @extend .text-on-dark;
+      @include section-title-spacing;
+      text-align: center;
+    }
+    
+    &-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: $spacing-xl;
+      
+      @media (min-width: $breakpoint-mobile) {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: $spacing-xxl;
+      }
+    }
+    
+    &-card {
+      background: $text-color-white;
+      @include card-padding;
+      @include border-radius-default;
+      @include card-shadow;
+      text-align: center;
+      transition: all $transition-normal;
       
       &:hover {
         transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        @include card-shadow-hover;
       }
-      
-      .feature-icon {
-        font-size: 48px;
-        margin-bottom: 20px;
-        display: block;
-      }
-      
-      h3 {
-        font-size: 18px;
-        color: #2c5530;
-        margin-bottom: 15px;
-        font-weight: bold;
-      }
-      
-      p {
-        color: #666;
-        line-height: 1.6;
-        font-size: 14px;
-      }
+    }
+    
+    &-icon {
+      font-size: 48px;
+      margin-bottom: $spacing-lg;
+      display: block;
+    }
+    
+    &-title {
+      @extend .text-bold;
+      color: $accent-color;
+      margin-bottom: $spacing-md;
+    }
+    
+    &-description {
+      @extend .text-regular;
+      line-height: 1.6;
     }
   }
   
-  .policy-content {
-    .policy-item {
-      background: #fff;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      margin-bottom: 20px;
-      
-      h3 {
-        font-size: 20px;
-        color: #2c5530;
-        margin-bottom: 15px;
-        font-weight: bold;
-      }
-      
-      p {
-        color: #666;
-        line-height: 1.6;
-        font-size: 16px;
-      }
-    }
-  }
-}
-
-// モバイル対応
-@media (max-width: 768px) {
-  .page-hero {
-    padding: 60px 0;
+  // 診療方針セクション
+  &__policy {
+    @include section-padding;
     
-    h1 {
-      font-size: 36px;
-    }
-    
-    p {
-      font-size: 16px;
-    }
-  }
-  
-  .about {
-    .greeting {
-      grid-template-columns: 1fr;
-      gap: 30px;
+    &-title {
+      @extend .heading-english;
+      @include section-title-spacing;
       text-align: center;
+    }
+    
+    &-content {
+      @include flex-column;
+      gap: $spacing-lg;
+    }
+    
+    &-item {
+      background: $text-color-white;
+      @include card-padding;
+      @include border-radius-default;
+      @include card-shadow;
       
-      .greeting-image {
-        .placeholder-image {
-          height: 250px;
-        }
+      &-title {
+        @extend .text-bold;
+        color: $accent-color;
+        margin-bottom: $spacing-md;
+      }
+      
+      &-description {
+        @extend .text-regular;
+        line-height: 1.6;
       }
     }
   }

@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import { Link } from 'react-router-dom'
-import { FaUserPlus, FaRedo, FaQuestionCircle, FaMapMarkerAlt, FaChevronRight, FaInfoCircle, FaCircle, FaTimes, FaHospital } from 'react-icons/fa'
+import { FaUserPlus, FaRedo, FaQuestionCircle, FaMapMarkerAlt, FaChevronRight, FaInfoCircle, FaCircle, FaTimes, FaHospital, FaAllergies, FaSearch, FaSyringe, FaList } from 'react-icons/fa'
 import heroClinicImage from '../assets/images/hero-clinic.jpg'
 import aboutTopImage from '../assets/images/about-top.jpeg'
 import type { HomeProps, IconItem } from '../types'
@@ -48,7 +48,7 @@ function Home(props: HomeProps) {
         <div className="hero-image-background">
           <img 
             src={heroClinicImage} 
-            alt="みどり皮ふ科外観" 
+            alt="みどり皮膚科外観" 
             className="hero-bg-image"
             loading="eager"
           />
@@ -57,12 +57,8 @@ function Home(props: HomeProps) {
         <div className="hero-content">
           <div className="hero-text">
             <h1 className="hero-title">
-              健康な肌で、毎日を輝かせよう
+              健康な肌で、<br />毎日を輝かせよう
             </h1>
-            <div className="hero-subtitle">
-              <span className="bright-skin">BRIGHT SKIN FOR</span>
-              <span className="bright-smile">BRIGHT SMILE</span>
-            </div>
           </div>
         </div>
         <nav className="floating-icons" role="navigation" aria-label="クイックアクセス">
@@ -150,7 +146,7 @@ function Home(props: HomeProps) {
           <div className="about-content">
             <div className="about-text">
               <p className="about-description">
-                みどり皮ふ科は、患者様一人ひとりに寄り添い、最適な治療を提供することを使命としています。経験豊富な医師と最新の医療設備で、安心してご来院いただけます。
+                みどり皮膚科は、患者様一人ひとりに寄り添い、最適な治療を提供することを使命としています。経験豊富な医師と最新の医療設備で、安心してご来院いただけます。
               </p>
               
               {/* 営業時間表 */}
@@ -227,7 +223,7 @@ function Home(props: HomeProps) {
             <div className="service-card">
               <div className="service-image">
                 <div className="placeholder-image">
-                  <span>🦠</span>
+                  <FaAllergies size={60} />
                 </div>
               </div>
               <div className="service-label">アレルギー性皮膚炎</div>
@@ -235,7 +231,7 @@ function Home(props: HomeProps) {
             <div className="service-card">
               <div className="service-image">
                 <div className="placeholder-image">
-                  <span>🔍</span>
+                  <FaSearch size={60} />
                 </div>
               </div>
               <div className="service-label">皮膚がん検診</div>
@@ -243,14 +239,15 @@ function Home(props: HomeProps) {
             <div className="service-card">
               <div className="service-image">
                 <div className="placeholder-image">
-                  <span>💉</span>
+                  <FaSyringe size={60} />
                 </div>
               </div>
               <div className="service-label">美容皮膚科</div>
             </div>
           </div>
           <div className="services-button">
-            <Link to="/services" className="btn-services">
+            <Link to="/services" className="button button--with-icon">
+              <FaList className="btn-icon" />
               診療内容の一覧
             </Link>
           </div>

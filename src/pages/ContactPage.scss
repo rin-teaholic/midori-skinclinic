@@ -1,265 +1,341 @@
+// 変数とミックスインのインポート
+@import '../styles/variables';
+@import '../styles/mixins';
+@import '../styles/typography';
+
 .contact {
-  .contact-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    margin-bottom: 60px;
-    
-    .contact-info {
-      h2 {
-        font-size: 24px;
-        color: #2c5530;
-        margin-bottom: 30px;
-        font-weight: bold;
-      }
-      
-      .info-item {
-        margin-bottom: 25px;
-        
-        h3 {
-          font-size: 16px;
-          color: #2c5530;
-          margin-bottom: 8px;
-          font-weight: bold;
-        }
-        
-        p {
-          color: #666;
-          line-height: 1.6;
-          font-size: 14px;
-          
-          a {
-            color: #2c5530;
-            text-decoration: none;
-            font-weight: bold;
-            
-            &:hover {
-              text-decoration: underline;
-            }
-          }
-        }
-      }
-    }
-    
-    .map-container {
-      .placeholder-map {
-        width: 100%;
-        height: 400px;
-        background-color: #f8f9fa;
-        border: 2px dashed #ddd;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        border-radius: 10px;
-        
-        span {
-          font-size: 80px;
-          margin-bottom: 20px;
-        }
-        
-        p {
-          color: #666;
-          font-size: 18px;
-          margin-bottom: 10px;
-        }
-        
-        small {
-          color: #999;
-          font-size: 14px;
-        }
-      }
-    }
-  }
-  
-  .hours-content {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 40px;
-    
-    .hours-table {
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        background: #fff;
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        
-        th, td {
-          padding: 15px;
-          text-align: left;
-          border-bottom: 1px solid #eee;
-        }
-        
-        th {
-          background-color: #2c5530;
-          color: #fff;
-          font-weight: bold;
-          font-size: 14px;
-        }
-        
-        td {
-          color: #666;
-          font-size: 14px;
-          
-          &:first-child {
-            font-weight: bold;
-            color: #333;
-          }
-        }
-        
-        tr:last-child td {
-          border-bottom: none;
-        }
-      }
-    }
-    
-    .hours-notes {
-      h3 {
-        font-size: 18px;
-        color: #2c5530;
-        margin-bottom: 20px;
-        font-weight: bold;
-      }
-      
-      ul {
-        list-style: none;
-        
-        li {
-          padding: 10px 0;
-          border-bottom: 1px solid #eee;
-          color: #666;
-          font-size: 14px;
-          line-height: 1.5;
-          
-          &:last-child {
-            border-bottom: none;
-          }
-          
-          &::before {
-            content: '•';
-            color: #2c5530;
-            font-weight: bold;
-            margin-right: 10px;
-          }
-        }
-      }
-    }
-  }
-  
-  .access-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    
-    .access-item {
-      background: #fff;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      
-      h3 {
-        font-size: 18px;
-        color: #2c5530;
-        margin-bottom: 20px;
-        font-weight: bold;
-      }
-      
-      ul {
-        list-style: none;
-        
-        li {
-          padding: 8px 0;
-          border-bottom: 1px solid #eee;
-          color: #666;
-          font-size: 14px;
-          
-          &:last-child {
-            border-bottom: none;
-          }
-          
-          &::before {
-            content: '→';
-            color: #2c5530;
-            font-weight: bold;
-            margin-right: 10px;
-          }
-        }
-      }
-    }
-  }
-  
-  .cta-content {
+  // ヒーローセクション
+  &__hero {
+    @include gradient-background;
+    @include section-padding;
     text-align: center;
     
-    h2 {
-      font-size: 32px;
-      color: #2c5530;
-      margin-bottom: 20px;
-      font-weight: bold;
+    &-title {
+      @extend .heading-english;
+      margin-bottom: $spacing-lg;
     }
     
-    p {
+    &-description {
+      @extend .text-regular;
       font-size: 18px;
-      color: #666;
-      margin-bottom: 30px;
+      
+      @media (min-width: $breakpoint-mobile) {
+        font-size: 20px;
+      }
+    }
+  }
+  
+  // 医院情報セクション
+  &__info {
+    @include section-padding;
+    
+    &-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: $spacing-xxl;
+      
+      @media (min-width: $breakpoint-mobile) {
+        grid-template-columns: 1fr 1fr;
+        gap: $spacing-xxxl;
+      }
     }
     
-    .cta-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
+    &-details {
+      @include flex-column;
+    }
+    
+    &-title {
+      @extend .heading-english;
+      @include section-title-spacing;
+    }
+    
+    &-item {
+      margin-bottom: $spacing-xl;
       
-      .btn {
-        display: flex;
-        align-items: center;
-        gap: 10px;
+      &-title {
+        @extend .text-bold;
+        color: $accent-color;
+        margin-bottom: $spacing-sm;
+      }
+      
+      &-text {
+        @extend .text-regular;
+        line-height: 1.6;
+      }
+    }
+    
+    &-link {
+      color: $accent-color;
+      text-decoration: none;
+      font-weight: 700;
+      transition: color $transition-normal;
+      
+      &:hover {
+        color: $button-color;
+        text-decoration: underline;
+      }
+    }
+  }
+  
+  // 地図セクション
+  &__map {
+    @include flex-center;
+    
+    &-placeholder {
+      width: 100%;
+      height: 300px;
+      background-color: #f8f9fa;
+      border: 2px dashed #ddd;
+      @include flex-column-center;
+      @include border-radius-default;
+      
+      @media (min-width: $breakpoint-mobile) {
+        height: 400px;
+      }
+    }
+    
+    &-icon {
+      font-size: 60px;
+      margin-bottom: $spacing-lg;
+      
+      @media (min-width: $breakpoint-mobile) {
+        font-size: 80px;
+      }
+    }
+    
+    &-title {
+      @extend .text-bold;
+      color: #666;
+      margin-bottom: $spacing-sm;
+    }
+    
+    &-description {
+      @extend .text-regular;
+      color: #999;
+    }
+  }
+  
+  // 診療時間セクション
+  &__hours {
+    @include section-padding;
+    @include dark-background;
+    
+    &-title {
+      @extend .heading-english;
+      @extend .text-on-dark;
+      @include section-title-spacing;
+      text-align: center;
+    }
+    
+    &-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: $spacing-xxl;
+      
+      @media (min-width: $breakpoint-mobile) {
+        grid-template-columns: 2fr 1fr;
+        gap: $spacing-xxxl;
+      }
+    }
+    
+    &-table {
+      @include flex-center;
+    }
+    
+    &-notes {
+      @include flex-column;
+      
+      &-title {
+        @extend .text-bold;
+        @extend .text-on-dark;
+        margin-bottom: $spacing-lg;
+      }
+      
+      &-list {
+        list-style: none;
+        @include flex-column;
+      }
+      
+      &-item {
+        @extend .text-regular;
+        @extend .text-on-dark;
+        padding: $spacing-md 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        line-height: 1.5;
         
-        .phone-icon, .mail-icon {
-          font-size: 18px;
+        &:last-child {
+          border-bottom: none;
+        }
+        
+        &::before {
+          content: '•';
+          color: $accent-color;
+          font-weight: bold;
+          margin-right: $spacing-sm;
         }
       }
     }
   }
-}
-
-// モバイル対応
-@media (max-width: 768px) {
-  .contact {
-    .contact-content {
-      grid-template-columns: 1fr;
-      gap: 40px;
+  
+  // テーブルスタイル
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    background: $text-color-white;
+    @include border-radius-default;
+    overflow: hidden;
+    @include card-shadow;
+    
+    &-header {
+      background-color: $background-dark;
+    }
+    
+    &-body {
+      background-color: $text-color-white;
+    }
+    
+    &-row {
+      border-bottom: 1px solid #eee;
       
-      .map-container {
-        .placeholder-map {
-          height: 300px;
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+    
+    &-cell {
+      padding: $spacing-md;
+      text-align: left;
+      
+      &:first-child {
+        font-weight: 700;
+        color: $text-color-primary;
+      }
+    }
+  }
+  
+  // テーブルヘッダーセル
+  &__table-header &__table-cell {
+    @extend .text-regular;
+    @extend .text-on-dark;
+    font-weight: 700;
+  }
+  
+  // テーブルボディセル
+  &__table-body &__table-cell {
+    @extend .text-regular;
+    color: #666;
+  }
+  
+  // アクセスセクション
+  &__access {
+    @include section-padding;
+    
+    &-title {
+      @extend .heading-english;
+      @include section-title-spacing;
+      text-align: center;
+    }
+    
+    &-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: $spacing-xl;
+      
+      @media (min-width: $breakpoint-mobile) {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: $spacing-xxl;
+      }
+    }
+    
+    &-item {
+      background: $text-color-white;
+      @include card-padding;
+      @include border-radius-default;
+      @include card-shadow;
+      
+      &-title {
+        @extend .text-bold;
+        color: $accent-color;
+        margin-bottom: $spacing-lg;
+      }
+      
+      &-list {
+        list-style: none;
+        @include flex-column;
+      }
+      
+      &-list-item {
+        @extend .text-regular;
+        padding: $spacing-sm 0;
+        border-bottom: 1px solid #eee;
+        
+        &:last-child {
+          border-bottom: none;
+        }
+        
+        &::before {
+          content: '→';
+          color: $accent-color;
+          font-weight: bold;
+          margin-right: $spacing-sm;
         }
       }
     }
+  }
+  
+  // CTAセクション
+  &__cta {
+    @include section-padding;
+    @include dark-background;
     
-    .hours-content {
-      grid-template-columns: 1fr;
-      gap: 30px;
+    &-content {
+      text-align: center;
     }
     
-    .access-content {
-      grid-template-columns: 1fr;
+    &-title {
+      @extend .heading-english;
+      @extend .text-on-dark;
+      @include section-title-spacing;
     }
     
-    .cta-content {
-      h2 {
-        font-size: 24px;
+    &-description {
+      @extend .text-regular;
+      @extend .text-on-dark;
+      font-size: 18px;
+      margin-bottom: $spacing-xxl;
+      
+      @media (min-width: $breakpoint-mobile) {
+        font-size: 20px;
+      }
+    }
+    
+    &-buttons {
+      @include button-group-horizontal;
+    }
+    
+    &-button {
+      @include flex-center;
+      gap: $spacing-sm;
+      text-decoration: none;
+      transition: all $transition-normal;
+      
+      &--primary {
+        @include button-primary;
       }
       
-      p {
-        font-size: 16px;
+      &--secondary {
+        @include button-secondary;
+        @extend .text-on-dark;
+        border-color: $text-color-white;
+        
+        &:hover {
+          background-color: $text-color-white;
+          color: $background-dark;
+        }
       }
       
-      .cta-buttons {
-        flex-direction: column;
-        align-items: center;
+      &-icon {
+        font-size: 18px;
       }
     }
   }
