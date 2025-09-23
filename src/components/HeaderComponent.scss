@@ -49,6 +49,17 @@
       font-size: 28px;
       margin: 0;
     }
+    
+    .logo-image {
+      height: 60px;
+      width: auto;
+      object-fit: cover;
+      transition: transform $transition-normal;
+      
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
   }
   
   .nav {
@@ -177,8 +188,10 @@
       padding: 0 15px;
     }
     
-    .logo h1 {
-      font-size: 26px;
+    .logo {
+      .logo-image {
+        height: 55px;
+      }
     }
     
     .btn-web-reservation {
@@ -205,8 +218,10 @@
       padding: 0 10px;
     }
     
-    .logo h1 {
-      font-size: 24px;
+    .logo {
+      .logo-image {
+        height: 50px;
+      }
     }
     
     .nav {

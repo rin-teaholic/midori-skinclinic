@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { FaVirus, FaSun, FaSearch, FaHeartbeat, FaEye, FaMicroscope } from 'react-icons/fa'
+import { FaVirus, FaSun, FaSearch, FaHeartbeat, FaEye, FaMicroscope, FaStethoscope } from 'react-icons/fa'
 import './ServicesPage.scss'
 
 function Services() {
@@ -12,7 +12,7 @@ function Services() {
     <div className="services">
       <section className="services__hero">
         <div className="container">
-          <h1 className="services__hero-title">診療内容</h1>
+          <h1 className="services__hero-title">Services</h1>
           <p className="services__hero-description">皮膚のトラブルを専門的に診療いたします</p>
         </div>
       </section>
@@ -109,14 +109,18 @@ function Services() {
 
       <section className="services__equipment">
         <div className="container">
-          <h2 className="services__equipment-title">検査・治療機器</h2>
+          <h2 className="services__equipment-title">
+            <FaStethoscope className="services__equipment-title-icon" />
+            検査・治療機器
+          </h2>
           <div className="services__equipment-grid">
             <div className="services__equipment-item">
               <div className="services__equipment-image">
-                <div className="services__equipment-placeholder">
-                  <span className="services__equipment-icon">🔬</span>
-                  <p className="services__equipment-caption">ダーモスコピー</p>
-                </div>
+                <img 
+                  src={require('../assets/images/dermoscopy.jpg')} 
+                  alt="ダーモスコピー検査機器" 
+                  className="services__equipment-photo"
+                />
               </div>
               <h3 className="services__equipment-item-title">ダーモスコピー</h3>
               <p className="services__equipment-item-description">皮膚の表面を拡大して観察し、皮膚がんの早期発見に役立ちます。</p>
@@ -124,10 +128,11 @@ function Services() {
             
             <div className="services__equipment-item">
               <div className="services__equipment-image">
-                <div className="services__equipment-placeholder">
-                  <span className="services__equipment-icon">💡</span>
-                  <p className="services__equipment-caption">Wood灯検査</p>
-                </div>
+                <img 
+                  src={require('../assets/images/wood-lamp-examination.jpg')} 
+                  alt="Wood灯検査機器" 
+                  className="services__equipment-photo"
+                />
               </div>
               <h3 className="services__equipment-item-title">Wood灯検査</h3>
               <p className="services__equipment-item-description">特殊な光線で皮膚の状態を詳しく観察し、診断の精度を高めます。</p>
@@ -135,10 +140,11 @@ function Services() {
             
             <div className="services__equipment-item">
               <div className="services__equipment-image">
-                <div className="services__equipment-placeholder">
-                  <span className="services__equipment-icon">🧪</span>
-                  <p className="services__equipment-caption">パッチテスト</p>
-                </div>
+                <img 
+                  src={require('../assets/images/patch-test.jpg')} 
+                  alt="パッチテスト検査" 
+                  className="services__equipment-photo"
+                />
               </div>
               <h3 className="services__equipment-item-title">パッチテスト</h3>
               <p className="services__equipment-item-description">アレルギーの原因物質を特定し、適切な治療方針を決定します。</p>

@@ -2,6 +2,7 @@ import React, { useState, useCallback, memo } from 'react'
 import { Link } from 'react-router-dom'
 import { FaBars, FaTimes, FaCalendarAlt } from 'react-icons/fa'
 import type { HeaderProps } from '../types'
+import logoImage from '../assets/images/logo.png'
 import './HeaderComponent.scss'
 
 function Header(props: HeaderProps) {
@@ -16,7 +17,7 @@ function Header(props: HeaderProps) {
       <div className="container">
         <div className="header-content">
           <Link to="/" className="logo" aria-label="みどり皮膚科ホームページ">
-            <h1>みどり皮膚科</h1>
+            <img src={logoImage} alt="みどり皮膚科" className="logo-image" />
           </Link>
           
           <nav className={`nav ${isMenuOpen ? 'nav-open' : ''}`} id="navigation-menu" role="navigation" aria-label="メインナビゲーション">
@@ -24,12 +25,12 @@ function Header(props: HeaderProps) {
               <li role="none"><Link to="/" className="nav-link" role="menuitem">ホーム</Link></li>
               <li role="none"><Link to="/about" className="nav-link" role="menuitem">当院について</Link></li>
               <li role="none"><Link to="/services" className="nav-link" role="menuitem">診療内容</Link></li>
-              <li role="none"><Link to="/contact" className="nav-link" role="menuitem">アクセス</Link></li>
+              <li role="none"><Link to="/access" className="nav-link" role="menuitem">アクセス</Link></li>
             </ul>
           </nav>
           
           <div className="header-actions">
-            <Link to="/contact" className="btn-web-reservation">
+            <Link to="/reservation" className="btn-web-reservation">
               <FaCalendarAlt className="reservation-icon" aria-hidden="true" />
               Web予約
             </Link>

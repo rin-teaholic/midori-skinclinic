@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { 
   FaPhone, 
   FaMapMarkerAlt, 
-  FaClock, 
   FaEnvelope
 } from 'react-icons/fa'
 import './FooterComponent.scss'
@@ -24,11 +23,11 @@ function Footer() {
               </div>
               <div className="clinic-phone">
                 <FaPhone className="footer-icon" />
-                <a href="tel:03-1234-5678">03-1234-5678</a>
+                <span>03-1234-5678</span>
               </div>
               <div className="clinic-email">
                 <FaEnvelope className="footer-icon" />
-                <a href="mailto:info@midori-hifuka.com">info@midori-hifuka.com</a>
+                <span>info@midori-hifuka.com</span>
               </div>
             </div>
           </div>
@@ -38,14 +37,12 @@ function Footer() {
             <h3 className="footer-title">診療時間</h3>
             <div className="hours-info">
               <div className="hours-item">
-                <FaClock className="footer-icon" />
                 <div className="hours-details">
                   <div className="hours-period">午前</div>
                   <div className="hours-time">9:00 - 12:00</div>
                 </div>
               </div>
               <div className="hours-item">
-                <FaClock className="footer-icon" />
                 <div className="hours-details">
                   <div className="hours-period">午後</div>
                   <div className="hours-time">14:00 - 18:00</div>
@@ -66,7 +63,7 @@ function Footer() {
               <Link to="/about" className="footer-link">当院について</Link>
               <Link to="/services" className="footer-link">診療内容</Link>
               <Link to="/news" className="footer-link">お知らせ</Link>
-              <Link to="/contact" className="footer-link">アクセス・お問い合わせ</Link>
+              <Link to="/access" className="footer-link">アクセス</Link>
             </nav>
           </div>
 

@@ -93,12 +93,20 @@
       
       .footer-icon {
         margin-right: $spacing-sm;
-        margin-top: 2px;
+        margin-top: 4px;
         flex-shrink: 0;
-        color: $accent-color;
+        color: $text-color-white;
+      }
+    }
+    
+    .clinic-address,
+    .clinic-phone,
+    .clinic-email {
+      .footer-icon {
+        margin-top: 6px;
       }
       
-      span, a {
+      span {
         font-family: $font-noto-sans-jp;
         font-weight: 400;
         font-size: 14px;
@@ -112,11 +120,6 @@
           line-height: 20px;
         }
       }
-      
-      a:hover {
-        color: $accent-color;
-        transition: color 0.3s ease;
-      }
     }
   }
   
@@ -129,7 +132,8 @@
       
       .footer-icon {
         margin-right: $spacing-sm;
-        color: $accent-color;
+        margin-top: 2px;
+        color: $text-color-white;
         flex-shrink: 0;
       }
       

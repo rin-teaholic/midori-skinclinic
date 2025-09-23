@@ -12,7 +12,7 @@
     
     &-title {
       @extend .heading-english;
-      margin-bottom: $spacing-lg;
+      margin-bottom: 0;
     }
     
     &-description {
@@ -66,7 +66,6 @@
     
     &-title {
       @extend .text-bold;
-      color: $accent-color;
       margin-bottom: $spacing-lg;
       text-align: center;
     }
@@ -104,13 +103,24 @@
   // 検査・治療機器セクション
   &__equipment {
     @include section-padding;
-    @include dark-background;
+    @include gradient-background;
     
     &-title {
-      @extend .heading-english;
-      @extend .text-on-dark;
+      @extend .text-bold;
       @include section-title-spacing;
-      text-align: center;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: $spacing-md;
+      
+      &-icon {
+        color: $accent-color;
+        font-size: 20px;
+        
+        @media (min-width: $breakpoint-mobile) {
+          font-size: 22px;
+        }
+      }
     }
     
     &-grid {
@@ -151,6 +161,19 @@
     
     &-image {
       margin-bottom: $spacing-lg;
+    }
+    
+    &-photo {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      object-position: center;
+      @include border-radius-default;
+      @include card-shadow;
+      
+      @media (min-width: $breakpoint-mobile) {
+        height: 250px;
+      }
     }
     
     &-placeholder {

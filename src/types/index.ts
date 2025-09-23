@@ -71,3 +71,46 @@ export interface HeaderProps {
 export interface FooterProps {
 	// 必要に応じてプロパティを追加
 }
+
+export interface ReservationProps {
+	// 必要に応じてプロパティを追加
+}
+
+// 予約システムの型定義
+export type ReservationStatus = 'pending' | 'confirmed' | 'cancelled' | 'completed'
+
+export interface ReservationData {
+	id: string
+	name: string
+	phone: string
+	email: string
+	date: string
+	time: string
+	service: string
+	message: string
+	status: ReservationStatus
+	createdAt: string
+	updatedAt: string
+}
+
+export interface ReservationFormData {
+	name: string
+	phone: string
+	email: string
+	date: string
+	time: string
+	service: string
+	message: string
+}
+
+export interface ReservationManagementProps {
+	reservations: ReservationData[]
+	onUpdateReservation: (id: string, status: ReservationStatus) => void
+	onDeleteReservation: (id: string) => void
+}
+
+export interface ReservationListProps {
+	reservations: ReservationData[]
+	onStatusChange: (id: string, status: ReservationStatus) => void
+	onDelete: (id: string) => void
+}

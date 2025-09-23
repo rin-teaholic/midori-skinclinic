@@ -59,7 +59,7 @@ src/
 // プレースホルダーの代わりに実際の画像を使用
 <img 
   src="/assets/images/hero-clinic.jpg" 
-  alt="みどり皮ふ科外観" 
+  alt="みどり皮膚科外観" 
   className="hero-image"
 />
 ```

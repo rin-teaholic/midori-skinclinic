@@ -12,7 +12,7 @@
     
     &-title {
       @extend .heading-english;
-      margin-bottom: $spacing-lg;
+      margin-bottom: 0;
     }
     
     &-description {
@@ -34,20 +34,33 @@
     }
     
     &-title {
-      @extend .heading-english;
-      @include section-title-spacing;
-      text-align: center;
+      @extend .text-bold;
+      margin-bottom: $spacing-lg;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: $spacing-md;
+    }
+    
+    &-icon {
+      color: $accent-color;
+      font-size: 24px;
+      flex-shrink: 0;
+      
+      @media (min-width: $breakpoint-mobile) {
+        font-size: 28px;
+      }
     }
     
     &-wrapper {
       display: grid;
       grid-template-columns: 1fr;
-      gap: $spacing-xl;
+      gap: $spacing-xxl;
       align-items: flex-start;
       
       @media (min-width: $breakpoint-mobile) {
         grid-template-columns: 1fr 2fr;
-        gap: $spacing-xxl;
+        gap: 60px;
       }
     }
     
@@ -59,35 +72,40 @@
       }
     }
     
-    &-placeholder {
+    &-photo {
       width: 100%;
-      height: 250px;
-      background-color: #f8f9fa;
-      border: 2px dashed #ddd;
-      @include flex-column-center;
+      max-width: 300px;
+      aspect-ratio: 1 / 1.414; // 白銀比（1:√2）
       @include border-radius-default;
+      @include card-shadow;
+      object-fit: cover;
+      object-position: top; // 上から表示
+      background: 
+        // 室内の白い壁紙のテクスチャを模擬
+        radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        radial-gradient(circle at 40% 60%, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+        // 白い壁紙のベース色
+        linear-gradient(135deg, #fefefe 0%, #f8f8f8 25%, #f5f5f5 50%, #f0f0f0 75%, #eeeeee 100%);
+      background-size: 20px 20px, 15px 15px, 25px 25px, 100% 100%;
       
       @media (min-width: $breakpoint-mobile) {
-        height: 300px;
+        max-width: 350px;
       }
-    }
-    
-    &-icon {
-      font-size: 60px;
-      margin-bottom: $spacing-lg;
-      
-      @media (min-width: $breakpoint-mobile) {
-        font-size: 80px;
-      }
-    }
-    
-    &-caption {
-      @extend .text-regular;
-      color: #666;
     }
     
     &-text {
       @include flex-column;
+      gap: $spacing-lg;
+    }
+    
+    &-intro {
+      margin-bottom: $spacing-lg;
+    }
+    
+    &-main {
+      @include flex-column;
+      gap: $spacing-lg;
     }
     
     &-paragraph {
@@ -99,71 +117,33 @@
         margin-bottom: 0;
       }
     }
+    
   }
   
-  // 医院の特徴セクション
-  &__features {
-    @include section-padding;
-    @include dark-background;
-    
-    &-title {
-      @extend .heading-english;
-      @extend .text-on-dark;
-      @include section-title-spacing;
-      text-align: center;
-    }
-    
-    &-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: $spacing-xl;
-      
-      @media (min-width: $breakpoint-mobile) {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: $spacing-xxl;
-      }
-    }
-    
-    &-card {
-      background: $text-color-white;
-      @include card-padding;
-      @include border-radius-default;
-      @include card-shadow;
-      text-align: center;
-      transition: all $transition-normal;
-      
-      &:hover {
-        transform: translateY(-5px);
-        @include card-shadow-hover;
-      }
-    }
-    
-    &-icon {
-      font-size: 48px;
-      margin-bottom: $spacing-lg;
-      display: block;
-    }
-    
-    &-title {
-      @extend .text-bold;
-      color: $accent-color;
-      margin-bottom: $spacing-md;
-    }
-    
-    &-description {
-      @extend .text-regular;
-      line-height: 1.6;
-    }
-  }
   
   // 診療方針セクション
   &__policy {
+    @include gradient-background;
     @include section-padding;
     
     &-title {
-      @extend .heading-english;
+      @extend .text-bold;
       @include section-title-spacing;
-      text-align: center;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: $spacing-md;
+    }
+    
+    &-icon {
+      color: $accent-color;
+      font-size: 24px;
+      flex-shrink: 0;
+      
+      @media (min-width: $breakpoint-mobile) {
+        font-size: 28px;
+      }
     }
     
     &-content {
@@ -189,4 +169,5 @@
       }
     }
   }
+
 }

@@ -198,7 +198,7 @@ function Home(props: HomeProps) {
             <div className="about-image">
               <img 
                 src={aboutTopImage} 
-                alt="みどり皮ふ科について" 
+                alt="みどり皮膚科について" 
                 className="about-image-content"
                 loading="lazy"
                 decoding="async"

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { FaUserMd, FaStethoscope } from 'react-icons/fa'
 import type { AboutProps } from '../types'
 import './AboutPage.scss'
 
@@ -12,7 +13,7 @@ function About(props: AboutProps) {
     <div className="about">
       <section className="about__hero">
         <div className="container">
-          <h1 className="about__hero-title">医院について</h1>
+          <h1 className="about__hero-title">About</h1>
           <p className="about__hero-description">患者様一人ひとりに寄り添う皮膚科専門クリニック</p>
         </div>
       </section>
@@ -20,63 +21,60 @@ function About(props: AboutProps) {
       <section className="about__greeting">
         <div className="container">
           <div className="about__greeting-content">
-            <h2 className="about__greeting-title">院長挨拶</h2>
             <div className="about__greeting-wrapper">
               <div className="about__greeting-image">
-                <div className="about__greeting-placeholder">
-                  <span className="about__greeting-icon">👨‍⚕️</span>
-                  <p className="about__greeting-caption">院長写真</p>
-                </div>
+                <img 
+                  src={require('../assets/images/profile.jpg')} 
+                  alt="院長 田中みどり" 
+                  className="about__greeting-photo"
+                />
               </div>
               <div className="about__greeting-text">
-                <p className="about__greeting-paragraph">
-                  みどり皮ふ科の院長を務めております、田中みどりと申します。
-                  皮膚科医として20年以上の経験を活かし、患者様一人ひとりに
-                  最適な治療を提供することを心がけております。
-                </p>
-                <p className="about__greeting-paragraph">
-                  皮膚のトラブルは見た目だけでなく、日常生活にも大きな影響を
-                  与えることがあります。そんな患者様の不安や悩みに寄り添い、
-                  安心して治療を受けていただけるよう、丁寧な説明と
-                  確実な治療を心がけています。
-                </p>
+                <h2 className="about__greeting-title">
+                  <FaUserMd className="about__greeting-icon" />
+                  院長挨拶
+                </h2>
+                <div className="about__greeting-intro">
+                  <p className="about__greeting-paragraph about__greeting-paragraph--lead">
+                    みどり皮膚科の院長を務めております、田中みどりと申します。
+                  </p>
+                </div>
+                
+                <div className="about__greeting-main">
+                  <p className="about__greeting-paragraph">
+                    皮膚科医として20年以上の経験を積み、数多くの患者様の
+                    皮膚トラブルと向き合ってまいりました。その中で学んだのは、
+                    皮膚の病気は単なる身体的な問題ではなく、患者様の
+                    生活の質や精神的な面にも大きく影響するということです。
+                  </p>
+                  
+                  <p className="about__greeting-paragraph">
+                    アトピー性皮膚炎、にきび、シミ、しわなど、それぞれの症状には
+                    患者様の生活環境や体質、ストレスなどが複雑に絡み合っています。
+                    だからこそ、私は患者様一人ひとりの状況を詳しくお聞きし、
+                    最適な治療法をご提案することを大切にしています。
+                  </p>
+                  
+                  <p className="about__greeting-paragraph">
+                    患者様が安心してご相談いただけるよう、分かりやすい説明を心がけ、
+                    疑問や不安があれば遠慮なくお話しください。一緒に最良の解決策を
+                    見つけていきましょう。
+                  </p>
+                </div>
+                
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="about__features">
-        <div className="container">
-          <h2 className="about__features-title">医院の特徴</h2>
-          <div className="about__features-grid">
-            <div className="about__feature-card">
-              <div className="about__feature-icon">👨‍⚕️</div>
-              <h3 className="about__feature-title">経験豊富な医師</h3>
-              <p className="about__feature-description">皮膚科専門医として20年以上の経験を持つ院長が、確かな診断と治療を提供します。</p>
-            </div>
-            <div className="about__feature-card">
-              <div className="about__feature-icon">🔬</div>
-              <h3 className="about__feature-title">最新の検査設備</h3>
-              <p className="about__feature-description">ダーモスコピー検査など、最新の検査機器を完備し、正確な診断を行います。</p>
-            </div>
-            <div className="about__feature-card">
-              <div className="about__feature-icon">💬</div>
-              <h3 className="about__feature-title">丁寧な説明</h3>
-              <p className="about__feature-description">患者様に分かりやすい説明を行い、治療方針について十分にご相談いただきます。</p>
-            </div>
-            <div className="about__feature-card">
-              <div className="about__feature-icon">🏥</div>
-              <h3 className="about__feature-title">清潔な環境</h3>
-              <p className="about__feature-description">院内は常に清潔に保たれ、患者様が安心してご来院いただける環境を整えています。</p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <section className="about__policy">
         <div className="container">
-          <h2 className="about__policy-title">診療方針</h2>
+          <h2 className="about__policy-title">
+            <FaStethoscope className="about__policy-icon" />
+            診療方針
+          </h2>
           <div className="about__policy-content">
             <div className="about__policy-item">
               <h3 className="about__policy-item-title">1. 患者様中心の医療</h3>
@@ -93,6 +91,7 @@ function About(props: AboutProps) {
           </div>
         </div>
       </section>
+
     </div>
   );
 };

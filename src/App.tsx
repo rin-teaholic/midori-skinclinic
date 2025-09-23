@@ -7,7 +7,8 @@ import About from './pages/About'
 import Services from './pages/Services'
 import News from './pages/News'
 import NewsDetail from './pages/NewsDetail'
-import Contact from './pages/Contact'
+import Access from './pages/Access'
+import Reservation from './pages/Reservation'
 import './App.scss'
 
 function App() {
@@ -22,7 +23,8 @@ function App() {
             <Route path="/services" element={<Services />} />
             <Route path="/news" element={<News />} />
             <Route path="/news/:id" element={<NewsDetail />} />
-            <Route path="/contact" element={<Contact />} />
+            <Route path="/access" element={<Access />} />
+            <Route path="/reservation" element={<Reservation />} />
           </Routes>
         </main>
         <Footer />

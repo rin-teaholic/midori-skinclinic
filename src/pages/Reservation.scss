@@ -1,0 +1,1162 @@
+@import '../styles/variables';
+@import '../styles/mixins';
+@import '../styles/typography';
+@import '../styles/buttons';
+
+.reservation {
+  min-height: 100vh;
+  
+  .reservation-header {
+    @include gradient-background;
+    @include section-padding;
+    text-align: center;
+
+    
+    .reservation-title {
+      @extend .heading-english;
+      margin-bottom: 0;
+    }
+    
+    .reservation-description {
+      @extend .text-regular;
+      font-size: 18px;
+      margin: 0;
+      
+      @media (min-width: $breakpoint-mobile) {
+        font-size: 20px;
+      }
+    }
+    
+    .header-actions {
+      margin-top: $spacing-lg;
+      
+      .button {
+        @include button-secondary;
+        @include flex-center;
+        gap: $spacing-sm;
+        
+        .btn-icon {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+  
+  .reservation-content {
+    @include section-padding;
+    
+    .container {
+      @include container;
+      @include container-padding;
+    }
+    
+    // ステップインジケーター
+    .step-indicator {
+      display: flex;
+      justify-content: center;
+      margin-bottom: $spacing-xl;
+      overflow-x: auto;
+      padding: $spacing-md 0;
+      
+      .step-item {
+        @include flex-center;
+        flex-direction: column;
+        min-width: 120px;
+        padding: $spacing-md;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        transition: all $transition-normal;
+        position: relative;
+        
+        &:not(:last-child)::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          right: -60px;
+          width: 60px;
+          height: 2px;
+          background: #e9ecef;
+          transform: translateY(-50%);
+          z-index: 1;
+        }
+        
+        &.completed:not(:last-child)::after {
+          background: $accent-color;
+        }
+        
+        .step-number {
+          @include flex-center;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background: #e9ecef;
+          color: $text-color-primary;
+          font-weight: bold;
+          margin-bottom: $spacing-sm;
+          transition: all $transition-normal;
+          z-index: 2;
+          position: relative;
+        }
+        
+        .step-title {
+          @extend .text-regular;
+          font-size: 12px;
+          text-align: center;
+          color: $text-color-primary;
+          transition: color $transition-normal;
+        }
+        
+        &.active {
+          .step-number {
+            background: $accent-color;
+            color: $text-color-white;
+          }
+          
+          .step-title {
+            color: $accent-color;
+            @extend .text-bold;
+          }
+        }
+        
+        &.completed {
+          .step-number {
+            background: #27ae60;
+            color: $text-color-white;
+          }
+          
+          .step-title {
+            color: #27ae60;
+          }
+        }
+        
+        &:disabled {
+          cursor: not-allowed;
+          opacity: 0.6;
+        }
+      }
+    }
+    
+    // ステップコンテナ
+    .step-container {
+      background: $text-color-white;
+      border-radius: $border-radius-lg;
+      box-shadow: $shadow-lg;
+      overflow: hidden;
+      
+      .step-header {
+        background: $accent-color;
+        color: $text-color-white;
+        padding: $spacing-lg;
+        text-align: center;
+        
+        .step-title {
+          @extend .text-bold;
+          font-size: 20px;
+          margin: 0;
+        }
+      }
+      
+      .step-body {
+        @include card-padding;
+      }
+    }
+    
+    // ステップコンテンツ
+    .step-content {
+      .step-question {
+        @extend .text-bold;
+        color: $text-color-primary;
+        font-size: 18px;
+        text-align: center;
+        margin-bottom: $spacing-xl;
+      }
+      
+      // 情報セクション（ステップ1用）
+      .info-section {
+        margin-bottom: $spacing-xl;
+        
+        &:last-child {
+          margin-bottom: 0;
+        }
+        
+        .info-title {
+          @extend .text-bold;
+          font-size: 18px;
+          margin-bottom: $spacing-md;
+          border-bottom: 2px solid $accent-color;
+          padding-bottom: $spacing-sm;
+        }
+        
+        .info-grid {
+          display: grid;
+          gap: $spacing-md;
+          
+          .info-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: $spacing-md;
+            background: #f8f9fa;
+            border-radius: $border-radius-md;
+            
+            .info-label {
+              @extend .text-bold;
+            }
+            
+            .info-value {
+              @extend .text-bold;
+            }
+          }
+        }
+        
+        .info-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          
+          li {
+            @extend .text-regular;
+            margin-bottom: $spacing-sm;
+            padding-left: $spacing-lg;
+            position: relative;
+            line-height: 1.6;
+            
+            &:last-child {
+              margin-bottom: 0;
+            }
+            
+            &::before {
+              content: '•';
+              color: $accent-color;
+              font-weight: bold;
+              position: absolute;
+              left: 0;
+            }
+          }
+        }
+        
+        // 営業時間表のスタイル
+        .about-hours-table {
+          margin-bottom: $spacing-xl;
+          
+          .hours-header {
+            margin-bottom: $spacing-md;
+            text-align: center;
+            
+            h4 {
+              margin: 0;
+              
+              .title-japanese {
+                @extend .text-regular;
+                font-size: 14px;
+                font-weight: 700;
+                margin: 0;
+              }
+            }
+          }
+          
+          .hours-content {
+            background: $text-color-white;
+            border-radius: $border-radius-sm;
+            overflow: hidden;
+            @include card-shadow;
+            width: fit-content;
+            margin: 0 auto;
+            max-width: 100%;
+            overflow-x: auto;
+            
+            .hours-row {
+              display: grid;
+              // モバイル: より小さなサイズ
+              grid-template-columns: 80px 50px 50px 50px 50px 50px 50px 50px;
+              gap: 2px;
+              background-color: #ddd;
+              min-width: 0;
+              
+              // タブレット: 中サイズ
+              @media (min-width: $breakpoint-mobile) {
+                grid-template-columns: 120px 70px 70px 70px 70px 70px 70px 70px;
+              }
+              
+              // PC: より大きなサイズ
+              @media (min-width: $breakpoint-tablet) {
+                grid-template-columns: 140px 80px 80px 80px 80px 80px 80px 80px;
+              }
+              
+              &:first-child {
+                background-color: $button-color;
+                
+                .day-label {
+                  background-color: $button-color;
+                  @include text-on-dark;
+                  font-weight: bold;
+                }
+              }
+              
+              .time-label,
+              .day-label,
+              .availability {
+                background-color: $text-color-white;
+                padding: $spacing-sm;
+                text-align: center;
+                font-weight: bold;
+                @extend .text-regular;
+                font-size: 10px;
+                min-width: 0;
+                overflow: hidden;
+                
+                // タブレット: 中サイズ
+                @media (min-width: $breakpoint-mobile) {
+                  padding: $spacing-sm $spacing-md;
+                  font-size: 12px;
+                }
+                
+                // PC: より大きなサイズ
+                @media (min-width: $breakpoint-tablet) {
+                  padding: $spacing-md;
+                  font-size: 14px;
+                }
+                
+                &.day-label {
+                  white-space: nowrap;
+                  font-size: 9px;
+                  
+                  @media (min-width: $breakpoint-mobile) {
+                    font-size: 11px;
+                  }
+                  
+                  @media (min-width: $breakpoint-tablet) {
+                    font-size: 13px;
+                  }
+                }
+                
+                &.time-label {
+                  font-weight: normal;
+                  font-size: 8px;
+                  line-height: 1.2;
+                  white-space: nowrap;
+                  
+                  @media (min-width: $breakpoint-mobile) {
+                    font-size: 10px;
+                  }
+                  
+                  @media (min-width: $breakpoint-tablet) {
+                    font-size: 12px;
+                  }
+                  
+                  .period-label {
+                    font-weight: bold;
+                    font-size: 10px;
+                    
+                    @media (min-width: $breakpoint-mobile) {
+                      font-size: 12px;
+                    }
+                    
+                    @media (min-width: $breakpoint-tablet) {
+                      font-size: 14px;
+                    }
+                  }
+                }
+              }
+              
+              .availability {
+                @include flex-center;
+                
+                svg {
+                  font-size: 12px;
+                  color: $accent-color;
+                  
+                  // タブレット: 中サイズ
+                  @media (min-width: $breakpoint-mobile) {
+                    font-size: 16px;
+                  }
+                  
+                  // PC: より大きなサイズ
+                  @media (min-width: $breakpoint-tablet) {
+                    font-size: 18px;
+                  }
+                  
+                  // 丸アイコンの色
+                  &.fa-circle {
+                    color: $accent-color;
+                  }
+                  
+                  // バツアイコンの色
+                  &.fa-times {
+                    color: #e74c3c;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      
+      // オプショングリッド（ステップ2,3用）
+      .option-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: $spacing-md;
+        margin-bottom: $spacing-xl;
+        
+        .option-card {
+          @include flex-center;
+          flex-direction: column;
+          padding: $spacing-lg;
+          border: 2px solid #e9ecef;
+          border-radius: $border-radius-lg;
+          background: $text-color-white;
+          cursor: pointer;
+          transition: all $transition-normal;
+          position: relative;
+          min-height: 120px;
+          
+          &:hover {
+            border-color: $accent-color;
+            background: rgba(177, 217, 28, 0.05);
+          }
+          
+          &.selected {
+            border-color: $accent-color;
+            background: rgba(177, 217, 28, 0.1);
+          }
+          
+          .option-icon {
+            color: $accent-color;
+            font-size: 24px;
+            margin-bottom: $spacing-sm;
+          }
+          
+          .option-label {
+            @extend .text-bold;
+            color: $text-color-primary;
+            font-size: 16px;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+          }
+          
+          .option-check {
+            position: absolute;
+            top: $spacing-sm;
+            right: $spacing-sm;
+            @include flex-center;
+            width: 24px;
+            height: 24px;
+            background: $accent-color;
+            color: $text-color-white;
+            border-radius: 50%;
+            font-size: 12px;
+          }
+        }
+      }
+      
+      // カレンダーコンテナ（ステップ4用）
+      .calendar-container {
+        margin-bottom: $spacing-lg;
+        
+        .calendar-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+          gap: $spacing-sm;
+          
+          @media (min-width: $breakpoint-mobile) {
+            grid-template-columns: repeat(7, 1fr);
+          }
+          
+          .calendar-date {
+            @include flex-center;
+            flex-direction: column;
+            padding: $spacing-md;
+            border: 2px solid #e9ecef;
+            border-radius: $border-radius-md;
+            background: $text-color-white;
+            cursor: pointer;
+            transition: all $transition-normal;
+            min-height: 80px;
+            
+            &:hover:not(.unavailable) {
+              border-color: $accent-color;
+              background: rgba(177, 217, 28, 0.1);
+            }
+            
+            &.selected {
+              border-color: $accent-color;
+              background: $accent-color;
+              color: $text-color-white;
+            }
+            
+            &.today {
+              border-color: #3498db;
+              background: rgba(52, 152, 219, 0.1);
+            }
+            
+            &.unavailable {
+              background: #f8f9fa;
+              color: #adb5bd;
+              cursor: not-allowed;
+              opacity: 0.6;
+            }
+            
+            .date-day {
+              @extend .text-bold;
+              font-size: 18px;
+              line-height: 1;
+            }
+            
+            .date-month {
+              @extend .text-regular;
+              font-size: 12px;
+              margin-top: $spacing-xs;
+            }
+          }
+        }
+      }
+      
+      // 時間スロット（ステップ4用）
+      .time-slots-section {
+        border-top: 1px solid #e9ecef;
+        padding-top: $spacing-lg;
+        margin-bottom: $spacing-lg;
+        
+        .time-slots-title {
+          @extend .text-bold;
+          color: $text-color-primary;
+          font-size: 16px;
+          margin-bottom: $spacing-md;
+          text-align: center;
+        }
+        
+        .time-slots-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+          gap: $spacing-sm;
+          
+          @media (min-width: $breakpoint-mobile) {
+            grid-template-columns: repeat(4, 1fr);
+          }
+          
+          .time-slot {
+            @extend .text-regular;
+            padding: $spacing-md;
+            border: 2px solid #e9ecef;
+            border-radius: $border-radius-md;
+            background: $text-color-white;
+            cursor: pointer;
+            transition: all $transition-normal;
+            text-align: center;
+            font-size: 14px;
+            
+            &:hover {
+              border-color: $accent-color;
+              background: rgba(177, 217, 28, 0.1);
+            }
+            
+            &.selected {
+              border-color: $accent-color;
+              background: $accent-color;
+              color: $text-color-white;
+            }
+          }
+        }
+      }
+      
+      // 診察券番号セクション（ステップ5用）
+      .medical-card-section {
+        margin-bottom: $spacing-xl;
+        
+        // 診察券番号入力欄の特別なスタイル
+        .form-group {
+          position: relative;
+          
+          .form-label {
+            @extend .text-bold;
+            display: flex;
+            align-items: center;
+            gap: $spacing-sm;
+            color: $text-color-primary;
+            font-size: 16px;
+            margin-bottom: $spacing-sm;
+            
+            .label-icon {
+              color: $accent-color;
+              font-size: 18px;
+            }
+            
+            .required {
+              color: #e74c3c;
+              font-size: 14px;
+            }
+          }
+          
+          .form-input {
+            width: 100%;
+            padding: $spacing-md $spacing-lg;
+            border: 2px solid #e9ecef;
+            border-radius: $border-radius-lg;
+            font-family: $font-noto-sans-jp;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all $transition-normal;
+            background: $text-color-white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            
+            &:focus {
+              outline: none;
+              border-color: $accent-color;
+              box-shadow: 0 0 0 3px rgba(177, 217, 28, 0.15), 0 4px 8px rgba(0, 0, 0, 0.1);
+              transform: translateY(-1px);
+            }
+            
+            &::placeholder {
+              color: #adb5bd;
+              font-weight: 400;
+            }
+            
+            &:hover:not(:focus) {
+              border-color: #ced4da;
+              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            }
+          }
+        }
+        
+        .forgot-card-section {
+          margin-top: $spacing-xl;
+          padding-top: $spacing-lg;
+          border-top: 2px solid #f1f3f4;
+          
+          .forgot-card-toggle {
+            @extend .text-regular;
+            background: linear-gradient(135deg, $accent-color, $button-color);
+            color: $text-color-white;
+            border: none;
+            border-radius: $border-radius-lg;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            padding: $spacing-md $spacing-lg;
+            transition: all $transition-normal;
+            box-shadow: 0 2px 4px rgba(177, 217, 28, 0.3);
+            display: block;
+            width: 100%;
+            text-align: center;
+            
+            &:hover {
+              transform: translateY(-2px);
+              box-shadow: 0 4px 12px rgba(177, 217, 28, 0.4);
+              background: linear-gradient(135deg, $button-color, $accent-color);
+            }
+            
+            &:active {
+              transform: translateY(0);
+              box-shadow: 0 2px 4px rgba(177, 217, 28, 0.3);
+            }
+          }
+          
+          .forgot-card-form {
+            margin-top: $spacing-lg;
+            padding: $spacing-xl;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: $border-radius-lg;
+            border: 2px solid #e9ecef;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+            
+            &::before {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              height: 4px;
+              background: linear-gradient(90deg, $accent-color, $button-color);
+            }
+            
+            .forgot-card-title {
+              @extend .text-bold;
+              color: $text-color-primary;
+              font-size: 18px;
+              margin-bottom: $spacing-xl;
+              text-align: center;
+              position: relative;
+              
+              &::after {
+                content: '';
+                position: absolute;
+                bottom: -$spacing-sm;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 60px;
+                height: 3px;
+                background: linear-gradient(90deg, $accent-color, $button-color);
+                border-radius: 2px;
+              }
+            }
+            
+            .form-fields {
+              margin-bottom: 0;
+              
+              .form-group {
+                .form-label {
+                  .label-icon {
+                    color: $button-color;
+                  }
+                }
+                
+                .form-input,
+                .form-textarea {
+                  background: $text-color-white;
+                  border: 2px solid #e9ecef;
+                  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+                  
+                  &:focus {
+                    border-color: $button-color;
+                    box-shadow: 0 0 0 3px rgba(158, 195, 23, 0.15), 0 4px 8px rgba(0, 0, 0, 0.1);
+                  }
+                  
+                  &:hover:not(:focus) {
+                    border-color: #ced4da;
+                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      // フォームフィールド（ステップ5用）
+      .form-fields {
+        display: grid;
+        gap: $spacing-lg;
+        margin-bottom: $spacing-xl;
+        
+        .form-group {
+          @include form-element-margin;
+          
+          .form-label {
+            @include form-label-margin;
+            @extend .text-bold;
+            display: flex;
+            align-items: center;
+            gap: $spacing-sm;
+            color: $text-color-primary;
+            font-size: 16px;
+            
+            .label-icon {
+              color: $accent-color;
+              font-size: 16px;
+            }
+            
+            .required {
+              color: #e74c3c;
+              font-size: 14px;
+            }
+          }
+          
+          .form-input,
+          .form-textarea {
+            width: 100%;
+            padding: $spacing-md;
+            border: 2px solid #e9ecef;
+            border-radius: $border-radius-md;
+            font-family: $font-noto-sans-jp;
+            font-size: 16px;
+            transition: border-color $transition-normal;
+            background: $text-color-white;
+            
+            &:focus {
+              outline: none;
+              border-color: $accent-color;
+              box-shadow: 0 0 0 3px rgba(177, 217, 28, 0.1);
+            }
+            
+            &::placeholder {
+              color: #adb5bd;
+            }
+          }
+          
+          .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+            line-height: 1.6;
+          }
+        }
+      }
+      
+      // 確認詳細（ステップ6用）
+      .confirmation-details {
+        margin-bottom: $spacing-xl;
+        
+        .detail-section {
+          margin-bottom: $spacing-lg;
+          
+          &:last-child {
+            margin-bottom: 0;
+          }
+          
+          h4 {
+            @extend .text-bold;
+            color: $text-color-primary;
+            font-size: 16px;
+            margin-bottom: $spacing-md;
+            border-bottom: 2px solid $accent-color;
+            padding-bottom: $spacing-xs;
+          }
+          
+          .detail-item {
+            @extend .text-bold;
+            margin-bottom: $spacing-sm;
+            padding: $spacing-sm;
+            background: #f8f9fa;
+            border-radius: $border-radius-sm;
+            
+            &:last-child {
+              margin-bottom: 0;
+            }
+            
+            strong {
+              @extend .text-regular;
+              color: $text-color-primary;
+            }
+          }
+        }
+      }
+      
+      // ステップアクション
+      .step-actions {
+        display: flex;
+        justify-content: center;
+        gap: $spacing-md;
+        margin-top: $spacing-xl;
+        
+        .button {
+          @include button-primary;
+          @include flex-center;
+          gap: $spacing-sm;
+          min-width: 120px;
+          
+          &.button--secondary {
+            @include button-secondary;
+          }
+          
+          &.button--large {
+            @include button-large;
+          }
+          
+          &:disabled {
+            background: #adb5bd;
+            cursor: not-allowed;
+            opacity: 0.6;
+          }
+          
+          .btn-icon {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+  
+  .reservation-form {
+    background: $text-color-white;
+    border-radius: $border-radius-lg;
+    box-shadow: $shadow-lg;
+    @include card-padding;
+    
+    .form-group {
+      @include form-element-margin;
+      
+      .form-label {
+        @include form-label-margin;
+        @extend .text-bold;
+        display: flex;
+        align-items: center;
+        gap: $spacing-sm;
+        color: $text-color-primary;
+        
+        .label-icon {
+          color: $accent-color;
+          font-size: 16px;
+        }
+        
+        .required {
+          color: #e74c3c;
+          font-size: 14px;
+        }
+      }
+      
+      .form-input,
+      .form-select,
+      .form-textarea {
+        width: 100%;
+        padding: $spacing-md;
+        border: 2px solid #e9ecef;
+        border-radius: $border-radius-md;
+        font-family: $font-noto-sans-jp;
+        font-size: 16px;
+        transition: border-color $transition-normal;
+        
+        &:focus {
+          outline: none;
+          border-color: $accent-color;
+          box-shadow: 0 0 0 3px rgba(177, 217, 28, 0.1);
+        }
+        
+        &::placeholder {
+          color: #adb5bd;
+        }
+      }
+      
+      .form-textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+    }
+    
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: $spacing-md;
+      
+      @media (min-width: $breakpoint-mobile) {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    
+    .form-actions {
+      @include form-button-margin;
+      text-align: center;
+      
+      .button {
+        @include button-primary;
+        @include button-large;
+        @include flex-center;
+        gap: $spacing-sm;
+        width: 100%;
+        
+        @media (min-width: $breakpoint-mobile) {
+          width: auto;
+          min-width: 200px;
+        }
+        
+        &:disabled {
+          background: #adb5bd;
+          cursor: not-allowed;
+          opacity: 0.6;
+        }
+        
+        .btn-icon {
+          font-size: 18px;
+        }
+      }
+      
+      .form-note {
+        @extend .text-regular;
+        color: #e74c3c;
+        font-size: 14px;
+        margin-top: $spacing-sm;
+        text-align: center;
+      }
+    }
+  }
+  
+  .reservation-info-section {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
+    
+    .info-card {
+      background: $text-color-white;
+      border-radius: $border-radius-lg;
+      box-shadow: $shadow-md;
+      @include card-padding;
+      
+      .info-title {
+        @extend .text-bold;
+        color: $accent-color;
+        margin-bottom: $spacing-lg;
+        font-size: 20px;
+        border-bottom: 2px solid $accent-color;
+        padding-bottom: $spacing-sm;
+      }
+      
+      .info-content {
+        .info-item {
+          display: flex;
+          align-items: flex-start;
+          gap: $spacing-sm;
+          margin-bottom: $spacing-md;
+          
+          &:last-child {
+            margin-bottom: 0;
+          }
+          
+          .info-label {
+            @extend .text-bold;
+            color: $text-color-primary;
+            min-width: 80px;
+            font-size: 14px;
+          }
+          
+          .info-value {
+            @extend .text-bold;
+            flex: 1;
+            line-height: 1.6;
+          }
+          
+          .info-icon {
+            color: $accent-color;
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+          }
+        }
+        
+        .info-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          
+          li {
+            @extend .text-regular;
+            margin-bottom: $spacing-sm;
+            padding-left: $spacing-lg;
+            position: relative;
+            line-height: 1.6;
+            
+            &:last-child {
+              margin-bottom: 0;
+            }
+            
+            &::before {
+              content: '•';
+              color: $accent-color;
+              font-weight: bold;
+              position: absolute;
+              left: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  // 予約完了画面のスタイル
+  .reservation-success {
+    text-align: center;
+    background: $text-color-white;
+    border-radius: $border-radius-lg;
+    box-shadow: $shadow-lg;
+    @include card-padding;
+    max-width: 600px;
+    margin: 0 auto;
+    
+    .success-icon {
+      color: #28a745;
+      margin-bottom: $spacing-lg;
+    }
+    
+    .success-title {
+      @extend .text-bold;
+      color: $text-color-primary;
+      font-size: 24px;
+      margin-bottom: $spacing-lg;
+    }
+    
+    .success-message {
+      @extend .text-regular;
+      color: $text-color-primary;
+      margin-bottom: $spacing-xl;
+      line-height: 1.8;
+    }
+    
+    .success-details {
+      background: #f8f9fa;
+      border-radius: $border-radius-md;
+      padding: $spacing-lg;
+      margin-bottom: $spacing-xl;
+      text-align: left;
+      
+      .detail-item {
+        @extend .text-regular;
+        color: $text-color-primary;
+        margin-bottom: $spacing-sm;
+        
+        &:last-child {
+          margin-bottom: 0;
+        }
+        
+        strong {
+          @extend .text-regular;
+          color: $text-color-primary;
+        }
+      }
+    }
+    
+    .success-actions {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-md;
+      
+      @media (min-width: $breakpoint-mobile) {
+        flex-direction: row;
+        justify-content: center;
+        gap: $spacing-lg;
+      }
+      
+      .button {
+        @include button-primary;
+        @include button-large;
+        @include flex-center;
+        gap: $spacing-sm;
+        
+        &.button--secondary {
+          @include button-secondary;
+        }
+        
+        .btn-icon {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+// レスポンシブ対応
+@media (max-width: $breakpoint-mobile) {
+  .reservation {
+    .reservation-content {
+      gap: $spacing-lg;
+    }
+    
+    .reservation-form-section {
+      .reservation-form {
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+      }
+    }
+    
+    .reservation-info-section {
+      .info-card {
+        .info-content {
+          .info-item {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: $spacing-xs;
+            
+            .info-label {
+              min-width: auto;
+            }
+          }
+        }
+      }
+    }
+    
+  }
+}

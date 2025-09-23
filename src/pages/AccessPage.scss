@@ -1,0 +1,168 @@
+// 変数とミックスインのインポート
+@import '../styles/variables';
+@import '../styles/mixins';
+@import '../styles/typography';
+
+.access {
+  // ヒーローセクション
+  &__hero {
+    @include gradient-background;
+    @include section-padding;
+    text-align: center;
+    
+    &-title {
+      @extend .heading-english;
+      margin-bottom: 0;
+    }
+    
+    &-description {
+      @extend .text-regular;
+      font-size: 18px;
+      
+      @media (min-width: $breakpoint-mobile) {
+        font-size: 20px;
+      }
+    }
+  }
+  
+  // 医院情報セクション
+  &__info {
+    @include section-padding;
+    
+    &-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: $spacing-xxl;
+      
+      @media (min-width: $breakpoint-mobile) {
+        grid-template-columns: 1fr 2fr;
+        gap: $spacing-xxxl;
+      }
+    }
+    
+    &-details {
+      @include flex-column;
+    }
+    
+    &-title {
+      @extend .heading-english;
+      @include section-title-spacing;
+    }
+    
+    &-item {
+      margin-bottom: $spacing-xl;
+      
+      &-title {
+        @extend .text-bold;
+        color: $accent-color;
+        margin-bottom: $spacing-sm;
+      }
+      
+      &-text {
+        @extend .text-regular;
+        line-height: 1.6;
+      }
+    }
+  }
+  
+  // 地図セクション
+  &__map {
+    @include flex-center;
+    
+    &-placeholder {
+      width: 100%;
+      height: 300px;
+      background-color: #f8f9fa;
+      border: 2px dashed #ddd;
+      @include flex-column-center;
+      @include border-radius-default;
+      
+      @media (min-width: $breakpoint-mobile) {
+        height: 400px;
+      }
+    }
+    
+    &-icon {
+      font-size: 60px;
+      margin-bottom: $spacing-lg;
+      
+      @media (min-width: $breakpoint-mobile) {
+        font-size: 80px;
+      }
+    }
+    
+    &-title {
+      @extend .text-bold;
+      color: #666;
+      margin-bottom: $spacing-sm;
+    }
+    
+    &-description {
+      @extend .text-regular;
+      color: #999;
+    }
+  }
+  
+  // 交通機関アクセスセクション
+  &__transport {
+    @include section-padding;
+    padding-top: 0; // 上部の余白を完全に削除
+    margin-bottom: 80px; // フッターとの余白を追加
+    
+    @media (min-width: $breakpoint-mobile) {
+      margin-bottom: 120px; // デスクトップではさらに大きな余白
+    }
+    
+    &-title {
+      @extend .heading-english;
+      @include section-title-spacing;
+      text-align: center;
+    }
+    
+    &-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: $spacing-xl;
+      
+      @media (min-width: $breakpoint-mobile) {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: $spacing-xxl;
+      }
+    }
+    
+    &-item {
+      background: $text-color-white;
+      @include card-padding;
+      @include border-radius-default;
+      @include card-shadow;
+      
+      &-title {
+        @extend .text-bold;
+        color: $accent-color;
+        margin-bottom: $spacing-lg;
+      }
+      
+      &-list {
+        list-style: none;
+        @include flex-column;
+      }
+      
+      &-list-item {
+        @extend .text-regular;
+        padding: $spacing-sm 0;
+        border-bottom: 1px solid #eee;
+        
+        &:last-child {
+          border-bottom: none;
+        }
+        
+        &::before {
+          content: '→';
+          color: $accent-color;
+          font-weight: bold;
+          margin-right: $spacing-sm;
+        }
+      }
+    }
+  }
+}

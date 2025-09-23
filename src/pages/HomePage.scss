@@ -21,6 +21,7 @@
       bottom: 0;
       height: 80vh;
       z-index: 0;
+      overflow: hidden;
       
       .hero-bg-image {
         width: 100%;
@@ -28,6 +29,7 @@
         object-fit: cover;
         object-position: center center;
         filter: brightness(1.1);
+        animation: heroImageZoomOut 3s ease-out;
       }
       
       .hero-overlay {
