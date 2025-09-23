@@ -12,6 +12,10 @@ function Header(props: HeaderProps) {
     setIsMenuOpen(prev => !prev)
   }, [])
 
+  const handleCloseMenu = useCallback((): void => {
+    setIsMenuOpen(false)
+  }, [])
+
   return (
     <header className="header" role="banner">
       <div className="container">
@@ -22,10 +26,10 @@ function Header(props: HeaderProps) {
           
           <nav className={`nav ${isMenuOpen ? 'nav-open' : ''}`} id="navigation-menu" role="navigation" aria-label="メインナビゲーション">
             <ul className="nav-list" role="menubar">
-              <li role="none"><Link to="/" className="nav-link" role="menuitem">ホーム</Link></li>
-              <li role="none"><Link to="/about" className="nav-link" role="menuitem">当院について</Link></li>
-              <li role="none"><Link to="/services" className="nav-link" role="menuitem">診療内容</Link></li>
-              <li role="none"><Link to="/access" className="nav-link" role="menuitem">アクセス</Link></li>
+              <li role="none"><Link to="/" className="nav-link" role="menuitem" onClick={handleCloseMenu}>ホーム</Link></li>
+              <li role="none"><Link to="/about" className="nav-link" role="menuitem" onClick={handleCloseMenu}>当院について</Link></li>
+              <li role="none"><Link to="/services" className="nav-link" role="menuitem" onClick={handleCloseMenu}>診療内容</Link></li>
+              <li role="none"><Link to="/access" className="nav-link" role="menuitem" onClick={handleCloseMenu}>アクセス</Link></li>
             </ul>
           </nav>
           

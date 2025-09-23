@@ -30,6 +30,11 @@
         object-position: center center;
         filter: brightness(1.1);
         animation: heroImageZoomOut 3s ease-out;
+        
+        // スマホ表示では右寄せでトリミング
+        @media (max-width: $breakpoint-mobile) {
+          object-position: right center;
+        }
       }
       
       .hero-overlay {
@@ -689,7 +694,7 @@
       .hero-text {
         .hero-title {
           font-size: 32px;
-          line-height: 1.2;
+          line-height: 1.5;
         }
         
         .hero-subtitle {
@@ -730,12 +735,12 @@
             }
             
             .icon {
-              font-size: 40px;
+              font-size: 32px;
               @include flex-center;
               margin-bottom: 8px;
               
               svg {
-                font-size: 40px;
+                font-size: 32px;
               }
             }
             
@@ -820,6 +825,17 @@
       }
       
       .about-text {
+        text-align: left; // テキストは左揃えに戻す
+        
+        .about-description {
+          word-wrap: break-word; // 長い単語の折り返し
+          word-break: break-word; // 必要に応じて単語を分割
+          overflow-wrap: break-word; // 現代的な折り返し
+          hyphens: auto; // 自動ハイフネーション
+          text-align: left; // 左揃え
+          line-height: 1.8; // 読みやすい行間
+        }
+        
         .about-hours-table {
           .hours-content {
             .hours-row {
@@ -854,7 +870,7 @@
       }
       
       .about-image {
-        .placeholder-image {
+        .about-image-content {
           aspect-ratio: 1.414 / 1; // 横向き白銀比を維持
         }
       }
@@ -912,7 +928,7 @@
       .hero-text {
         .hero-title {
           font-size: 28px;
-          line-height: 1.1;
+          line-height: 1.4;
         }
         
         .hero-subtitle {
@@ -953,12 +969,12 @@
             }
             
             .icon {
-              font-size: 36px;
+              font-size: 28px;
               @include flex-center;
               margin-bottom: 6px;
               
               svg {
-                font-size: 36px;
+                font-size: 28px;
               }
             }
             
@@ -1016,6 +1032,18 @@
     
     .about-section {
       .about-text {
+        text-align: left; // テキストは左揃えに戻す
+        
+        .about-description {
+          word-wrap: break-word; // 長い単語の折り返し
+          word-break: break-word; // 必要に応じて単語を分割
+          overflow-wrap: break-word; // 現代的な折り返し
+          hyphens: auto; // 自動ハイフネーション
+          text-align: left; // 左揃え
+          line-height: 1.8; // 読みやすい行間
+          font-size: 14px; // 小さなモバイルでは少し小さめのフォント
+        }
+        
         .about-hours-table {
           .hours-content {
             .hours-row {
