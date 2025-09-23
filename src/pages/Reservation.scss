@@ -58,6 +58,19 @@
       overflow-x: auto;
       padding: $spacing-md 0;
       
+      // モバイルでのスクロール改善
+      @media (max-width: $breakpoint-mobile) {
+        justify-content: flex-start;
+        padding: $spacing-sm 0;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+      
       .step-item {
         @include flex-center;
         flex-direction: column;
@@ -68,6 +81,13 @@
         cursor: pointer;
         transition: all $transition-normal;
         position: relative;
+        flex-shrink: 0;
+        
+        // モバイルでのサイズ調整
+        @media (max-width: $breakpoint-mobile) {
+          min-width: 80px;
+          padding: $spacing-sm;
+        }
         
         &:not(:last-child)::after {
           content: '';
@@ -79,6 +99,12 @@
           background: #e9ecef;
           transform: translateY(-50%);
           z-index: 1;
+          
+          // モバイルでの接続線の調整
+          @media (max-width: $breakpoint-mobile) {
+            right: -40px;
+            width: 40px;
+          }
         }
         
         &.completed:not(:last-child)::after {
@@ -97,6 +123,14 @@
           transition: all $transition-normal;
           z-index: 2;
           position: relative;
+          
+          // モバイルでのサイズ調整
+          @media (max-width: $breakpoint-mobile) {
+            width: 32px;
+            height: 32px;
+            font-size: 14px;
+            margin-bottom: $spacing-xs;
+          }
         }
         
         .step-title {
@@ -105,6 +139,12 @@
           text-align: center;
           color: $text-color-primary;
           transition: color $transition-normal;
+          
+          // モバイルでのフォントサイズ調整
+          @media (max-width: $breakpoint-mobile) {
+            font-size: 10px;
+            line-height: 1.2;
+          }
         }
         
         &.active {
@@ -261,22 +301,37 @@
             border-radius: $border-radius-sm;
             overflow: hidden;
             @include card-shadow;
-            width: fit-content;
+            width: 100%;
             margin: 0 auto;
             max-width: 100%;
-            overflow-x: auto;
+            
+            // モバイルではスクロールを無効化し、完全に画面幅に合わせる
+            @media (max-width: $breakpoint-mobile) {
+              overflow-x: visible;
+              width: 100%;
+              margin: 0;
+            }
+            
+            // タブレット以上では中央寄せ
+            @media (min-width: $breakpoint-mobile) {
+              width: fit-content;
+              margin: 0 auto;
+            }
             
             .hours-row {
               display: grid;
-              // モバイル: より小さなサイズ
-              grid-template-columns: 80px 50px 50px 50px 50px 50px 50px 50px;
-              gap: 2px;
+              // モバイル: 画面幅に完全に収まるサイズ（8列合計で画面幅100%）
+              grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+              gap: 1px;
               background-color: #ddd;
               min-width: 0;
+              width: 100%;
               
               // タブレット: 中サイズ
               @media (min-width: $breakpoint-mobile) {
                 grid-template-columns: 120px 70px 70px 70px 70px 70px 70px 70px;
+                gap: 2px;
+                width: fit-content;
               }
               
               // PC: より大きなサイズ
@@ -298,13 +353,19 @@
               .day-label,
               .availability {
                 background-color: $text-color-white;
-                padding: $spacing-sm;
+                padding: $spacing-xs;
                 text-align: center;
                 font-weight: bold;
                 @extend .text-regular;
-                font-size: 10px;
+                font-size: 8px;
                 min-width: 0;
                 overflow: hidden;
+                
+                // モバイルでは完全にセル内に収める
+                @media (max-width: $breakpoint-mobile) {
+                  width: 100%;
+                  box-sizing: border-box;
+                }
                 
                 // タブレット: 中サイズ
                 @media (min-width: $breakpoint-mobile) {
@@ -320,7 +381,7 @@
                 
                 &.day-label {
                   white-space: nowrap;
-                  font-size: 9px;
+                  font-size: 7px;
                   
                   @media (min-width: $breakpoint-mobile) {
                     font-size: 11px;
@@ -333,12 +394,13 @@
                 
                 &.time-label {
                   font-weight: normal;
-                  font-size: 8px;
-                  line-height: 1.2;
+                  font-size: 6px;
+                  line-height: 1.1;
                   white-space: nowrap;
                   
                   @media (min-width: $breakpoint-mobile) {
                     font-size: 10px;
+                    line-height: 1.2;
                   }
                   
                   @media (min-width: $breakpoint-tablet) {
@@ -347,7 +409,7 @@
                   
                   .period-label {
                     font-weight: bold;
-                    font-size: 10px;
+                    font-size: 8px;
                     
                     @media (min-width: $breakpoint-mobile) {
                       font-size: 12px;
@@ -364,7 +426,7 @@
                 @include flex-center;
                 
                 svg {
-                  font-size: 12px;
+                  font-size: 8px;
                   color: $accent-color;
                   
                   // タブレット: 中サイズ

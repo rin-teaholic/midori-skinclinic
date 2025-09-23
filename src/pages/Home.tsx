@@ -22,15 +22,15 @@ function Home(props: HomeProps) {
 			href: '/reservation'
 		},
 		{
-			id: 'service-1',
-			icon: FaQuestionCircle,
-			text: '（未定）',
-			href: '/services'
+			id: 'news',
+			icon: FaInfoCircle,
+			text: 'お知らせ',
+			href: '/news'
 		},
 		{
-			id: 'service-2',
-			icon: FaQuestionCircle,
-			text: '（未定）',
+			id: 'services',
+			icon: FaList,
+			text: '診療内容',
 			href: '/services'
 		},
 		{
@@ -95,30 +95,30 @@ function Home(props: HomeProps) {
           </div>
           <div className="info-list">
             <Link to="/news/1" className="info-item">
-              <div className="info-date">2025.09.15</div>
+              <div className="info-date">2024.12.15</div>
               <div className="info-content">
-                <div className="info-title">お盆休み期間の営業について</div>
-                <div className="info-description">8月13日（火）から8月16日（金）まで休診いたします。</div>
+                <div className="info-title">年末年始の診療時間について</div>
+                <div className="info-description">12月29日（日）から1月3日（金）まで休診いたします。ご不便をおかけいたしますが、よろしくお願いいたします。</div>
               </div>
               <div className="info-arrow">
                 <FaChevronRight />
               </div>
             </Link>
             <Link to="/news/2" className="info-item">
-              <div className="info-date">2025.09.15</div>
+              <div className="info-date">2024.12.01</div>
               <div className="info-content">
-                <div className="info-title">お盆休み期間の営業について</div>
-                <div className="info-description">8月13日（火）から8月16日（金）まで休診いたします。</div>
+                <div className="info-title">新しい治療機器の導入について</div>
+                <div className="info-description">より精度の高い診断のため、最新のダーモスコピー機器を導入いたしました。これにより、より正確な診断が可能になります。</div>
               </div>
               <div className="info-arrow">
                 <FaChevronRight />
               </div>
             </Link>
             <Link to="/news/3" className="info-item">
-              <div className="info-date">2025.09.15</div>
+              <div className="info-date">2024.11.20</div>
               <div className="info-content">
-                <div className="info-title">お盆休み期間の営業について</div>
-                <div className="info-description">8月13日（火）から8月16日（金）まで休診いたします。</div>
+                <div className="info-title">オンライン予約システム開始</div>
+                <div className="info-description">より便利な予約のため、オンライン予約システムを開始いたします。24時間いつでもご予約いただけます。</div>
               </div>
               <div className="info-arrow">
                 <FaChevronRight />
@@ -190,10 +190,6 @@ function Home(props: HomeProps) {
                 </div>
               </div>
               
-              <Link to="/about" className="btn-about">
-                <FaHospital className="btn-icon" />
-                当院について
-              </Link>
             </div>
             <div className="about-image">
               <img 
@@ -205,6 +201,12 @@ function Home(props: HomeProps) {
                 fetchPriority="low"
               />
             </div>
+          </div>
+          <div className="about-button">
+            <Link to="/about" className="btn-about">
+              <FaHospital className="btn-icon" />
+              当院について
+            </Link>
           </div>
         </div>
       </section>

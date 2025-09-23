@@ -1,4 +1,4 @@
-import React, { useState, memo } from 'react'
+import React, { useState, memo, useRef } from 'react'
 import { FaUser, FaPhone, FaEnvelope, FaCheckCircle, FaCheck, FaTimes, FaCircle, FaPlay, FaUserPlus, FaRedo, FaIdCard } from 'react-icons/fa'
 import type { ReservationProps } from '../types'
 import './Reservation.scss'
@@ -22,6 +22,7 @@ function Reservation(props: ReservationProps) {
 	const [selectedTime, setSelectedTime] = useState<string>('')
 	const [currentStep, setCurrentStep] = useState(1)
 	const [completedSteps, setCompletedSteps] = useState<number[]>([])
+	const stepContainerRef = useRef<HTMLDivElement>(null)
 
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
 		const { name, value } = e.target
@@ -53,18 +54,24 @@ function Reservation(props: ReservationProps) {
 		if (currentStep < 6) {
 			setCompletedSteps(prev => [...prev, currentStep])
 			setCurrentStep(prev => prev + 1)
+			// ステップ変更時にステップコンテナの一番上にスクロール
+			stepContainerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 		}
 	}
 
 	const prevStep = () => {
 		if (currentStep > 1) {
 			setCurrentStep(prev => prev - 1)
+			// ステップ変更時にステップコンテナの一番上にスクロール
+			stepContainerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 		}
 	}
 
 	const goToStep = (step: number) => {
 		if (completedSteps.includes(step - 1) || step === 1) {
 			setCurrentStep(step)
+			// ステップ変更時にステップコンテナの一番上にスクロール
+			stepContainerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 		}
 	}
 
@@ -744,7 +751,7 @@ function Reservation(props: ReservationProps) {
 					</div>
 
 					{/* ステップコンテンツ */}
-					<div className="step-container">
+					<div className="step-container" ref={stepContainerRef}>
 						<div className="step-header">
 							<h2 className="step-title">ステップ {currentStep}: {stepTitles[currentStep - 1]}</h2>
 						</div>

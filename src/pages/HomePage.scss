@@ -31,10 +31,10 @@
         filter: brightness(1.1);
         animation: heroImageZoomOut 3s ease-out;
         
-        // スマホ表示では高さを60vhに調整し、やや右寄せでトリミング
+        // スマホ表示では高さを60vhに調整し、右寄せでトリミング
         @media (max-width: $breakpoint-mobile) {
           height: 60vh;
-          object-position: 40% center;
+          object-position: 60% center;
         }
       }
       
@@ -475,10 +475,6 @@
         }
       }
       
-      .btn-about {
-        @extend .button;
-        @extend .button--with-icon;
-      }
     }
     
     .about-image {
@@ -506,6 +502,16 @@
         // アンチエイリアシング
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+      }
+    }
+    
+    .about-button {
+      @include section-button-spacing;
+      text-align: center;
+      
+      .btn-about {
+        @extend .button;
+        @extend .button--with-icon;
       }
     }
   }
@@ -676,7 +682,8 @@
       
       .hero-content {
         padding: 80px $spacing-lg 0;
-        justify-content: flex-start;
+        justify-content: center; // 水平中央寄せ
+        align-items: center; // 垂直中央寄せ
         height: 70vh;
       }
       
@@ -834,13 +841,26 @@
               .day-label,
               .availability {
                 padding: 4px 3px;
-                font-size: 10px;
+                font-size: 9px;
+                
+                &.day-label {
+                  font-size: 8px;
+                }
+                
+                &.time-label {
+                  font-size: 8px;
+                  line-height: 1.1;
+                  
+                  .period-label {
+                    font-size: 9px;
+                  }
+                }
                 
                 &.availability {
                   @include flex-center;
                   
                   svg {
-                    font-size: 10px;
+                    font-size: 9px;
                     color: $accent-color;
                     
                     &.fa-circle {
@@ -911,6 +931,8 @@
       
       .hero-content {
         padding: 60px 15px 0;
+        justify-content: center; // 水平中央寄せ
+        align-items: center; // 垂直中央寄せ
         height: 70vh;
       }
       
@@ -1042,13 +1064,26 @@
               .day-label,
               .availability {
                 padding: 3px 2px;
-                font-size: 9px;
+                font-size: 8px;
+                
+                &.day-label {
+                  font-size: 7px;
+                }
+                
+                &.time-label {
+                  font-size: 7px;
+                  line-height: 1.0;
+                  
+                  .period-label {
+                    font-size: 8px;
+                  }
+                }
                 
                 &.availability {
                   @include flex-center;
                   
                   svg {
-                    font-size: 9px;
+                    font-size: 8px;
                     color: $accent-color;
                     
                     &.fa-circle {
