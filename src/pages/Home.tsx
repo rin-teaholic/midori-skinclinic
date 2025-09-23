@@ -13,31 +13,31 @@ function Home(props: HomeProps) {
 			id: 'new-patient',
 			icon: FaUserPlus,
 			text: '初診の方',
-			href: '/contact'
+			href: '/midori-skinclinic/reservation'
 		},
 		{
 			id: 'return-patient',
 			icon: FaRedo,
 			text: '再診の方',
-			href: '/contact'
+			href: '/midori-skinclinic/reservation'
 		},
 		{
 			id: 'service-1',
 			icon: FaQuestionCircle,
 			text: '（未定）',
-			href: '/services'
+			href: '/midori-skinclinic/services'
 		},
 		{
 			id: 'service-2',
 			icon: FaQuestionCircle,
 			text: '（未定）',
-			href: '/services'
+			href: '/midori-skinclinic/services'
 		},
 		{
 			id: 'access',
 			icon: FaMapMarkerAlt,
 			text: 'アクセス',
-			href: '/contact'
+			href: '/midori-skinclinic/access'
 		}
 	]
 
