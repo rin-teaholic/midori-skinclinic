@@ -1,17 +1,22 @@
 {
   "files": {
-    "main.css": "/midori-skinclinic/static/css/main.73de30fa.css",
-    "main.js": "/midori-skinclinic/static/js/main.f14771f7.js",
-    "static/js/488.1f38958e.chunk.js": "/midori-skinclinic/static/js/488.1f38958e.chunk.js",
+    "main.css": "/midori-skinclinic/static/css/main.8295d4c1.css",
+    "main.js": "/midori-skinclinic/static/js/main.43b0ec27.js",
+    "static/js/488.8e6380fb.chunk.js": "/midori-skinclinic/static/js/488.8e6380fb.chunk.js",
     "static/media/about-top.jpeg": "/midori-skinclinic/static/media/about-top.6c07b741a678eac9b1ce.jpeg",
+    "static/media/profile.jpg": "/midori-skinclinic/static/media/profile.eacff29d53bb6e9c50a8.jpg",
     "static/media/hero-clinic.jpg": "/midori-skinclinic/static/media/hero-clinic.6d824f7205091483e0b4.jpg",
+    "static/media/dermoscopy.jpg": "/midori-skinclinic/static/media/dermoscopy.a0940345ee2da85a1be3.jpg",
+    "static/media/logo.png": "/midori-skinclinic/static/media/logo.2c6c6d2cece526e598f3.png",
+    "static/media/patch-test.jpg": "/midori-skinclinic/static/media/patch-test.5780b0c5e022605dd16c.jpg",
+    "static/media/wood-lamp-examination.jpg": "/midori-skinclinic/static/media/wood-lamp-examination.14d10427321a702c78ab.jpg",
     "index.html": "/midori-skinclinic/index.html",
-    "main.73de30fa.css.map": "/midori-skinclinic/static/css/main.73de30fa.css.map",
-    "main.f14771f7.js.map": "/midori-skinclinic/static/js/main.f14771f7.js.map",
-    "488.1f38958e.chunk.js.map": "/midori-skinclinic/static/js/488.1f38958e.chunk.js.map"
+    "main.8295d4c1.css.map": "/midori-skinclinic/static/css/main.8295d4c1.css.map",
+    "main.43b0ec27.js.map": "/midori-skinclinic/static/js/main.43b0ec27.js.map",
+    "488.8e6380fb.chunk.js.map": "/midori-skinclinic/static/js/488.8e6380fb.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.73de30fa.css",
-    "static/js/main.f14771f7.js"
+    "static/css/main.8295d4c1.css",
+    "static/js/main.43b0ec27.js"
   ]
 }
