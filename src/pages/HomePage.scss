@@ -31,9 +31,10 @@
         filter: brightness(1.1);
         animation: heroImageZoomOut 3s ease-out;
         
-        // スマホ表示では右寄せでトリミング
+        // スマホ表示では高さを60vhに調整し、やや右寄せでトリミング
         @media (max-width: $breakpoint-mobile) {
-          object-position: right center;
+          height: 60vh;
+          object-position: 40% center;
         }
       }
       
@@ -631,6 +632,7 @@
       .hero-text {
         .hero-title {
           font-size: 40px;
+          line-height: 1.6;
         }
         
         .hero-subtitle {
@@ -666,22 +668,22 @@
 @media (max-width: $breakpoint-mobile) {
   .home {
     .hero {
-      height: calc(100vh - 80px);
+      height: calc(70vh + 80px);
       
       .hero-image-background {
-        height: 90vh;
+        height: 60vh;
       }
       
       .hero-content {
         padding: 80px $spacing-lg 0;
         justify-content: flex-start;
-        height: 90vh;
+        height: 70vh;
       }
       
       .hero-text {
         .hero-title {
           font-size: 32px;
-          line-height: 100px; // スマホ表示で行間を控えめに拡大
+          line-height: 1.6; // スマホ表示で行間を控えめに拡大
         }
         
         .hero-subtitle {
@@ -693,14 +695,14 @@
       }
       
       .floating-icons {
-        bottom: 20px;
-        height: 15vh;
+        bottom: 15vh; // 下から15vhの位置に配置
+        height: 10vh; // 10vhに統一
         
         .icon-bar {
           padding: $spacing-sm $spacing-lg;
           gap: $spacing-md;
-          border-radius: 7.5vh;
-          height: 15vh;
+          border-radius: 5vh; // 10vhの50% = 5vh
+          height: 10vh; // 10vhに統一
           @include flex-center;
           
           .icon-item {
@@ -901,21 +903,21 @@
 @media (max-width: 480px) {
   .home {
     .hero {
-      height: calc(100vh - 80px);
+      height: calc(70vh + 80px);
       
       .hero-image-background {
-        height: 90vh;
+        height: 60vh;
       }
       
       .hero-content {
         padding: 60px 15px 0;
-        height: 90vh;
+        height: 70vh;
       }
       
       .hero-text {
         .hero-title {
           font-size: 28px;
-          line-height: 90px; // 小画面でも行間を控えめに拡大
+          line-height: 1.6; // 小画面でも行間を控えめに拡大
         }
         
         .hero-subtitle {
@@ -927,14 +929,14 @@
       }
       
       .floating-icons {
-        bottom: 20px;
-        height: 15vh;
+        bottom: 15vh; // 下から15vhの位置に配置
+        height: 10vh; // 10vhに統一
         
         .icon-bar {
           padding: $spacing-sm 15px;
           gap: $spacing-sm;
-          border-radius: 7.5vh;
-          height: 15vh;
+          border-radius: 5vh; // 10vhの50% = 5vh
+          height: 10vh; // 10vhに統一
           @include flex-center;
           
           .icon-item {
