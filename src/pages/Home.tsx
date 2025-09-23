@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import { Link } from 'react-router-dom'
-import { FaUserPlus, FaRedo, FaQuestionCircle, FaMapMarkerAlt, FaChevronRight, FaInfoCircle, FaCircle, FaTimes, FaHospital, FaAllergies, FaSearch, FaSyringe, FaList } from 'react-icons/fa'
+import { FaUserPlus, FaRedo, FaMapMarkerAlt, FaChevronRight, FaInfoCircle, FaCircle, FaTimes, FaHospital, FaAllergies, FaSearch, FaSyringe, FaList } from 'react-icons/fa'
 import heroClinicImage from '../assets/images/hero-clinic.jpg'
 import aboutTopImage from '../assets/images/about-top.jpeg'
 import type { HomeProps, IconItem } from '../types'
