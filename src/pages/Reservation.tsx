@@ -1,5 +1,5 @@
 import React, { useState, memo } from 'react'
-import { FaCalendarAlt, FaClock, FaUser, FaPhone, FaEnvelope, FaMapMarkerAlt, FaInfoCircle, FaCheckCircle, FaCheck, FaTimes, FaCircle, FaPlay, FaUserPlus, FaRedo, FaIdCard } from 'react-icons/fa'
+import { FaUser, FaPhone, FaEnvelope, FaCheckCircle, FaCheck, FaTimes, FaCircle, FaPlay, FaUserPlus, FaRedo, FaIdCard } from 'react-icons/fa'
 import type { ReservationProps } from '../types'
 import './Reservation.scss'
 

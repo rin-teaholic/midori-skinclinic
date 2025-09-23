@@ -1,9 +1,8 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect } from 'react'
 import type { ContactProps } from '../types'
 import './AccessPage.scss'
 
 function Access(props: ContactProps) {
-  const mapRef = useRef<HTMLDivElement>(null)
 
   // ページ遷移時にトップにスクロール
   useEffect(() => {
